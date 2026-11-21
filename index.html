@@ -273,6 +273,23 @@ footer b{color:var(--or);font-weight:500}
 .shot img{animation:none}
 .band,.contact{background-attachment:fixed}
 @media (prefers-reduced-motion:reduce){.mosaic img,.card .ph img,.ecoute .photo img,.pimg img,.porte .ph img,.humans img{animation:none}.mosaic figure:before,.card .ph:before,.ecoute .photo:before,.pimg:before,.porte .ph:before{display:none}}
+
+.hero{background:var(--nuit)!important}
+.hero:before{display:none}
+.slides{position:absolute;inset:0;z-index:0;overflow:hidden}
+.slides i{position:absolute;inset:-4%;background-size:cover;background-position:center;opacity:0;animation:slide 36s infinite}
+.slides i:nth-child(2){animation-delay:6s}.slides i:nth-child(3){animation-delay:12s}.slides i:nth-child(4){animation-delay:18s}.slides i:nth-child(5){animation-delay:24s}.slides i:nth-child(6){animation-delay:30s}
+@keyframes slide{0%{opacity:0;transform:scale(1.15) translateX(2%)}4%{opacity:1}17%{opacity:1}22%{opacity:0;transform:scale(1.02) translateX(-2%)}100%{opacity:0}}
+.slides:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(21,23,28,.94) 0%,rgba(21,23,28,.7) 50%,rgba(21,23,28,.3) 100%)}
+.slides .dots{position:absolute;right:28px;bottom:26px;z-index:2;display:flex;gap:8px}
+.slides .dots b{width:28px;height:2px;background:rgba(247,244,238,.25);overflow:hidden;position:relative}
+.slides .dots b:after{content:"";position:absolute;inset:0;background:var(--or);transform:scaleX(0);transform-origin:left;animation:dot 36s infinite}
+.slides .dots b:nth-child(2):after{animation-delay:6s}.slides .dots b:nth-child(3):after{animation-delay:12s}.slides .dots b:nth-child(4):after{animation-delay:18s}.slides .dots b:nth-child(5):after{animation-delay:24s}.slides .dots b:nth-child(6):after{animation-delay:30s}
+@keyframes dot{0%{transform:scaleX(0)}16.6%{transform:scaleX(1)}17%,100%{transform:scaleX(0)}}
+.hero h1,.hero .eyebrow,.hero p.lead,.hero .ctas{animation:heroin 1.2s cubic-bezier(.2,.7,.2,1) both}
+.hero .eyebrow{animation-delay:.1s}.hero h1{animation-delay:.25s}.hero p.lead{animation-delay:.5s}.hero .ctas{animation-delay:.75s}
+@keyframes heroin{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.slides i{animation:none}.slides i:first-child{opacity:1}}
 @media (max-width:900px){
  .nav ul{display:none;position:absolute;top:68px;left:0;right:0;background:var(--nuit);flex-direction:column;gap:0;padding:8px 24px 18px}
  .nav ul.open{display:flex}.nav ul li a{display:block;padding:12px 0;border-bottom:1px solid rgba(184,151,90,.15)}
@@ -306,7 +323,7 @@ footer b{color:var(--or);font-weight:500}
  <button class="burger" aria-label="Ouvrir le menu" aria-controls="menu" onclick="document.getElementById('menu').classList.toggle('open')">&#9776;</button>
 </div></nav>
 
-<header class="hero" id="top"><div class="wrap">
+<header class="hero" id="top"><div class="slides" aria-hidden="true"><i style="background-image:url('https://images.unsplash.com/photo-1716146755954-4f197a5b6031?auto=format&fit=crop&w=2200&q=75')"></i><i style="background-image:url('https://images.unsplash.com/photo-1706203644187-a719449587bb?auto=format&fit=crop&w=2200&q=75')"></i><i style="background-image:url('https://images.unsplash.com/photo-1508779018996-601e37fa274e?auto=format&fit=crop&w=2200&q=75')"></i><i style="background-image:url('https://images.unsplash.com/photo-1761574319274-8a3a9cd80a6e?auto=format&fit=crop&w=2200&q=75')"></i><i style="background-image:url('https://images.unsplash.com/photo-1554589855-c54e5c81caef?auto=format&fit=crop&w=2200&q=75')"></i><i style="background-image:url('https://images.unsplash.com/photo-1555758933-42f41c02c82f?auto=format&fit=crop&w=2200&q=75')"></i><div class="dots"><b></b><b></b><b></b><b></b><b></b><b></b></div></div><div class="wrap">
  <p class="eyebrow">Kaïna Distribution · Depuis 2004</p>
  <h1>Des rayons pleins, <em>une parole tenue.</em></h1>
  <p class="lead">Épicerie, hygiène, boissons : depuis Casablanca, nous approvisionnons le commerce de proximité marocain avec une seule exigence. Livré complet, à l'heure.</p>
