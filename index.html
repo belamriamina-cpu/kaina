@@ -198,6 +198,25 @@ footer b{color:var(--or);font-weight:500}
 .step b{font-family:"Crimson Text",Georgia,serif;font-size:24px;font-weight:600;display:block}
 .step span{color:#C9C1B3;font-size:15px}
 @media (max-width:900px){.porte{grid-template-columns:1fr}.porte .ph{min-height:360px}.porte .ph:after{background:linear-gradient(180deg,transparent 60%,rgba(21,23,28,.9))}.porte .tx{padding:48px 24px}}
+
+.route-band{position:relative;height:280px;background:var(--ardoise);overflow:hidden;border-top:1px solid rgba(184,151,90,.25);border-bottom:1px solid rgba(184,151,90,.25)}
+.route-band .sky{position:absolute;left:0;right:0;bottom:42px;height:120px;opacity:.14;background-repeat:repeat-x;animation:skyl 60s linear infinite}
+@keyframes skyl{from{background-position:0 0}to{background-position:-1200px 0}}
+.route-band .road{position:absolute;left:0;right:0;bottom:40px;height:2px;background:rgba(184,151,90,.5)}
+.route-band .dash{position:absolute;left:0;right:0;bottom:24px;height:2px;background:repeating-linear-gradient(90deg,rgba(247,244,238,.35) 0 40px,transparent 40px 90px);animation:dash 1.2s linear infinite}
+@keyframes dash{from{background-position:0 0}to{background-position:-90px 0}}
+.truck-wrap{position:absolute;bottom:40px;left:0;width:300px;animation:drive 14s linear infinite}
+@keyframes drive{0%{transform:translateX(-340px)}100%{transform:translateX(calc(100vw + 40px))}}
+.truck-wrap svg{display:block;width:300px;height:auto;animation:bump .45s ease-in-out infinite alternate}
+@keyframes bump{to{transform:translateY(-2px)}}
+.wheel{transform-box:fill-box;transform-origin:center;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.route-band .caption{position:absolute;left:0;right:0;top:28px;text-align:center;color:var(--ivoire);font-family:"Crimson Text",Georgia,serif;font-size:26px}
+.route-band .caption em{color:var(--or)}
+.box-drop{position:absolute;bottom:42px;width:26px;height:22px;background:#B8975A;border:1px solid #8C6F3C;opacity:0;animation:drop 14s linear infinite}
+.box-drop:after{content:"";position:absolute;left:11px;top:0;width:4px;height:100%;background:rgba(21,23,28,.25)}
+@keyframes drop{0%,100%{opacity:0;transform:translateY(-30px)}48%{opacity:0;transform:translateY(-30px)}52%{opacity:1;transform:none}90%{opacity:1}96%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.truck-wrap,.dash,.sky,.box-drop,.wheel{animation:none}.truck-wrap{transform:translateX(40vw)}}
 @media (max-width:900px){
  .nav ul{display:none;position:absolute;top:68px;left:0;right:0;background:var(--nuit);flex-direction:column;gap:0;padding:8px 24px 18px}
  .nav ul.open{display:flex}.nav ul li a{display:block;padding:12px 0;border-bottom:1px solid rgba(184,151,90,.15)}
@@ -283,6 +302,26 @@ footer b{color:var(--or);font-weight:500}
   <div class="card"><div class="ph"><img src="https://images.unsplash.com/photo-1554589855-c54e5c81caef?auto=format&fit=crop&w=800&q=75" alt="Épices sur un marché" loading="lazy"></div><span class="num">III · NOUVEAUTÉ</span><h3>Commande WhatsApp</h3><p class="muted">Passez commande auprès de votre pré-vendeur sur WhatsApp, 7 jours sur 7. Pilote en cours à Casablanca et Rabat-Salé.</p></div>
  </div>
 </div></section>
+
+<div class="route-band" aria-label="Animation : un camion Kaïna livre les commerces">
+ <p class="caption">Chaque jour, nos camions partent de <em>Casablanca</em> vers vos rayons.</p>
+ <div class="sky" style="background-image:url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='120' fill='%23B8975A'><rect x='20' y='60' width='60' height='60'/><rect x='90' y='40' width='40' height='80'/><rect x='140' y='70' width='70' height='50'/><rect x='240' y='50' width='50' height='70'/><rect x='300' y='30' width='36' height='90'/><rect x='350' y='65' width='80' height='55'/><rect x='470' y='0' width='16' height='120'/><rect x='466' y='-4' width='24' height='10'/><rect x='440' y='80' width='80' height='40'/><rect x='560' y='55' width='60' height='65'/><rect x='630' y='35' width='44' height='85'/><rect x='690' y='70' width='70' height='50'/><rect x='790' y='45' width='50' height='75'/><rect x='850' y='60' width='90' height='60'/><rect x='960' y='25' width='40' height='95'/><rect x='1010' y='65' width='70' height='55'/><rect x='1100' y='50' width='60' height='70'/></svg>&quot;)"></div>
+ <div class="road"></div><div class="dash"></div>
+ <span class="box-drop" style="left:22%"></span><span class="box-drop" style="left:48%;animation-delay:3.5s"></span><span class="box-drop" style="left:74%;animation-delay:7s"></span>
+ <div class="truck-wrap"><svg viewBox="0 0 300 130" aria-hidden="true">
+<rect x="4" y="18" width="182" height="86" rx="4" fill="#F7F4EE"/>
+<rect x="4" y="18" width="182" height="86" rx="4" fill="none" stroke="#B8975A" stroke-width="2"/>
+<g transform="translate(40 40) scale(.42)"><path d="M48 8 C22 8 4 27 4 51 C4 80 48 114 48 114 C48 114 92 80 92 51 C92 27 74 8 48 8 Z" fill="#1F232B"/><circle cx="48" cy="50" r="27" fill="#F7F4EE"/><path d="M34 51 l10 10 l19 -21" fill="none" stroke="#B8975A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="86" y="70" font-family="DM Sans,Arial,sans-serif" font-weight="500" font-size="26" fill="#1F232B">kaïna</text>
+<text x="86" y="88" font-family="Crimson Text,Georgia,serif" font-style="italic" font-size="10.5" fill="#8C6F3C">Livré complet, à l'heure.</text>
+<path d="M190 46 h50 l30 30 v28 h-80 z" fill="#1F232B" stroke="#B8975A" stroke-width="2"/>
+<path d="M200 54 h36 l20 22 h-56 z" fill="#3A4150"/>
+<rect x="266" y="88" width="10" height="6" fill="#B8975A"/>
+<rect x="0" y="104" width="280" height="6" fill="#15171C"/>
+<g class="wheel"><circle cx="54" cy="112" r="15" fill="#15171C" stroke="#B8975A" stroke-width="2"/><path d="M54 99 v26 M41 112 h26" stroke="#B8975A" stroke-width="2"/></g>
+<g class="wheel"><circle cx="228" cy="112" r="15" fill="#15171C" stroke="#B8975A" stroke-width="2"/><path d="M228 99 v26 M215 112 h26" stroke="#B8975A" stroke-width="2"/></g>
+</svg></div>
+</div>
 
 <div class="porte" id="livraison">
  <div class="ph"><img src="https://images.unsplash.com/photo-1543499459-d1460946bdc6?auto=format&fit=crop&w=1600&q=75" alt="Livreur portant des cartons jusqu'au client" loading="lazy"></div>
