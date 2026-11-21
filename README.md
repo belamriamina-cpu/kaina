@@ -8,3 +8,7 @@ Données fictives créées pour l'atelier Challenge IA.
 ## Mise en ligne avec GitHub Pages
 Settings › Pages › Source : « Deploy from a branch », branche `main`, dossier `/ (root)`.
 Le site est ensuite disponible sur `https://belamriamina-cpu.github.io/kaina/`.
+
+## QR code du stand
+- `qr/qr-landing.png` : QR code vers https://belamriamina-cpu.github.io/kaina/landing/
+- `qr/affiche-stand-B12.png` : affiche prête à imprimer
