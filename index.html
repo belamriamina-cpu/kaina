@@ -255,6 +255,24 @@ footer b{color:var(--or);font-weight:500}
 .ticker div{display:flex;gap:56px;width:max-content;animation:mq 30s linear infinite;font-family:"Crimson Text",Georgia,serif;font-size:24px;color:#D8CFBF;white-space:nowrap}
 .ticker div span:nth-child(even){color:var(--or)}
 @media (max-width:900px){.refgrid{grid-template-columns:1fr}}
+
+/* --- animations des photos --- */
+@keyframes kbloop{0%{transform:scale(1.04) translate(0,0)}50%{transform:scale(1.13) translate(-1.5%,-1%)}100%{transform:scale(1.08) translate(1.5%,1%)}}
+.mosaic img,.card .ph img,.ecoute .photo img,.pimg img,.porte .ph img,.humans img{animation:kbloop 16s ease-in-out infinite alternate}
+.mosaic figure:nth-child(2) img,.card:nth-child(2) .ph img{animation-delay:-4s}
+.mosaic figure:nth-child(3) img,.card:nth-child(3) .ph img{animation-delay:-8s}
+.mosaic figure:nth-child(4) img{animation-delay:-12s}.mosaic figure:nth-child(5) img{animation-delay:-6s}
+.mosaic figure,.card .ph,.ecoute .photo,.pimg,.porte .ph,.shot{position:relative;overflow:hidden}
+.mosaic figure:before,.card .ph:before,.ecoute .photo:before,.pimg:before,.porte .ph:before{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;z-index:2;pointer-events:none;background:linear-gradient(100deg,transparent,rgba(255,236,190,.35),transparent);transform:skewX(-18deg);animation:shine 7s ease-in-out infinite}
+.mosaic figure:nth-child(2):before,.card:nth-child(2) .ph:before,.pcard:nth-child(2n) .pimg:before{animation-delay:1.4s}
+.mosaic figure:nth-child(3):before,.card:nth-child(3) .ph:before,.pcard:nth-child(3n) .pimg:before{animation-delay:2.8s}
+.mosaic figure:nth-child(4):before{animation-delay:4.2s}.mosaic figure:nth-child(5):before{animation-delay:5.6s}
+@keyframes shine{0%,70%{left:-60%}100%{left:130%}}
+.mosaic figure.reveal{clip-path:inset(0 0 100% 0);transition:clip-path 1.3s cubic-bezier(.7,0,.2,1),opacity 1s,transform 1s}
+.mosaic figure.reveal.in{clip-path:inset(0 0 0 0)}
+.shot img{animation:none}
+.band,.contact{background-attachment:fixed}
+@media (prefers-reduced-motion:reduce){.mosaic img,.card .ph img,.ecoute .photo img,.pimg img,.porte .ph img,.humans img{animation:none}.mosaic figure:before,.card .ph:before,.ecoute .photo:before,.pimg:before,.porte .ph:before{display:none}}
 @media (max-width:900px){
  .nav ul{display:none;position:absolute;top:68px;left:0;right:0;background:var(--nuit);flex-direction:column;gap:0;padding:8px 24px 18px}
  .nav ul.open{display:flex}.nav ul li a{display:block;padding:12px 0;border-bottom:1px solid rgba(184,151,90,.15)}
