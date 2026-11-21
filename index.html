@@ -217,6 +217,31 @@ footer b{color:var(--or);font-weight:500}
 .box-drop:after{content:"";position:absolute;left:11px;top:0;width:4px;height:100%;background:rgba(21,23,28,.25)}
 @keyframes drop{0%,100%{opacity:0;transform:translateY(-30px)}48%{opacity:0;transform:translateY(-30px)}52%{opacity:1;transform:none}90%{opacity:1}96%{opacity:0}}
 @media (prefers-reduced-motion:reduce){.truck-wrap,.dash,.sky,.box-drop,.wheel{animation:none}.truck-wrap{transform:translateX(40vw)}}
+
+.terroir{background:var(--ivoire);padding:100px 0 110px;overflow:hidden;position:relative}
+.terroir .head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap}
+.terroir h2 em{color:var(--or);font-weight:400}
+.marquee{margin-top:56px;display:flex;width:max-content;gap:28px;animation:mq 42s linear infinite}
+.marquee:hover{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-50%)}}
+.pcard{margin:0;width:280px;flex:none;background:#fff;border:1px solid var(--ligne);padding:12px 12px 20px;box-shadow:0 30px 60px -36px rgba(21,23,28,.45);transition:transform .7s cubic-bezier(.2,.7,.2,1),box-shadow .7s}
+.pcard:nth-child(odd){animation:floaty 6s ease-in-out infinite}
+.pcard:nth-child(even){animation:floaty 6s ease-in-out infinite reverse}
+@keyframes floaty{50%{transform:translateY(-10px)}}
+.pcard:hover{transform:translateY(-14px) rotate(-1deg) scale(1.03);box-shadow:0 40px 80px -30px rgba(184,151,90,.6)}
+.pimg{height:320px;overflow:hidden;border:2px solid var(--or)}
+.pimg img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.6s cubic-bezier(.2,.7,.2,1)}
+.pcard:hover .pimg img{transform:scale(1.1)}
+.pcard figcaption{text-align:center;margin-top:16px}
+.pcard b{display:block;font-family:"Crimson Text",Georgia,serif;font-size:28px;font-weight:600}
+.pcard span{font-size:13px;color:var(--doux);letter-spacing:.04em}
+.deliver{margin-top:60px;display:flex;align-items:center;gap:22px;justify-content:center;flex-wrap:wrap}
+.deliver .pill{display:flex;align-items:center;gap:14px;background:var(--nuit);color:var(--ivoire);padding:16px 26px;border-left:2px solid var(--or)}
+.deliver .mini{width:64px;height:auto;animation:minidrive 2.4s ease-in-out infinite alternate}
+@keyframes minidrive{from{transform:translateX(-8px)}to{transform:translateX(8px)}}
+.deliver .pill b{font-family:"Crimson Text",Georgia,serif;font-size:22px;font-weight:600}
+.deliver .pill em{color:var(--or);font-style:normal}
+@media (prefers-reduced-motion:reduce){.marquee,.pcard,.deliver .mini{animation:none}}
 @media (max-width:900px){
  .nav ul{display:none;position:absolute;top:68px;left:0;right:0;background:var(--nuit);flex-direction:column;gap:0;padding:8px 24px 18px}
  .nav ul.open{display:flex}.nav ul li a{display:block;padding:12px 0;border-bottom:1px solid rgba(184,151,90,.15)}
@@ -236,6 +261,7 @@ footer b{color:var(--or);font-weight:500}
  <ul id="menu">
   <li><a href="#maison">La maison</a></li>
   <li><a href="#offre">Notre offre</a></li>
+  <li><a href="#produits">Produits</a></li>
   <li><a href="#engagement">Engagement</a></li>
   <li><a href="#agences">Carte</a></li>
   <li><a href="#ecoute">À votre écoute</a></li>
@@ -302,6 +328,16 @@ footer b{color:var(--or);font-weight:500}
   <div class="card"><div class="ph"><img src="https://images.unsplash.com/photo-1554589855-c54e5c81caef?auto=format&fit=crop&w=800&q=75" alt="Épices sur un marché" loading="lazy"></div><span class="num">III · NOUVEAUTÉ</span><h3>Commande WhatsApp</h3><p class="muted">Passez commande auprès de votre pré-vendeur sur WhatsApp, 7 jours sur 7. Pilote en cours à Casablanca et Rabat-Salé.</p></div>
  </div>
 </div></section>
+
+<section class="terroir" id="produits">
+ <div class="wrap head">
+  <div><p class="eyebrow">Nos produits</p><h2>Raffinés, traditionnels, <em>livrés jusqu'à vous.</em></h2></div>
+  <p class="muted" style="max-width:420px;margin:0">Amlou, louz, atay, épices : le meilleur du terroir marocain rejoint l'épicerie, l'hygiène et les boissons de nos 2 400 références.</p>
+ </div>
+ <div class="marquee"><figure class="pcard"><div class="pimg"><img src="https://images.unsplash.com/photo-1508779018996-601e37fa274e?auto=format&fit=crop&w=700&h=804&q=80" alt="Amlou" loading="lazy"></div><figcaption><b>Amlou</b><span>amandes · argan · miel</span></figcaption></figure><figure class="pcard"><div class="pimg"><img src="https://images.unsplash.com/photo-1654747781271-a2b6992c7b52?auto=format&fit=crop&w=700&h=804&q=80&crop=focalpoint&fp-x=0.15&fp-y=0.12&fp-z=3" alt="Louz" loading="lazy"></div><figcaption><b>Louz</b><span>amandes du Maroc</span></figcaption></figure><figure class="pcard"><div class="pimg"><img src="https://images.unsplash.com/photo-1555758933-42f41c02c82f?auto=format&fit=crop&w=700&h=804&q=80" alt="Atay" loading="lazy"></div><figcaption><b>Atay</b><span>thé à la menthe</span></figcaption></figure><figure class="pcard"><div class="pimg"><img src="https://images.unsplash.com/photo-1554589855-c54e5c81caef?auto=format&fit=crop&w=700&h=804&q=80" alt="Épices" loading="lazy"></div><figcaption><b>Épices</b><span>ras el hanout, cumin, safran</span></figcaption></figure><figure class="pcard"><div class="pimg"><img src="https://images.unsplash.com/photo-1700678418631-68102f858837?auto=format&fit=crop&w=700&h=804&q=80" alt="Épicerie fine" loading="lazy"></div><figcaption><b>Épicerie fine</b><span>les essentiels du rayon</span></figcaption></figure><figure class="pcard"><div class="pimg"><img src="https://images.unsplash.com/photo-1716146755954-4f197a5b6031?auto=format&fit=crop&w=700&h=804&q=80" alt="Saveurs du souk" loading="lazy"></div><figcaption><b>Saveurs du souk</b><span>le goût de chez nous</span></figcaption></figure><figure class="pcard"><div class="pimg"><img src="https://images.unsplash.com/photo-1508779018996-601e37fa274e?auto=format&fit=crop&w=700&h=804&q=80" alt="Amlou" loading="lazy"></div><figcaption><b>Amlou</b><span>amandes · argan · miel</span></figcaption></figure><figure class="pcard"><div class="pimg"><img src="https://images.unsplash.com/photo-1654747781271-a2b6992c7b52?auto=format&fit=crop&w=700&h=804&q=80&crop=focalpoint&fp-x=0.15&fp-y=0.12&fp-z=3" alt="Louz" loading="lazy"></div><figcaption><b>Louz</b><span>amandes du Maroc</span></figcaption></figure><figure class="pcard"><div class="pimg"><img src="https://images.unsplash.com/photo-1555758933-42f41c02c82f?auto=format&fit=crop&w=700&h=804&q=80" alt="Atay" loading="lazy"></div><figcaption><b>Atay</b><span>thé à la menthe</span></figcaption></figure><figure class="pcard"><div class="pimg"><img src="https://images.unsplash.com/photo-1554589855-c54e5c81caef?auto=format&fit=crop&w=700&h=804&q=80" alt="Épices" loading="lazy"></div><figcaption><b>Épices</b><span>ras el hanout, cumin, safran</span></figcaption></figure><figure class="pcard"><div class="pimg"><img src="https://images.unsplash.com/photo-1700678418631-68102f858837?auto=format&fit=crop&w=700&h=804&q=80" alt="Épicerie fine" loading="lazy"></div><figcaption><b>Épicerie fine</b><span>les essentiels du rayon</span></figcaption></figure><figure class="pcard"><div class="pimg"><img src="https://images.unsplash.com/photo-1716146755954-4f197a5b6031?auto=format&fit=crop&w=700&h=804&q=80" alt="Saveurs du souk" loading="lazy"></div><figcaption><b>Saveurs du souk</b><span>le goût de chez nous</span></figcaption></figure></div>
+ <div class="deliver"><div class="pill"><svg class="mini" viewBox="0 0 120 60" aria-hidden="true"><rect x="2" y="8" width="70" height="38" rx="3" fill="#F7F4EE" stroke="#B8975A" stroke-width="2"/><path d="M74 20h22l16 16v10H74z" fill="#1F232B" stroke="#B8975A" stroke-width="2"/><circle cx="24" cy="50" r="7" fill="#15171C" stroke="#B8975A" stroke-width="2"/><circle cx="96" cy="50" r="7" fill="#15171C" stroke="#B8975A" stroke-width="2"/><path d="M28 27l6 6 12-13" fill="none" stroke="#B8975A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>On vous livre <em>jusqu'à votre porte</em></b><br><span style="font-size:13px;color:#C9C1B3">24 h à Casablanca et Rabat-Salé · 48 h ailleurs</span></span></div><a class="btn" href="landing/">Être rappelé par un pré-vendeur</a></div>
+ <p class="muted" style="text-align:center;font-size:12px;margin-top:18px">Exemples de produits. Photos d'illustration.</p>
+</section>
 
 <div class="route-band" aria-label="Animation : un camion Kaïna livre les commerces">
  <p class="caption">Chaque jour, nos camions partent de <em>Casablanca</em> vers vos rayons.</p>
@@ -501,7 +537,7 @@ footer b{color:var(--or);font-weight:500}
 <footer><div class="wrap">
  <span><b>Kaïna Distribution</b> · Aïn Sebaâ, Casablanca · Livré complet, à l'heure.</span>
  <span>Kaïna · Cap Service 2027 — Entreprise fictive créée pour l'atelier Challenge IA.</span>
-<p class="credits">Photographies : Handy Wicaksono, Fahad Al Rabbani Jillani, Mohammed Kabysa, Gabriel Santos, Mahmoud Gad, Jeslyn Xie, Jose Fabula, Clément Bergey, Zhen Yao, Aran Mtnez, Daniil Korbut — via <a href="https://unsplash.com" rel="noopener">Unsplash</a>.</p>
+<p class="credits">Photographies : Tetiana Bykovets, Happy Jars, Jonathan Pielmayer, Handy Wicaksono, Fahad Al Rabbani Jillani, Mohammed Kabysa, Gabriel Santos, Mahmoud Gad, Jeslyn Xie, Jose Fabula, Clément Bergey, Zhen Yao, Aran Mtnez, Daniil Korbut — via <a href="https://unsplash.com" rel="noopener">Unsplash</a>.</p>
 </div></footer>
 <script>document.querySelectorAll('#menu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('menu').classList.remove('open')))</script>
 <script>(function(){var els=document.querySelectorAll('.porte .tx,.step,.show,.card,.agence,.res a,.offer,.mosaic figure,.band blockquote,.osm,.facts div,.team div,.list li,.ecoute,.humans div,.casa .wrap');els.forEach(function(e){e.classList.add('reveal')});if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});els.forEach(function(e){io.observe(e)})})()</script>
