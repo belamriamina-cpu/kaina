@@ -242,6 +242,19 @@ footer b{color:var(--or);font-weight:500}
 .deliver .pill b{font-family:"Crimson Text",Georgia,serif;font-size:22px;font-weight:600}
 .deliver .pill em{color:var(--or);font-style:normal}
 @media (prefers-reduced-motion:reduce){.marquee,.pcard,.deliver .mini{animation:none}}
+
+.refs{background:var(--nuit);color:var(--ivoire);padding:100px 0}
+.refs h2 em{color:var(--or);font-weight:400}
+.refgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(184,151,90,.25);border:1px solid rgba(184,151,90,.25);margin-top:48px}
+.ref{background:var(--nuit);padding:34px 30px;transition:background .5s}
+.ref:hover{background:#1c1f26}
+.ref i{display:block;font-style:normal;font-family:"Crimson Text",Georgia,serif;color:var(--or);font-size:15px;letter-spacing:.2em;margin-bottom:14px}
+.ref b{display:block;font-family:"Crimson Text",Georgia,serif;font-size:28px;font-weight:600;margin-bottom:8px}
+.ref span{color:#C9C1B3;font-size:15px}
+.ticker{margin-top:48px;overflow:hidden;border-top:1px solid rgba(184,151,90,.25);border-bottom:1px solid rgba(184,151,90,.25);padding:16px 0}
+.ticker div{display:flex;gap:56px;width:max-content;animation:mq 30s linear infinite;font-family:"Crimson Text",Georgia,serif;font-size:24px;color:#D8CFBF;white-space:nowrap}
+.ticker div span:nth-child(even){color:var(--or)}
+@media (max-width:900px){.refgrid{grid-template-columns:1fr}}
 @media (max-width:900px){
  .nav ul{display:none;position:absolute;top:68px;left:0;right:0;background:var(--nuit);flex-direction:column;gap:0;padding:8px 24px 18px}
  .nav ul.open{display:flex}.nav ul li a{display:block;padding:12px 0;border-bottom:1px solid rgba(184,151,90,.15)}
@@ -264,6 +277,7 @@ footer b{color:var(--or);font-weight:500}
   <li><a href="#produits">Produits</a></li>
   <li><a href="#engagement">Engagement</a></li>
   <li><a href="#agences">Carte</a></li>
+  <li><a href="#references">Références</a></li>
   <li><a href="#ecoute">À votre écoute</a></li>
   <li><a href="#salon">Hanout Expo</a></li>
   <li><a href="#dispositif">Dispositif</a></li>
@@ -435,6 +449,14 @@ footer b{color:var(--or);font-weight:500}
  </div>
 </div></section>
 
+<section class="refs" id="references"><div class="wrap">
+ <p class="eyebrow">Nos références</p>
+ <h2>Tous les jours à Casablanca, <em>ils nous font confiance.</em></h2>
+ <p style="color:#C9C1B3;max-width:680px;margin-top:18px">De l'épicerie du coin aux grandes tables de la ville, 14 000 points de vente comptent sur Kaïna pour remplir leurs rayons et leurs cuisines.</p>
+ <div class="refgrid"><div class="ref"><i>I</i><b>Épiceries de quartier</b><span>85 % de nos clients, servis par leur pré-vendeur.</span></div><div class="ref"><i>II</i><b>Boulangeries-pâtisseries</b><span>Des maisons de renom approvisionnées chaque semaine.</span></div><div class="ref"><i>III</i><b>Grands restaurants</b><span>Une cuisine exigeante, des commandes complètes et à l'heure.</span></div><div class="ref"><i>IV</i><b>Hôtels</b><span>Des volumes réguliers, une livraison planifiée.</span></div><div class="ref"><i>V</i><b>Cafés</b><span>Boissons et essentiels, livrés avant l'ouverture.</span></div><div class="ref"><i>VI</i><b>Moyennes et grandes surfaces</b><span>Un partenaire unique pour l'épicerie, l'hygiène et les boissons.</span></div></div>
+ <div class="ticker"><div><span>Épiceries de quartier</span> <span>Boulangeries-pâtisseries</span> <span>Grands restaurants</span> <span>Hôtels</span> <span>Cafés</span> <span>Supérettes</span> <span>Grandes surfaces</span> <span>Casablanca</span> <span>Rabat-Salé</span> <span>Tanger</span> <span>Fès</span> <span>Marrakech</span> <span>Agadir</span> <span>Épiceries de quartier</span> <span>Boulangeries-pâtisseries</span> <span>Grands restaurants</span> <span>Hôtels</span> <span>Cafés</span> <span>Supérettes</span> <span>Grandes surfaces</span> <span>Casablanca</span> <span>Rabat-Salé</span> <span>Tanger</span> <span>Fès</span> <span>Marrakech</span> <span>Agadir</span></div></div>
+</div></section>
+
 <section id="ecoute"><div class="wrap">
  <p class="eyebrow">À votre écoute</p>
  <h2 style="margin-bottom:44px">Des femmes et des hommes disponibles pour répondre à vos besoins.</h2>
@@ -540,7 +562,7 @@ footer b{color:var(--or);font-weight:500}
 <p class="credits">Photographies : Tetiana Bykovets, Happy Jars, Jonathan Pielmayer, Handy Wicaksono, Fahad Al Rabbani Jillani, Mohammed Kabysa, Gabriel Santos, Mahmoud Gad, Jeslyn Xie, Jose Fabula, Clément Bergey, Zhen Yao, Aran Mtnez, Daniil Korbut — via <a href="https://unsplash.com" rel="noopener">Unsplash</a>.</p>
 </div></footer>
 <script>document.querySelectorAll('#menu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('menu').classList.remove('open')))</script>
-<script>(function(){var els=[].slice.call(document.querySelectorAll('.porte .tx,.step,.show,.card,.agence,.res a,.offer,.mosaic figure,.band blockquote,.osm,.facts div,.team div,.list li,.ecoute,.humans div,.casa .wrap'));
+<script>(function(){var els=[].slice.call(document.querySelectorAll('.porte .tx,.step,.show,.card,.agence,.res a,.offer,.mosaic figure,.band blockquote,.osm,.facts div,.team div,.list li,.ecoute,.humans div,.casa .wrap,.ref'));
 function check(){var h=window.innerHeight||document.documentElement.clientHeight;els=els.filter(function(e){var r=e.getBoundingClientRect();if(r.top<h*0.95&&r.bottom>0){e.classList.add('in');return false}return true})}
 els.forEach(function(e){e.classList.add('reveal')});
 check();window.addEventListener('scroll',check,{passive:true});window.addEventListener('resize',check);
