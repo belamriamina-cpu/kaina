@@ -118,6 +118,27 @@ footer b{color:var(--or);font-weight:500}
 .reveal{opacity:0;transform:translateY(40px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.hero:before{animation:none}.reveal{opacity:1;transform:none}}
+
+.hero{background:linear-gradient(90deg,rgba(21,23,28,.94) 0%,rgba(21,23,28,.72) 48%,rgba(21,23,28,.35) 100%),url(https://images.unsplash.com/photo-1716146755954-4f197a5b6031?auto=format&fit=crop&w=2400&q=75) center/cover no-repeat,var(--nuit)}
+.hero:after{border-color:rgba(184,151,90,.35)}
+.mosaic{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:260px 260px;gap:14px}
+.mosaic figure{margin:0;position:relative;overflow:hidden;background:var(--nuit)}
+.mosaic figure:first-child{grid-row:span 2}
+.mosaic img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.85) contrast(1.05);transform:scale(1.04);transition:transform 1.6s cubic-bezier(.2,.7,.2,1),filter 1.2s}
+.mosaic figure:hover img{transform:scale(1.12);filter:saturate(1.05)}
+.mosaic figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 22px 18px;background:linear-gradient(transparent,rgba(21,23,28,.85));color:var(--ivoire);font-family:"Crimson Text",Georgia,serif;font-size:21px}
+.mosaic figcaption small{display:block;font-family:"DM Sans",Arial,sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--or)}
+.band{position:relative;min-height:520px;display:flex;align-items:center;color:var(--ivoire);background:linear-gradient(rgba(21,23,28,.55),rgba(21,23,28,.75)),url(https://images.unsplash.com/photo-1761574319274-8a3a9cd80a6e?auto=format&fit=crop&w=2400&q=75) center/cover fixed}
+.band blockquote{margin:0;font-family:"Crimson Text",Georgia,serif;font-size:clamp(36px,5vw,64px);line-height:1.15;max-width:900px}
+.band blockquote em{color:var(--or)}
+.band cite{display:block;margin-top:22px;font:500 13px "DM Sans",Arial,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--or);font-style:normal}
+.card .ph{height:200px;margin:-36px -30px 28px;overflow:hidden}
+.card .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.card:hover .ph img{transform:scale(1.08)}
+.salon{background:linear-gradient(rgba(21,23,28,.9),rgba(21,23,28,.94)),url(https://images.unsplash.com/photo-1764981221640-67b6dce40c9d?auto=format&fit=crop&w=2400&q=75) center/cover no-repeat}
+.credits{font-size:11px;color:#6F6A62;margin-top:10px;width:100%}
+.credits a{color:#8F897F}
+@media (max-width:900px){.mosaic{grid-template-columns:1fr 1fr;grid-template-rows:240px 180px 180px}.mosaic figure:first-child{grid-column:span 2;grid-row:auto}.band{background-attachment:scroll;min-height:420px}}
 @media (max-width:900px){
  .nav ul{display:none;position:absolute;top:68px;left:0;right:0;background:var(--nuit);flex-direction:column;gap:0;padding:8px 24px 18px}
  .nav ul.open{display:flex}.nav ul li a{display:block;padding:12px 0;border-bottom:1px solid rgba(184,151,90,.15)}
@@ -163,6 +184,16 @@ footer b{color:var(--or);font-weight:500}
  <div class="fig"><b>24 h</b><span>de délai à Casablanca et Rabat-Salé</span></div>
 </div></div>
 
+<section style="padding:90px 0 0"><div class="wrap">
+ <div class="mosaic">
+  <figure><img src="https://images.unsplash.com/photo-1716146755954-4f197a5b6031?auto=format&fit=crop&w=1400&q=75" alt="Étal d'épices dans un souk marocain" loading="lazy"><figcaption><small>Le commerce de proximité</small>Au cœur des quartiers, depuis 2004</figcaption></figure>
+  <figure><img src="https://images.unsplash.com/photo-1700678418631-68102f858837?auto=format&fit=crop&w=900&q=75" alt="Rayons d'épicerie garnis" loading="lazy"><figcaption><small>Assortiment</small>2 400 références</figcaption></figure>
+  <figure><img src="https://images.unsplash.com/photo-1554589855-c54e5c81caef?auto=format&fit=crop&w=900&q=75" alt="Épices colorées sur un marché marocain" loading="lazy"><figcaption><small>Épicerie</small>Les saveurs du quotidien</figcaption></figure>
+  <figure><img src="https://images.unsplash.com/photo-1761574319274-8a3a9cd80a6e?auto=format&fit=crop&w=900&q=75" alt="Livreur déchargeant des caisses devant un commerce" loading="lazy"><figcaption><small>Livraison</small>24 h à Casablanca et Rabat-Salé</figcaption></figure>
+  <figure><img src="https://images.unsplash.com/photo-1534159335360-c1e0e116c444?auto=format&fit=crop&w=900&q=75" alt="Sacs de produits sur un marché" loading="lazy"><figcaption><small>Six agences</small>Du nord au sud du Maroc</figcaption></figure>
+ </div>
+</div></section>
+
 <section id="maison"><div class="wrap split">
  <div>
   <p class="eyebrow">La maison</p>
@@ -187,11 +218,16 @@ footer b{color:var(--or);font-weight:500}
  <h2>Un seul partenaire pour tout votre magasin.</h2>
  <p class="muted" style="max-width:640px;margin-top:18px">Vous commandez quand vous voulez. Nous livrons quand c'est prévu. Votre pré-vendeur connaît votre commerce et vous conseille sur place.</p>
  <div class="cards">
-  <div class="card"><span class="num">I · ASSORTIMENT</span><h3>2 400 références</h3><p class="muted">Épicerie, hygiène, boissons : l'essentiel de vos rayons auprès d'un seul fournisseur, une seule livraison, une seule facture.</p></div>
-  <div class="card"><span class="num">II · DÉLAIS</span><h3>24 h ou 48 h</h3><p class="muted">Livraison sous 24 h à Casablanca et Rabat-Salé, sous 48 h dans les autres villes. Vous savez quand votre commande arrive.</p></div>
-  <div class="card"><span class="num">III · NOUVEAUTÉ</span><h3>Commande WhatsApp</h3><p class="muted">Passez commande auprès de votre pré-vendeur sur WhatsApp, 7 jours sur 7. Pilote en cours à Casablanca et Rabat-Salé.</p></div>
+  <div class="card"><div class="ph"><img src="https://images.unsplash.com/photo-1700678418631-68102f858837?auto=format&fit=crop&w=800&q=75" alt="Rayons d'épicerie" loading="lazy"></div><span class="num">I · ASSORTIMENT</span><h3>2 400 références</h3><p class="muted">Épicerie, hygiène, boissons : l'essentiel de vos rayons auprès d'un seul fournisseur, une seule livraison, une seule facture.</p></div>
+  <div class="card"><div class="ph"><img src="https://images.unsplash.com/photo-1761574319274-8a3a9cd80a6e?auto=format&fit=crop&w=800&q=75" alt="Livraison de caisses" loading="lazy"></div><span class="num">II · DÉLAIS</span><h3>24 h ou 48 h</h3><p class="muted">Livraison sous 24 h à Casablanca et Rabat-Salé, sous 48 h dans les autres villes. Vous savez quand votre commande arrive.</p></div>
+  <div class="card"><div class="ph"><img src="https://images.unsplash.com/photo-1554589855-c54e5c81caef?auto=format&fit=crop&w=800&q=75" alt="Épices sur un marché" loading="lazy"></div><span class="num">III · NOUVEAUTÉ</span><h3>Commande WhatsApp</h3><p class="muted">Passez commande auprès de votre pré-vendeur sur WhatsApp, 7 jours sur 7. Pilote en cours à Casablanca et Rabat-Salé.</p></div>
  </div>
 </div></section>
+
+<div class="band"><div class="wrap">
+ <blockquote>Votre commande arrive <em>complète</em>, à l'heure annoncée. C'est notre seule promesse.</blockquote>
+ <cite>Kaïna · Cap Service 2027</cite>
+</div></div>
 
 <section id="engagement"><div class="wrap split">
  <div>
@@ -313,7 +349,8 @@ footer b{color:var(--or);font-weight:500}
 <footer><div class="wrap">
  <span><b>Kaïna Distribution</b> · Aïn Sebaâ, Casablanca · Livré complet, à l'heure.</span>
  <span>Kaïna · Cap Service 2027 — Entreprise fictive créée pour l'atelier Challenge IA.</span>
+<p class="credits">Photographies : Jeslyn Xie, Jose Fabula, Clément Bergey, Zhen Yao, Aran Mtnez, Daniil Korbut — via <a href="https://unsplash.com" rel="noopener">Unsplash</a>.</p>
 </div></footer>
 <script>document.querySelectorAll('#menu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('menu').classList.remove('open')))</script>
-<script>(function(){var els=document.querySelectorAll('.show,.card,.agence,.res a,.offer');els.forEach(function(e){e.classList.add('reveal')});if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});els.forEach(function(e){io.observe(e)})})()</script>
+<script>(function(){var els=document.querySelectorAll('.show,.card,.agence,.res a,.offer,.mosaic figure,.band blockquote');els.forEach(function(e){e.classList.add('reveal')});if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});els.forEach(function(e){io.observe(e)})})()</script>
 </body></html>
