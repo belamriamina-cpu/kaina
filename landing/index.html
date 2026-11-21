@@ -6,62 +6,68 @@
 <title>Kaïna · Hanout Expo · Être rappelé par un pré-vendeur</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&family=DM+Sans:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root{--indigo:#1E2A78;--indigo-f:#141D57;--safran:#F2A900;--sc:#FCEBC0;--sable:#F5EFE6;--encre:#14172B;--douce:#4A4E66;--ligne:#DDD5C8;--alerte:#B3261E}
+:root{--indigo:#1E2A78;--nuit:#141D57;--safran:#F2A900;--sc:#FCEBC0;--sable:#F5EFE6;--encre:#14172B;--douce:#4A4E66;--ligne:#DDD5C8}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:"DM Sans",Arial,sans-serif;color:var(--encre);background:var(--sable);font-size:17px;line-height:1.5;-webkit-text-size-adjust:100%}
-h1,h2,h3{font-family:Inter,Arial,sans-serif;font-weight:800;letter-spacing:-0.02em;margin:0;line-height:1.12}
+body{margin:0;font-family:"DM Sans",Arial,sans-serif;color:var(--encre);background:var(--sable);font-size:17px;line-height:1.65;-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Inter,Arial,sans-serif;font-weight:800;letter-spacing:-0.025em;margin:0;line-height:1.08}
 .ar{font-family:"Noto Sans Arabic",Arial,sans-serif;direction:rtl;unicode-bidi:isolate}
-.wrap{max-width:640px;margin:0 auto;padding:0 20px}
-section{padding:40px 0}
+.wrap{max-width:600px;margin:0 auto;padding:0 28px}
+section{padding:64px 0}
+.eyebrow{display:block;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--douce);margin-bottom:14px}
 /* Attention */
-.hero{background:var(--indigo);color:var(--sable);padding:24px 0 44px}
-.hero .logo{width:132px;height:58px;display:block}
-.tag{display:inline-block;margin-top:22px;background:var(--safran);color:var(--encre);font-weight:700;font-size:14px;padding:5px 12px;border-radius:6px}
-.hero h1{font-size:clamp(32px,9vw,46px);margin-top:16px;color:#fff}
-.hero p{margin:14px 0 0;font-size:18px}
-.hero .ar{margin-top:10px;font-size:18px;opacity:.95}
-.down{display:inline-block;margin-top:26px;color:var(--sable);font-weight:700;text-decoration:none;border-bottom:2px solid var(--safran);padding-bottom:2px}
+.hero{background:var(--nuit);color:var(--sable);padding:28px 0 72px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-170px;top:-190px;width:340px;height:340px;border-radius:50%;border:1px solid rgba(242,169,0,.28)}
+.hero .logo{width:118px;height:52px;display:block}
+.tag{display:inline-block;margin-top:54px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--safran)}
+.hero h1{font-size:clamp(34px,9.5vw,52px);margin-top:14px;color:#fff;max-width:13ch}
+.hero p{margin:20px 0 0;font-size:18px;color:rgba(245,239,230,.88);max-width:34ch}
+.hero .ar{margin-top:12px;font-size:17px;color:rgba(245,239,230,.75)}
+.down{display:inline-flex;align-items:center;gap:10px;margin-top:40px;color:var(--sable);font-weight:500;text-decoration:none;font-size:15px;letter-spacing:.02em}
+.down::before{content:"";width:32px;height:1px;background:var(--safran)}
 /* Intérêt */
-h2{font-size:clamp(25px,6.6vw,32px);color:var(--indigo)}
-.lead{margin:12px 0 0;color:var(--douce)}
-.facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
-.fact{background:#fff;border:1px solid var(--ligne);border-radius:12px;padding:16px}
-.fact b{display:block;font-family:Inter,Arial,sans-serif;font-weight:800;font-size:28px;color:var(--indigo);letter-spacing:-0.02em;line-height:1.1}
-.fact span{font-size:15px;color:var(--douce)}
-.delivery{margin-top:12px;background:#fff;border:1px solid var(--ligne);border-radius:12px;padding:16px;display:flex;gap:12px;align-items:flex-start}
-.check{flex:none;width:28px;height:28px}
-.src{font-size:13px;color:var(--douce);margin-top:12px}
+h2{font-size:clamp(27px,7vw,36px);color:var(--indigo);max-width:18ch}
+.lead{margin:16px 0 0;color:var(--douce);max-width:38ch}
+.facts{display:grid;grid-template-columns:1fr 1fr;margin-top:36px;border-top:1px solid var(--ligne)}
+.fact{padding:22px 0;border-bottom:1px solid var(--ligne)}
+.fact:nth-child(odd){padding-right:18px;border-right:1px solid var(--ligne)}
+.fact:nth-child(even){padding-left:18px}
+.fact b{display:block;font-family:Inter,Arial,sans-serif;font-weight:800;font-size:34px;color:var(--indigo);letter-spacing:-0.03em;line-height:1}
+.fact span{display:block;margin-top:8px;font-size:14px;color:var(--douce);line-height:1.45}
+.delivery{margin-top:28px;display:flex;gap:14px;align-items:flex-start;font-size:16px}
+.check{flex:none;width:26px;height:26px}
+.src{font-size:12px;color:var(--douce);margin-top:20px;letter-spacing:.02em}
 /* Désir */
-.desir{background:#fff;border-top:1px solid var(--ligne);border-bottom:1px solid var(--ligne)}
-.new{margin-top:20px;border-radius:12px;background:var(--sable);padding:18px}
-.new h3{font-size:20px;color:var(--indigo)}
-.new p{margin:8px 0 0}
-.small{font-size:14px;color:var(--douce)}
-.offer{margin-top:16px;background:var(--sc);border-radius:12px;padding:20px}
-.offer h3{font-size:22px;color:var(--encre)}
-.offer ul{margin:12px 0 0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:10px}
-.offer li{display:flex;gap:10px;align-items:flex-start}
-.offer .big{font-family:Inter,Arial,sans-serif;font-weight:800;font-size:24px;color:var(--indigo);letter-spacing:-0.02em}
-.cond{font-size:13px;color:var(--douce);margin-top:12px}
+.desir{background:#fff}
+.new{margin-top:32px;padding:26px 0;border-top:1px solid var(--ligne);border-bottom:1px solid var(--ligne)}
+.new h3{font-size:21px;color:var(--indigo)}
+.new p{margin:10px 0 0}
+.small{font-size:13px;color:var(--douce);letter-spacing:.02em}
+.offer{margin-top:32px;background:var(--nuit);color:var(--sable);border-radius:4px;padding:34px 28px}
+.offer h3{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--safran);font-family:"DM Sans",Arial,sans-serif}
+.offer ul{margin:18px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:16px}
+.offer li{display:flex;gap:16px;align-items:center}
+.offer .big{white-space:nowrap;flex:none;font-family:Inter,Arial,sans-serif;font-weight:800;font-size:46px;color:var(--safran);letter-spacing:-0.03em;line-height:1}
+.offer li span:last-child{color:var(--sable)}
+.offer .check circle{fill:var(--safran)}.offer .check path{stroke:var(--nuit)}
+.cond{font-size:12px;color:rgba(245,239,230,.7);margin-top:22px;line-height:1.5}
 /* Action */
-.action h2 .ar{display:block;font-size:20px;color:var(--douce);margin-top:8px;font-family:"Noto Sans Arabic",Arial,sans-serif;letter-spacing:0}
-form{margin-top:20px;display:flex;flex-direction:column;gap:14px}
-label{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:15px}
-input,select{font:inherit;font-size:17px;padding:14px;border:1.5px solid var(--ligne);border-radius:8px;background:#fff;color:var(--encre);width:100%}
-input:focus,select:focus{outline:3px solid var(--safran);outline-offset:1px;border-color:var(--indigo)}
-.cta{margin-top:6px;font:inherit;font-weight:700;font-size:18px;background:var(--safran);color:var(--encre);border:0;border-radius:8px;padding:17px 18px;cursor:pointer;width:100%}
+.action h2 .ar{display:block;font-size:18px;color:var(--douce);margin-top:10px;font-weight:400;letter-spacing:0}
+form{margin-top:30px;display:flex;flex-direction:column;gap:22px}
+label{display:flex;flex-direction:column;gap:4px;font-weight:700;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--douce)}
+input,select{font:inherit;font-size:18px;font-weight:400;letter-spacing:0;text-transform:none;padding:10px 0;border:0;border-bottom:1px solid #BFB6A8;border-radius:0;background:transparent;color:var(--encre);width:100%;-webkit-appearance:none;appearance:none}
+input:focus,select:focus{outline:0;border-bottom:2px solid var(--indigo)}
+.cta{margin-top:12px;font:inherit;font-weight:700;font-size:17px;letter-spacing:.01em;background:var(--safran);color:var(--encre);border:0;border-radius:4px;padding:19px 18px;cursor:pointer;width:100%;box-shadow:0 10px 24px -12px rgba(20,29,87,.45)}
 .cta:active{transform:translateY(1px)}
-.cta:disabled{opacity:.6}
-.err{color:var(--alerte);font-size:14px;min-height:1em}
-.privacy{font-size:13px;color:var(--douce)}
-.done{display:none;background:#fff;border:2px solid var(--indigo);border-radius:12px;padding:20px;margin-top:20px}
+.err{color:#B3261E;font-size:14px;min-height:1em;margin:0}
+.privacy{font-size:12px;color:var(--douce);line-height:1.5}
+.done{display:none;background:#fff;border-top:3px solid var(--safran);border-radius:4px;padding:26px;margin-top:28px;box-shadow:0 12px 30px -18px rgba(20,29,87,.4)}
 .done h3{color:var(--indigo);font-size:22px}
-.done p{margin:8px 0 0}
-.summary{margin-top:12px;background:var(--sable);border-radius:8px;padding:12px;font-size:15px}
-footer{background:var(--indigo-f);color:var(--sable);padding:26px 0;font-size:14px}
-footer b{font-family:Inter,Arial,sans-serif;font-weight:800}
-@media(min-width:700px){body{font-size:18px}.facts{grid-template-columns:repeat(4,1fr)}}
+.done p{margin:10px 0 0}
+.summary{margin-top:14px;background:var(--sable);border-radius:4px;padding:12px 14px;font-size:15px}
+footer{background:var(--nuit);color:rgba(245,239,230,.8);padding:34px 0;font-size:13px;letter-spacing:.02em}
+footer b{font-family:Inter,Arial,sans-serif;font-weight:800;color:#fff}
+@media(min-width:700px){body{font-size:18px}section{padding:84px 0}.facts{grid-template-columns:repeat(4,1fr)}.fact{padding:24px 16px!important;border-right:1px solid var(--ligne)}.fact:last-child{border-right:0}}
 </style>
 </head>
 <body>
@@ -82,7 +88,7 @@ footer b{font-family:Inter,Arial,sans-serif;font-weight:800}
 <!-- I · INTÉRÊT -->
 <section id="interet">
   <div class="wrap">
-    <h2>Un distributeur qui connaît votre quartier</h2>
+    <span class="eyebrow">Qui sommes-nous</span><h2>Un distributeur qui connaît votre quartier</h2>
     <p class="lead">Épicerie, hygiène, boissons : un seul interlocuteur pour remplir vos rayons.</p>
     <div class="facts">
       <div class="fact"><b>14 000</b><span>points de vente livrés au Maroc</span></div>
@@ -101,7 +107,7 @@ footer b{font-family:Inter,Arial,sans-serif;font-weight:800}
 <!-- D · DÉSIR -->
 <section id="offre" class="desir">
   <div class="wrap">
-    <h2>Commandez quand vous voulez, même le dimanche</h2>
+    <span class="eyebrow">Nouveau</span><h2>Commandez quand vous voulez, même le dimanche</h2>
     <div class="new">
       <h3>Nouveau : commande par WhatsApp</h3>
       <p>Envoyez votre commande à votre pré-vendeur sur WhatsApp, 7 jours sur 7. Il la prépare, vous êtes livré.</p>
@@ -121,7 +127,7 @@ footer b{font-family:Inter,Arial,sans-serif;font-weight:800}
 <!-- A · ACTION -->
 <section id="rappel" class="action">
   <div class="wrap">
-    <h2>Un pré-vendeur vous rappelle <span class="ar" lang="ar">اطلب أن يتصل بك مندوب كاينة</span></h2>
+    <span class="eyebrow">Votre demande</span><h2>Un pré-vendeur vous rappelle <span class="ar" lang="ar">اطلب أن يتصل بك مندوب كاينة</span></h2>
     <form id="f" novalidate>
       <label>Votre nom<input name="nom" autocomplete="name" required></label>
       <label>Nom du commerce<input name="commerce" autocomplete="organization" required></label>
