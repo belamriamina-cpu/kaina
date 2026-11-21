@@ -93,6 +93,21 @@ video{width:100%;display:block;background:#000;border:1px solid var(--ligne)}
 footer{background:var(--nuit);color:#8F897F;font-size:13px;padding:40px 0}
 footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 footer b{color:var(--or);font-weight:500}
+
+.show{display:grid;grid-template-columns:1.25fr 1fr;gap:64px;align-items:center;padding:56px 0;border-top:1px solid var(--ligne)}
+.show:nth-of-type(even) .shot{order:2}
+.shot{background:#fff;border:1px solid var(--ligne);padding:14px;box-shadow:0 24px 60px -30px rgba(21,23,28,.35)}
+.shot img{width:100%;display:block}
+.shot.phone{max-width:300px;margin:0 auto;border-radius:28px;padding:10px;background:var(--nuit)}
+.shot.phone img{border-radius:20px}
+.show h3{font-size:32px;margin-bottom:12px}
+.show ul{padding-left:18px;margin:16px 0 22px;color:var(--doux)}.show li{margin:6px 0}
+.ident{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--ligne)}
+.ident div{background:#fff;padding:34px;display:flex;align-items:center;justify-content:center}
+.ident div.dark{background:var(--nuit)}
+.ident img{max-width:100%;max-height:120px}
+.swatch{display:flex;gap:10px;margin:18px 0}.swatch i{width:44px;height:44px;border:1px solid var(--ligne);display:block}
+@media (max-width:900px){.show{grid-template-columns:1fr;gap:32px}.show:nth-of-type(even) .shot{order:0}}
 @media (max-width:900px){
  .nav ul{display:none;position:absolute;top:68px;left:0;right:0;background:var(--nuit);flex-direction:column;gap:0;padding:8px 24px 18px}
  .nav ul.open{display:flex}.nav ul li a{display:block;padding:12px 0;border-bottom:1px solid rgba(184,151,90,.15)}
@@ -115,6 +130,7 @@ footer b{color:var(--or);font-weight:500}
   <li><a href="#engagement">Engagement</a></li>
   <li><a href="#agences">Agences</a></li>
   <li><a href="#salon">Hanout Expo</a></li>
+  <li><a href="#dispositif">Dispositif</a></li>
   <li><a href="#ressources">Ressources</a></li>
  </ul>
  <a class="btn" href="landing/">Être rappelé</a>
@@ -221,6 +237,44 @@ footer b{color:var(--or);font-weight:500}
   <img src="qr/qr-landing.png" alt="QR code : être rappelé par un pré-vendeur">
   <p class="muted" style="font-size:14px;margin:0 0 22px">Demande de rappel faite pendant le salon. Visite d'un pré-vendeur sous 48 h. Offre valable jusqu'au 31 décembre 2026.</p>
   <a class="btn" href="landing/">Être rappelé par un pré-vendeur</a>
+ </div>
+</div></section>
+
+<section id="dispositif" class="alt"><div class="wrap">
+ <p class="eyebrow">Le dispositif digital</p>
+ <h2>Un site, une page de rappel, un outil de pilotage, une identité.</h2>
+ <p class="muted" style="max-width:680px;margin:18px 0 40px">Quatre éléments pensés ensemble : chacun a un rôle précis, une seule action attendue, et les mêmes codes visuels.</p>
+
+ <div class="show">
+  <div class="shot"><img src="img/site-desktop.jpg" alt="Page d'accueil du site Kaïna sur ordinateur" loading="lazy"></div>
+  <div><p class="eyebrow">01 · Site vitrine</p><h3>La maison Kaïna, en une page.</h3>
+   <ul><li>Qui nous sommes, notre offre, nos agences et notre direction</li><li>Uniquement des chiffres vérifiés (fiche entreprise et fiche salon)</li><li>Lisible sur ordinateur comme sur téléphone</li></ul>
+   <a class="btn" href="#top">Revenir en haut</a></div>
+ </div>
+
+ <div class="show">
+  <div class="shot phone"><img src="img/landing-mobile.jpg" alt="Page de rappel Hanout Expo sur téléphone" loading="lazy"></div>
+  <div><p class="eyebrow">02 · Page de rappel Hanout Expo</p><h3>Un seul bouton : être rappelé.</h3>
+   <ul><li>Construite selon la méthode AIDA : attention, intérêt, désir, action</li><li>Quatre champs : nom, commerce, ville, téléphone</li><li>Offre −5 % sur la première commande, visite sous 48 h</li><li>Français et arabe</li></ul>
+   <a class="btn" href="landing/">Ouvrir la page</a></div>
+ </div>
+
+ <div class="show">
+  <div class="shot"><img src="img/parc-desktop.jpg" alt="Application de pilotage du parc de véhicules" loading="lazy"></div>
+  <div><p class="eyebrow">03 · Application de pilotage du parc</p><h3>Ce qui demande une décision aujourd'hui.</h3>
+   <ul><li>Véhicules, conducteurs, alertes et priorités par agence</li><li>Documents expirés, carburant anormal, véhicules sans conducteur</li><li>L'outil prépare la décision ; le chef de parc la prend</li><li>Aucune immobilisation sans validation humaine</li></ul>
+   <a class="btn" href="parc/">Ouvrir l'application</a></div>
+ </div>
+
+ <div class="show">
+  <div>
+   <div class="ident"><div><img src="img/logo.svg" alt="Logo Kaïna sur fond clair"></div><div class="dark"><img src="img/logo-negatif.svg" alt="Logo Kaïna sur fond sombre"></div><div><img src="qr/qr-landing.png" alt="QR code vers la page de rappel" style="max-height:200px"></div><div class="dark"><img src="qr/affiche-stand-B12.png" alt="Affiche du stand B12" style="max-height:220px"></div></div>
+  </div>
+  <div><p class="eyebrow">04 · Identité et QR code</p><h3>Le repère, la coche, la promesse.</h3>
+   <p class="muted">Le logo associe un repère (le point de vente) et une coche (livré, vérifié). Il se décline sur fond clair et sur fond sombre.</p>
+   <div class="swatch" aria-label="Palette"><i style="background:#15171C"></i><i style="background:#1F232B"></i><i style="background:#B8975A"></i><i style="background:#F7F4EE"></i></div>
+   <p class="muted">Le QR code du stand ouvre directement la page de rappel. Il garde le logo au centre et reste lisible grâce à sa correction d'erreur élevée.</p>
+   <a class="btn" href="qr/affiche-stand-B12.png" download>Télécharger l'affiche</a></div>
  </div>
 </div></section>
 
