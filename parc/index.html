@@ -6,62 +6,74 @@
 <title>Kaïna — Gestion du parc (version locale)</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--indigo:#1E2A78;--indigo-f:#141D57;--safran:#F2A900;--sc:#FCEBC0;--sable:#F5EFE6;--encre:#14172B;--douce:#4A4E66;--ligne:#DDD5C8;--alerte:#B3261E;--blanc:#fff}
+:root{--indigo:#1E2A78;--nuit:#141D57;--safran:#F2A900;--sc:#FCEBC0;--sable:#F5EFE6;--encre:#14172B;--douce:#4A4E66;--ligne:#E4DDD1;--alerte:#B3261E;--blanc:#fff}
 *{box-sizing:border-box}
-body{margin:0;font-family:"DM Sans",Arial,sans-serif;color:var(--encre);background:var(--sable);font-size:14px}
-h1,h2,h3{font-family:Inter,Arial,sans-serif;font-weight:800;letter-spacing:-0.02em;color:var(--indigo);margin:0}
-h1{font-size:24px}h2{font-size:18px}h3{font-size:15px}
+body{margin:0;font-family:"DM Sans",Arial,sans-serif;color:var(--encre);background:var(--sable);font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Inter,Arial,sans-serif;font-weight:800;letter-spacing:-0.025em;color:var(--indigo);margin:0;line-height:1.15}
+h1{font-size:28px}h2{font-size:17px}h3{font-size:14px}
 .app{display:flex;min-height:100vh}
-.side{width:230px;flex:none;background:var(--indigo);color:var(--sable);display:flex;flex-direction:column;padding:20px 14px;gap:6px}
-.side .logo{width:150px;height:66px;margin:0 0 18px 4px}
-.side a{color:var(--sable);text-decoration:none;padding:10px 12px;border-radius:6px;display:flex;justify-content:space-between;align-items:center;font-weight:500}
-.side a:hover{background:var(--indigo-f)}
-.side a.on{background:var(--sable);color:var(--indigo);font-weight:700}
-.side .badge{background:var(--alerte);color:#fff;border-radius:10px;padding:1px 8px;font-size:12px;font-weight:700}
-.side .foot{margin-top:auto;font-size:12px;opacity:.85;line-height:1.5;padding:0 6px}
-.main{flex:1;min-width:0;padding:24px 28px;display:flex;flex-direction:column;gap:18px}
-.top{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.side{width:240px;flex:none;background:var(--nuit);color:var(--sable);display:flex;flex-direction:column;padding:26px 16px;gap:2px}
+.side .logo{width:132px;height:58px;margin:0 0 30px 6px}
+.side a{color:rgba(245,239,230,.78);text-decoration:none;padding:11px 12px;border-radius:4px;display:flex;justify-content:space-between;align-items:center;font-weight:500;letter-spacing:.01em;border-left:2px solid transparent}
+.side a:hover{color:#fff;background:rgba(255,255,255,.04)}
+.side a.on{color:#fff;border-left-color:var(--safran);background:rgba(255,255,255,.06);font-weight:700}
+.side .badge{background:transparent;color:var(--safran);border:1px solid var(--safran);border-radius:10px;padding:0 7px;font-size:11px;font-weight:700}
+.side .foot{margin-top:auto;font-size:11px;letter-spacing:.02em;color:rgba(245,239,230,.6);line-height:1.6;padding:0 6px}
+.side .foot .btn{background:transparent;color:var(--sable);border-color:rgba(245,239,230,.3)}
+.main{flex:1;min-width:0;padding:36px 44px;display:flex;flex-direction:column;gap:24px}
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid var(--ligne)}
+.top .muted{margin-top:6px}
 .muted{color:var(--douce)}
-.banner{background:var(--sc);border-radius:8px;padding:10px 14px}
+.eyebrow{display:block;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--douce);margin-bottom:8px}
+.banner{background:var(--sc);border-radius:4px;padding:11px 16px;font-size:13px}
 .banner.err{background:#F6DCDA;color:var(--alerte)}
-.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
-.card{background:#fff;border:1px solid var(--ligne);border-radius:12px;padding:16px}
-.num{font-family:Inter,Arial,sans-serif;font-weight:800;font-size:30px;color:var(--indigo);letter-spacing:-0.02em}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0;background:#fff;border:1px solid var(--ligne);border-radius:4px}
+.tiles .card{border:0;border-right:1px solid var(--ligne);border-radius:0;box-shadow:none}
+.tiles .card:last-child{border-right:0}
+.card{background:#fff;border:1px solid var(--ligne);border-radius:4px;padding:20px 22px;box-shadow:0 1px 0 rgba(20,29,87,.03)}
+.card .muted.small:first-child{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+.num{font-family:Inter,Arial,sans-serif;font-weight:800;font-size:34px;color:var(--indigo);letter-spacing:-0.03em;margin:6px 0 2px}
 .num.red{color:var(--alerte)}
-.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px}
-.tablewrap{overflow-x:auto;background:#fff;border:1px solid var(--ligne);border-radius:12px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px}
+.tablewrap{overflow-x:auto;background:#fff;border:1px solid var(--ligne);border-radius:4px}
 table{border-collapse:collapse;width:100%}
-th{background:var(--indigo);color:#fff;text-align:left;padding:9px 10px;font-weight:700;white-space:nowrap;font-size:13px}
-td{padding:9px 10px;border-top:1px solid var(--ligne);vertical-align:top}
-tr.click{cursor:pointer}tr.click:hover td{background:#FAF7F2}
-.pill{display:inline-block;border-radius:6px;padding:2px 8px;font-size:12px;font-weight:700;white-space:nowrap}
-.P1{background:var(--alerte);color:#fff}.P2{background:var(--safran);color:var(--encre)}.P3{background:#E8EAF4;color:var(--indigo)}
-.ok{background:#E3EFE6;color:#1F5A33}
-.st-imm{background:#F6DCDA;color:var(--alerte)}
-.btn{font:inherit;border:1px solid var(--ligne);background:#fff;color:var(--encre);border-radius:6px;padding:7px 12px;cursor:pointer;font-weight:500}
+th{background:#fff;color:var(--douce);text-align:left;padding:12px 14px;font-weight:700;white-space:nowrap;font-size:11px;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid var(--encre)}
+td{padding:12px 14px;border-top:1px solid var(--ligne);vertical-align:top;white-space:nowrap}
+tr.click{cursor:pointer}tr.click:hover td{background:#FBF8F3}
+.pill{display:inline-block;border-radius:3px;padding:2px 8px;font-size:11px;font-weight:700;letter-spacing:.04em;white-space:nowrap}
+.P1{background:var(--alerte);color:#fff}.P2{background:var(--safran);color:var(--encre)}.P3{background:transparent;color:var(--indigo);box-shadow:inset 0 0 0 1px #C9CDE6}
+.ok{background:transparent;color:#1F5A33;box-shadow:inset 0 0 0 1px #B9D4C1}
+.st-imm{background:transparent;color:var(--alerte);box-shadow:inset 0 0 0 1px #E7B9B5}
+.btn{font:inherit;font-size:13px;border:1px solid var(--ligne);background:#fff;color:var(--encre);border-radius:4px;padding:8px 14px;cursor:pointer;font-weight:500;letter-spacing:.01em}
 .btn:hover{border-color:var(--indigo)}
-.btn.pri{background:var(--safran);border-color:var(--safran);color:var(--encre);font-weight:700}
-.btn.dark{background:var(--indigo);border-color:var(--indigo);color:#fff}
+.btn.pri{background:var(--safran);border-color:var(--safran);color:var(--encre);font-weight:700;box-shadow:0 8px 18px -12px rgba(20,29,87,.5)}
+.btn.dark{background:var(--nuit);border-color:var(--nuit);color:#fff}
 .btn.danger{color:var(--alerte);border-color:#E7B9B5}
-.btn.sm{padding:4px 9px;font-size:12px}
+.btn.sm{padding:5px 10px;font-size:12px}
 .btn:disabled{opacity:.5;cursor:not-allowed}
 .toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-input,select,textarea{font:inherit;border:1px solid var(--ligne);border-radius:6px;padding:7px 9px;background:#fff;color:var(--encre)}
-.filters select,.filters input{min-width:150px}
-.modal-bg{position:fixed;inset:0;background:rgba(20,23,43,.45);display:flex;align-items:flex-start;justify-content:center;padding:40px 16px;overflow:auto;z-index:10}
-.modal{background:#fff;border-radius:12px;max-width:620px;width:100%;padding:22px;display:flex;flex-direction:column;gap:14px}
-.form{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px}
-.form label{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--douce);font-weight:500}
+input,select,textarea{font:inherit;border:0;border-bottom:1px solid #BFB6A8;border-radius:0;padding:8px 2px;background:transparent;color:var(--encre)}
+input:focus,select:focus,textarea:focus{outline:0;border-bottom:2px solid var(--indigo)}
+textarea{border:1px solid var(--ligne);border-radius:4px;padding:10px}
+.filters select,.filters input{min-width:160px}
+.modal-bg{position:fixed;inset:0;background:rgba(20,29,87,.4);backdrop-filter:blur(2px);display:flex;align-items:flex-start;justify-content:center;padding:48px 16px;overflow:auto;z-index:10}
+.modal{background:#fff;border-radius:4px;max-width:640px;width:100%;padding:30px;display:flex;flex-direction:column;gap:18px;border-top:3px solid var(--safran);box-shadow:0 30px 60px -30px rgba(20,29,87,.5)}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:16px 22px}
+.form label{display:flex;flex-direction:column;gap:2px;font-size:10px;color:var(--douce);font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.form label input,.form label select{font-size:15px;letter-spacing:0;text-transform:none;font-weight:400}
 .form .full{grid-column:1/-1}
-.warnbox{background:#F6DCDA;border-radius:8px;padding:12px;color:var(--alerte)}
-.list{display:flex;flex-direction:column;gap:8px}
-.alert{background:#fff;border:1px solid var(--ligne);border-radius:10px;padding:12px 14px;display:flex;gap:12px;align-items:flex-start}
-.alert .body{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
-.alert .acts{display:flex;gap:6px;flex-wrap:wrap}
+.warnbox{background:#FBEDEC;border-left:2px solid var(--alerte);padding:12px 14px;color:var(--alerte);font-size:13px}
+.list{display:flex;flex-direction:column;gap:0;background:#fff;border:1px solid var(--ligne);border-radius:4px}
+.list .alert{border:0;border-bottom:1px solid var(--ligne);border-radius:0}
+.list .alert:last-child{border-bottom:0}
+.card .list{border:0}
+.alert{background:#fff;border:1px solid var(--ligne);border-radius:4px;padding:16px 18px;display:flex;gap:14px;align-items:flex-start}
+.alert .body{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px}
+.alert .acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
 .small{font-size:12px}
 .tel{font-variant-numeric:tabular-nums}
-.empty{padding:30px;text-align:center;color:var(--douce)}
-@media(max-width:760px){.app{flex-direction:column}.side{width:auto;flex-direction:row;flex-wrap:wrap;align-items:center}.side .logo{width:100px;height:44px;margin:0 8px 0 0}.side .foot{display:none}.main{padding:16px}.form{grid-template-columns:1fr}}
+.empty{padding:36px;text-align:center;color:var(--douce)}
+@media(max-width:760px){.app{flex-direction:column}.side{width:auto;flex-direction:row;flex-wrap:wrap;align-items:center;padding:14px}.side .logo{width:96px;height:42px;margin:0 8px 0 0}.side a{border-left:0;border-bottom:2px solid transparent}.side a.on{border-bottom-color:var(--safran)}.side .foot{display:none}.main{padding:20px}.form{grid-template-columns:1fr}.tiles .card{border-right:0;border-bottom:1px solid var(--ligne)}}
 </style>
 </head>
 <body>
@@ -173,19 +185,19 @@ function vDashboard(al) {
   V.forEach((v) => { const r = REF[v.type], k = +v.kmMois, cc = +v.carbMois; if (v.statut === 'En service' && k > 0 && r && cc / k * 100 > r * 1.25) exces += cc - r * k / 100; });
   const byAg = AGENCES.map((ag) => ({ag, n: V.filter((v) => v.agence === ag).length, p1: al.filter((a) => a.agence === ag && a.p === 'P1').length, p2: al.filter((a) => a.agence === ag && a.p === 'P2').length}));
   const lastDec = S.dec.slice(0, 5);
-  return `<div class="top"><div><h1>Tableau de bord du parc</h1><p class="muted">Au ${today().toLocaleDateString('fr-FR')} · extraction de référence du lundi 16/11/2026</p></div>
-  <div class="toolbar"><a class="btn pri" href="#alertes">Traiter les alertes P1</a></div></div>
+  return `<div class="top"><div><span class="eyebrow">Pilotage du parc</span><h1>Ce qui demande une décision aujourd'hui</h1><p class="muted">Situation au ${today().toLocaleDateString('fr-FR')} · données de référence du 16/11/2026</p></div>
+  <div class="toolbar"><a class="btn pri" href="#alertes" style="text-decoration:none">Traiter les priorités</a></div></div>
   <div class="tiles">
     <div class="card"><div class="muted small">Véhicules</div><div class="num">${V.length}</div><div class="small muted">${V.length - imm} en service · ${imm} immobilisé(s)</div></div>
     <div class="card"><div class="muted small">Conducteurs</div><div class="num">${D.length}</div><div class="small muted">${nonAff} véhicule(s) sans conducteur</div></div>
-    <div class="card"><div class="muted small">Alertes P1 · le jour même</div><div class="num ${c('P1') ? 'red' : ''}">${c('P1')}</div><div class="small muted">P2 : ${c('P2')} · P3 : ${c('P3')}</div></div>
-    <div class="card"><div class="muted small">Surcoût carburant estimé (mois)</div><div class="num">${nf(Math.round(exces * PRIX_GASOIL))}</div><div class="small muted">MAD · ${nf(Math.round(exces))} L au-dessus des références · gasoil ${PRIX_GASOIL.toLocaleString('fr-FR')} MAD/L</div></div>
+    <div class="card"><div class="muted small">Priorités du jour</div><div class="num ${c('P1') ? 'red' : ''}">${c('P1')}</div><div class="small muted">P2 : ${c('P2')} · P3 : ${c('P3')}</div></div>
+    <div class="card"><div class="muted small">Surcoût carburant du mois</div><div class="num">${nf(Math.round(exces * PRIX_GASOIL))}</div><div class="small muted">MAD · ${nf(Math.round(exces))} L au-dessus des références · gasoil ${PRIX_GASOIL.toLocaleString('fr-FR')} MAD/L</div></div>
   </div>
   <div class="grid2">
-    <div class="card"><h2>Alertes P1</h2><div class="list" style="margin-top:10px">${al.filter((a) => a.p === 'P1').map(alertHtml).join('') || '<p class="muted">Aucune alerte P1.</p>'}</div></div>
+    <div class="card"><h2>À traiter aujourd'hui</h2><div class="list" style="margin-top:10px">${al.filter((a) => a.p === 'P1').map(alertHtml).join('') || '<p class="muted">Aucune alerte P1.</p>'}</div></div>
     <div style="display:flex;flex-direction:column;gap:14px">
       <div class="tablewrap"><table><tr><th>Agence</th><th>Véhicules</th><th>P1</th><th>P2</th></tr>${byAg.map((r) => `<tr><td>${r.ag}</td><td>${r.n}</td><td>${r.p1 ? `<span class="pill P1">${r.p1}</span>` : '0'}</td><td>${r.p2 ? `<span class="pill P2">${r.p2}</span>` : '0'}</td></tr>`).join('')}</table></div>
-      <div class="card"><h3>Dernières décisions du chef de parc</h3>${lastDec.length ? '<ul class="small" style="padding-left:18px;margin:8px 0 0">' + lastDec.map((d) => `<li>${esc(d.date)} · ${esc(d.action)} ${esc(d.immat)} par ${esc(d.par)} — ${esc(d.motif)}</li>`).join('') + '</ul>' : '<p class="muted small" style="margin:8px 0 0">Aucune décision enregistrée.</p>'}</div>
+      <div class="card"><h3>Décisions du chef de parc</h3>${lastDec.length ? '<ul class="small" style="padding-left:18px;margin:8px 0 0">' + lastDec.map((d) => `<li>${esc(d.date)} · ${esc(d.action)} ${esc(d.immat)} par ${esc(d.par)} — ${esc(d.motif)}</li>`).join('') + '</ul>' : '<p class="muted small" style="margin:8px 0 0">Aucune décision enregistrée.</p>'}</div>
     </div>
   </div>`;
 }
@@ -205,7 +217,7 @@ function vVehicules() {
   const q = (S.vehQ || '').toLowerCase(), ag = S.vehAg || '';
   const rows = Object.entries(S.veh).filter(([, v]) => (!ag || v.agence === ag) && (!q || JSON.stringify(v).toLowerCase().includes(q) || (S.drv[v.conducteurId]?.nom || '').toLowerCase().includes(q))).sort((a, b) => a[0].localeCompare(b[0]));
   const al = computeAlerts();
-  return `<div class="top"><div><h1>Véhicules</h1><p class="muted">${rows.length} véhicule(s)</p></div><div class="toolbar">${filtersHtml('veh')}<button class="btn pri" data-act="new-v" ${S.writable ? '' : 'disabled'}>Ajouter un véhicule</button></div></div>
+  return `<div class="top"><div><span class="eyebrow">Référentiel</span><h1>Véhicules</h1><p class="muted">${rows.length} véhicule(s)</p></div><div class="toolbar">${filtersHtml('veh')}<button class="btn pri" data-act="new-v" ${S.writable ? '' : 'disabled'}>Ajouter un véhicule</button></div></div>
   <div class="tablewrap"><table><tr><th>Immatriculation</th><th>Type</th><th>Agence</th><th>Conducteur</th><th>Fin assurance</th><th>Visite technique</th><th>Vidange</th><th>Kilométrage</th><th>Statut</th><th>Alertes</th></tr>
   ${rows.map(([id, v]) => { const d = S.drv[v.conducteurId]; const km = +v.km, kv = +v.kmVidange; const rest = km >= kv ? interval(v.type) - (km - kv) : null; const a = al.filter((x) => x.vid === id); const worst = a[0]?.p;
     return `<tr class="click" data-act="edit-v" data-id="${id}"><td><b>${esc(v.immat)}</b><div class="small muted">${id}</div></td><td>${esc(v.type)}</td><td>${esc(v.agence)}</td><td>${d ? esc(d.nom) : '<span class="pill P3">Non affecté</span>'}</td><td>${dateCell(v.finAssurance)}</td><td>${dateCell(v.finVT)}</td><td>${rest == null ? '<span class="pill P3">À vérifier</span>' : rest <= 0 ? `<span class="pill P2">Dépassée</span>` : `dans ${nf(rest)} km`}</td><td>${nf(v.km)} km</td><td>${pillStatut(v.statut)}</td><td>${worst ? `<span class="pill ${worst}">${a.length}</span>` : '—'}</td></tr>`; }).join('') || '<tr><td colspan="10" class="empty">Aucun véhicule. Ajoutez le premier avec « Ajouter un véhicule ».</td></tr>'}
@@ -215,7 +227,7 @@ function dateCell(s) { const d = days(s); if (d == null) return '<span class="pi
 function vConducteurs() {
   const q = (S.drvQ || '').toLowerCase(), ag = S.drvAg || '';
   const rows = Object.entries(S.drv).filter(([, d]) => (!ag || d.agence === ag) && (!q || JSON.stringify(d).toLowerCase().includes(q))).sort((a, b) => a[0].localeCompare(b[0]));
-  return `<div class="top"><div><h1>Conducteurs</h1><p class="muted">${rows.length} conducteur(s) · téléphones masqués : données personnelles réservées au service flotte et aux chefs d'agence</p></div><div class="toolbar">${filtersHtml('drv')}<button class="btn pri" data-act="new-d" ${S.writable ? '' : 'disabled'}>Ajouter un conducteur</button></div></div>
+  return `<div class="top"><div><span class="eyebrow">Référentiel</span><h1>Conducteurs</h1><p class="muted">${rows.length} conducteur(s) · téléphones masqués : données personnelles réservées au service flotte et aux chefs d'agence</p></div><div class="toolbar">${filtersHtml('drv')}<button class="btn pri" data-act="new-d" ${S.writable ? '' : 'disabled'}>Ajouter un conducteur</button></div></div>
   <div class="tablewrap"><table><tr><th>Nom</th><th>Agence</th><th>Téléphone</th><th>Permis</th><th>Fin de validité</th><th>Véhicule affecté</th><th>Statut</th></tr>
   ${rows.map(([id, d]) => { const vv = vehOf(id); return `<tr class="click" data-act="edit-d" data-id="${id}"><td><b>${esc(d.nom)}</b><div class="small muted">${id}</div></td><td>${esc(d.agence)}</td><td class="tel">${S.showTel[id] ? esc(d.tel) : esc(maskTel(d.tel))} <button class="btn sm" data-act="tel" data-id="${id}">${S.showTel[id] ? 'Masquer' : 'Afficher'}</button></td><td>${esc(d.permis)}</td><td>${dateCell(d.finPermis)}</td><td>${vv ? `${esc(vv[1].immat)} <span class="small muted">${esc(vv[1].type)}</span>` : '—'}</td><td>${pillStatut(d.statut)}</td></tr>`; }).join('') || '<tr><td colspan="7" class="empty">Aucun conducteur.</td></tr>'}
   </table></div>`;
@@ -223,9 +235,9 @@ function vConducteurs() {
 function vAlertes(al) {
   const f = S.alP || ''; const ag = S.alAg || '';
   const list = al.filter((a) => (!f || a.p === f) && (!ag || a.agence === ag));
-  return `<div class="top"><div><h1>Alertes</h1><p class="muted">Calculées selon les règles de gestion de la flotte (v2). P1 : le jour même · P2 : sous 7 jours · P3 : sous 15 jours.</p></div>
+  return `<div class="top"><div><span class="eyebrow">Conformité et coûts</span><h1>Alertes</h1><p class="muted">Règles de gestion de la flotte (v2) · P1 le jour même · P2 sous 7 jours · P3 sous 15 jours.</p></div>
   <div class="toolbar filters"><select id="al-p"><option value="">Toutes priorités</option>${['P1','P2','P3'].map((p) => `<option ${f === p ? 'selected' : ''}>${p}</option>`).join('')}</select><select id="al-ag"><option value="">Toutes les agences</option>${AGENCES.map((a) => `<option ${ag === a ? 'selected' : ''}>${a}</option>`).join('')}</select></div></div>
-  <div class="banner small">L'outil propose, le chef de parc décide : aucune immobilisation et aucun message aux conducteurs ne partent automatiquement.</div>
+  <div class="banner small">L'outil prépare chaque décision ; le chef de parc la prend. Aucune immobilisation, aucun message aux conducteurs ne part sans lui.</div>
   <div class="list">${list.map(alertHtml).join('') || '<p class="muted">Aucune alerte.</p>'}</div>`;
 }
 
