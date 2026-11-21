@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kaïna — Gestion du parc (version locale)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--indigo:#1E2A78;--indigo-f:#141D57;--safran:#F2A900;--sc:#FCEBC0;--sable:#F5EFE6;--encre:#14172B;--douce:#4A4E66;--ligne:#DDD5C8;--alerte:#B3261E;--blanc:#fff}
+*{box-sizing:border-box}
+body{margin:0;font-family:"DM Sans",Arial,sans-serif;color:var(--encre);background:var(--sable);font-size:14px}
+h1,h2,h3{font-family:Inter,Arial,sans-serif;font-weight:800;letter-spacing:-0.02em;color:var(--indigo);margin:0}
+h1{font-size:24px}h2{font-size:18px}h3{font-size:15px}
+.app{display:flex;min-height:100vh}
+.side{width:230px;flex:none;background:var(--indigo);color:var(--sable);display:flex;flex-direction:column;padding:20px 14px;gap:6px}
+.side .logo{width:150px;height:66px;margin:0 0 18px 4px}
+.side a{color:var(--sable);text-decoration:none;padding:10px 12px;border-radius:6px;display:flex;justify-content:space-between;align-items:center;font-weight:500}
+.side a:hover{background:var(--indigo-f)}
+.side a.on{background:var(--sable);color:var(--indigo);font-weight:700}
+.side .badge{background:var(--alerte);color:#fff;border-radius:10px;padding:1px 8px;font-size:12px;font-weight:700}
+.side .foot{margin-top:auto;font-size:12px;opacity:.85;line-height:1.5;padding:0 6px}
+.main{flex:1;min-width:0;padding:24px 28px;display:flex;flex-direction:column;gap:18px}
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.muted{color:var(--douce)}
+.banner{background:var(--sc);border-radius:8px;padding:10px 14px}
+.banner.err{background:#F6DCDA;color:var(--alerte)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.card{background:#fff;border:1px solid var(--ligne);border-radius:12px;padding:16px}
+.num{font-family:Inter,Arial,sans-serif;font-weight:800;font-size:30px;color:var(--indigo);letter-spacing:-0.02em}
+.num.red{color:var(--alerte)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px}
+.tablewrap{overflow-x:auto;background:#fff;border:1px solid var(--ligne);border-radius:12px}
+table{border-collapse:collapse;width:100%}
+th{background:var(--indigo);color:#fff;text-align:left;padding:9px 10px;font-weight:700;white-space:nowrap;font-size:13px}
+td{padding:9px 10px;border-top:1px solid var(--ligne);vertical-align:top}
+tr.click{cursor:pointer}tr.click:hover td{background:#FAF7F2}
+.pill{display:inline-block;border-radius:6px;padding:2px 8px;font-size:12px;font-weight:700;white-space:nowrap}
+.P1{background:var(--alerte);color:#fff}.P2{background:var(--safran);color:var(--encre)}.P3{background:#E8EAF4;color:var(--indigo)}
+.ok{background:#E3EFE6;color:#1F5A33}
+.st-imm{background:#F6DCDA;color:var(--alerte)}
+.btn{font:inherit;border:1px solid var(--ligne);background:#fff;color:var(--encre);border-radius:6px;padding:7px 12px;cursor:pointer;font-weight:500}
+.btn:hover{border-color:var(--indigo)}
+.btn.pri{background:var(--safran);border-color:var(--safran);color:var(--encre);font-weight:700}
+.btn.dark{background:var(--indigo);border-color:var(--indigo);color:#fff}
+.btn.danger{color:var(--alerte);border-color:#E7B9B5}
+.btn.sm{padding:4px 9px;font-size:12px}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+input,select,textarea{font:inherit;border:1px solid var(--ligne);border-radius:6px;padding:7px 9px;background:#fff;color:var(--encre)}
+.filters select,.filters input{min-width:150px}
+.modal-bg{position:fixed;inset:0;background:rgba(20,23,43,.45);display:flex;align-items:flex-start;justify-content:center;padding:40px 16px;overflow:auto;z-index:10}
+.modal{background:#fff;border-radius:12px;max-width:620px;width:100%;padding:22px;display:flex;flex-direction:column;gap:14px}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px}
+.form label{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--douce);font-weight:500}
+.form .full{grid-column:1/-1}
+.warnbox{background:#F6DCDA;border-radius:8px;padding:12px;color:var(--alerte)}
+.list{display:flex;flex-direction:column;gap:8px}
+.alert{background:#fff;border:1px solid var(--ligne);border-radius:10px;padding:12px 14px;display:flex;gap:12px;align-items:flex-start}
+.alert .body{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.alert .acts{display:flex;gap:6px;flex-wrap:wrap}
+.small{font-size:12px}
+.tel{font-variant-numeric:tabular-nums}
+.empty{padding:30px;text-align:center;color:var(--douce)}
+@media(max-width:760px){.app{flex-direction:column}.side{width:auto;flex-direction:row;flex-wrap:wrap;align-items:center}.side .logo{width:100px;height:44px;margin:0 8px 0 0}.side .foot{display:none}.main{padding:16px}.form{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <nav class="side" aria-label="Menu">
+    <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 343 152" role="img"><title>Kaïna</title><g transform="translate(16 16)"><path d="M48 8 C22 8 4 27 4 51 C4 80 48 114 48 114 C48 114 92 80 92 51 C92 27 74 8 48 8 Z" fill="#F5EFE6"/><circle cx="48" cy="50" r="27" fill="#1E2A78"/><path d="M34 51 l10 10 l19 -21" fill="none" stroke="#F2A900" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M115.75 90.0H129.1875V77.734375L132.0390625 74.4140625L142.546875 90.0H158.0546875L142.0390625 66.7578125L157.390625 48.75H141.8828125L129.34375 63.3984375H129.1875V31.796875H115.75ZM171.296875 90.703125C177.1171875 90.703125 180.828125 88.671875 183.2890625 84.21875H183.4453125V90.0H196.5703125V62.2265625C196.5703125 53.125 189.96875 47.8515625 177.9765625 47.8515625C166.0234375 47.8515625 159.265625 53.1640625 158.6796875 62.109375H171.1796875C171.453125 59.296875 173.7578125 57.5 177.5078125 57.5C181.0625 57.5 183.25 59.1796875 183.25 61.640625V61.8359375C183.25 64.296875 180.5546875 64.8828125 173.171875 65.5078125C164.3828125 66.2109375 157.15625 69.21875 157.15625 78.4765625C157.15625 86.6796875 163.0546875 90.703125 171.296875 90.703125ZM175.3984375 81.9140625C172.1171875 81.9140625 169.890625 80.390625 169.890625 77.8515625C169.890625 75.15625 172.46875 73.671875 176.0625 73.125C179.3828125 72.578125 181.921875 72.0703125 183.3671875 71.40625V75.15625C183.3671875 79.21875 179.890625 81.9140625 175.3984375 81.9140625ZM201.5703125 90.0H215.0078125V48.75H201.5703125ZM217.1953125 44.5703125C221.2578125 44.5703125 224.265625 41.7578125 224.265625 37.8515625C224.265625 33.984375 221.2578125 31.171875 217.1953125 31.171875C213.09375 31.171875 210.125 33.984375 210.125 37.8515625C210.125 41.7578125 213.09375 44.5703125 217.1953125 44.5703125ZM199.34375 44.5703125C203.4453125 44.5703125 206.453125 41.7578125 206.453125 37.8515625C206.453125 33.984375 203.4453125 31.171875 199.34375 31.171875C195.28125 31.171875 192.3125 33.984375 192.3125 37.8515625C192.3125 41.7578125 195.28125 44.5703125 199.34375 44.5703125ZM233.4453125 67.578125C233.4453125 61.953125 236.1796875 59.3359375 240.4375 59.3359375C244.6953125 59.3359375 247.15625 61.9921875 247.15625 66.875V90.0H260.59375V64.0625C260.59375 53.90625 255.359375 47.8515625 246.4140625 47.8515625C240.203125 47.8515625 236.0234375 50.703125 233.2890625 55.4296875V48.75H220.0078125V90.0H233.4453125ZM278.2109375 90.703125C284.03125 90.703125 287.7421875 88.671875 290.203125 84.21875H290.359375V90.0H303.484375V62.2265625C303.484375 53.125 296.8828125 47.8515625 284.890625 47.8515625C272.9375 47.8515625 266.1796875 53.1640625 265.59375 62.109375H278.09375C278.3671875 59.296875 280.671875 57.5 284.421875 57.5C287.9765625 57.5 290.1640625 59.1796875 290.1640625 61.640625V61.8359375C290.1640625 64.296875 287.46875 64.8828125 280.0859375 65.5078125C271.296875 66.2109375 264.0703125 69.21875 264.0703125 78.4765625C264.0703125 86.6796875 269.96875 90.703125 278.2109375 90.703125ZM282.3125 81.9140625C279.03125 81.9140625 276.8046875 80.390625 276.8046875 77.8515625C276.8046875 75.15625 279.3828125 73.671875 282.9765625 73.125C286.296875 72.578125 288.8359375 72.0703125 290.28125 71.40625V75.15625C290.28125 79.21875 286.8046875 81.9140625 282.3125 81.9140625Z" fill="#F5EFE6"/></g></svg>
+    <a href="#tableau-de-bord" data-v="tableau-de-bord">Tableau de bord</a>
+    <a href="#vehicules" data-v="vehicules">Véhicules</a>
+    <a href="#conducteurs" data-v="conducteurs">Conducteurs</a>
+    <a href="#alertes" data-v="alertes">Alertes <span class="badge" id="nb-p1" hidden></span></a>
+    <div class="foot">Version locale · données enregistrées dans ce navigateur<br><button class="btn sm" style="margin-top:8px" onclick="kainaExport()">Sauvegarder (.json)</button> <label class="btn sm" style="margin-top:8px;display:inline-block">Restaurer<input type="file" accept=".json" hidden onchange="kainaImport(this.files[0])"></label><br><br>Aucune immobilisation sans validation du chef de parc.</div>
+  </nav>
+  <main class="main" id="main"><p class="muted">Chargement du parc…</p></main>
+</div>
+<div id="modal"></div>
+<script>
+(() => {
+const REF = {'VP pré-vendeur':7,'VP direction':8,'VUL 3,5 t':11,'Camion 7,5 t':18};
+const TYPES = Object.keys(REF);
+const AGENCES = ['Casablanca','Rabat-Salé','Tanger','Fès','Marrakech','Agadir'];
+const PRIX_GASOIL = 13.5;
+const S = {veh:{}, drv:{}, dec:[], db:null, ready:{veh:false,drv:false}, error:null, writable:true, showTel:{}};
+const $ = (s, r=document) => r.querySelector(s);
+const esc = (t) => String(t ?? '').replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const today = () => { const d = new Date(); d.setHours(0,0,0,0); return d; };
+const pd = (s) => { if (!s) return null; const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s); return m ? new Date(+m[1], +m[2]-1, +m[3]) : null; };
+const fd = (s) => { const d = pd(s); return d ? d.toLocaleDateString('fr-FR') : '—'; };
+const days = (s) => { const d = pd(s); return d ? Math.round((d - today()) / 864e5) : null; };
+const nf = (n) => (n == null || n === '' || isNaN(n)) ? '—' : Number(n).toLocaleString('fr-FR');
+const interval = (type) => type && type.startsWith('VP') ? 15000 : 10000;
+const vehOf = (did) => Object.entries(S.veh).find(([, v]) => v.conducteurId === did);
+const maskTel = (t) => t ? t.replace(/\d(?=(?:\D*\d){2})/g, (c, i) => i < 2 ? c : '•') : '—';
+
+// ---------- Alert engine (règles de gestion v2) ----------
+function computeAlerts() {
+  const out = [];
+  const T = today();
+  for (const [vid, v] of Object.entries(S.veh)) {
+    const tag = `${v.immat} · ${v.type} · ${v.agence}`;
+    const enService = v.statut === 'En service';
+    for (const [field, label] of [['finVT','Visite technique'],['finAssurance','Assurance']]) {
+      const d = days(v[field]);
+      if (d == null) { out.push({p:'P3', cat:'Véhicule', vid, agence:v.agence, titre:`${label} : date manquante`, detail:`${tag}. Donnée à vérifier.`}); continue; }
+      if (d < 0 && enService) out.push({p:'P1', cat:'Véhicule', vid, agence:v.agence, titre:`${label} expirée depuis le ${fd(v[field])}`, detail:`${tag}. Véhicule en service : à régler le jour même.`, immob:true});
+      else if (d >= 0 && d < 30) out.push({p:'P2', cat:'Véhicule', vid, agence:v.agence, titre:`${label} : fin le ${fd(v[field])} (dans ${d} j)`, detail:`${tag}. À renouveler sous 7 jours.`});
+    }
+    if (v.statut === 'Immobilisé' && Number(v.carbMois) > 0) out.push({p:'P1', cat:'Véhicule', vid, agence:v.agence, titre:`Carburant consommé par un véhicule immobilisé : ${nf(v.carbMois)} L`, detail:`${tag}. Aucune consommation attendue : vérifier la carte carburant le jour même.`});
+    const km = Number(v.km), kv = Number(v.kmVidange);
+    if (!isNaN(km) && !isNaN(kv)) {
+      if (km < kv) out.push({p:'P3', cat:'Véhicule', vid, agence:v.agence, titre:`Donnée à vérifier : compteur (${nf(km)} km) inférieur à la dernière vidange (${nf(kv)} km)`, detail:`${tag}. Aucune alerte de vidange calculée tant que la donnée n'est pas corrigée.`});
+      else {
+        const since = km - kv, iv = interval(v.type), rest = iv - since;
+        if (rest <= 0) out.push({p:'P2', cat:'Véhicule', vid, agence:v.agence, titre:`Vidange dépassée de ${nf(-rest)} km`, detail:`${tag}. ${nf(since)} km depuis la dernière vidange (seuil ${nf(iv)} km).`});
+        else if (rest < 1000) out.push({p:'P3', cat:'Véhicule', vid, agence:v.agence, titre:`Vidange à faire dans ${nf(rest)} km`, detail:`${tag}. Seuil ${nf(iv)} km.`});
+      }
+    }
+    const kmM = Number(v.kmMois), cM = Number(v.carbMois), ref = REF[v.type];
+    if (enService && kmM > 0 && cM > 0 && ref) {
+      const l100 = cM / kmM * 100;
+      if (l100 > ref * 1.25) {
+        const exces = cM - ref * kmM / 100;
+        out.push({p:'P2', cat:'Véhicule', vid, agence:v.agence, titre:`Surconsommation : ${l100.toLocaleString('fr-FR',{maximumFractionDigits:1})} L/100 km (référence ${ref})`, detail:`${tag}. +${Math.round((l100/ref-1)*100)} % ; excès estimé ${nf(Math.round(exces))} L, soit ${nf(Math.round(exces*PRIX_GASOIL))} MAD. Vérifier fuite, carte carburant, itinéraire. Aucune sanction automatique.`});
+      }
+    }
+    if (!v.conducteurId) {
+      const dispo = Object.entries(S.drv).filter(([did, d]) => d.agence === v.agence && d.statut !== 'Congé' && !vehOf(did) && permisOk(d.permis, v.type)).map(([, d]) => d.nom);
+      out.push({p:'P3', cat:'Véhicule', vid, agence:v.agence, titre:'Véhicule non affecté', detail:`${tag}. À signaler au chef d'agence.${dispo.length ? ' Conducteur(s) disponible(s) : ' + dispo.join(', ') + '.' : ''}`});
+    }
+  }
+  for (const [did, d] of Object.entries(S.drv)) {
+    const vv = vehOf(did); const v = vv && vv[1];
+    const tag = `${d.nom} · ${d.agence}`;
+    const dp = days(d.finPermis);
+    if (v && v.statut === 'En service' && dp != null && dp < 0) out.push({p:'P1', cat:'Conducteur', did, vid:vv[0], agence:d.agence, titre:`Permis expiré depuis le ${fd(d.finPermis)}`, detail:`${tag} · affecté à ${v.immat}. Ne prend pas le volant tant que le chef de parc n'a pas réglé la situation.`, draft:true});
+    else if (dp != null && dp >= 0 && dp < 30) out.push({p:'P2', cat:'Conducteur', did, agence:d.agence, titre:`Permis : fin le ${fd(d.finPermis)} (dans ${dp} j)`, detail:`${tag}. Renouvellement à lancer sous 7 jours.`, draft:true});
+    if (v && !permisOk(d.permis, v.type)) out.push({p:'P1', cat:'Conducteur', did, vid:vv[0], agence:d.agence, titre:`Permis ${d.permis} non adapté au ${v.type}`, detail:`${tag} · ${v.immat}. Camion 7,5 t : permis C ; VP et VUL : permis B.`, draft:true});
+    if (v && d.statut === 'Congé') out.push({p:'P3', cat:'Conducteur', did, vid:vv[0], agence:d.agence, titre:'Conducteur en congé avec un véhicule affecté', detail:`${tag} · ${v.immat}. Réaffectation à proposer au chef d'agence.`});
+  }
+  const order = {P1:0,P2:1,P3:2};
+  return out.sort((a, b) => order[a.p] - order[b.p] || a.agence.localeCompare(b.agence));
+}
+function permisOk(cat, type) { if (!cat) return false; return type === 'Camion 7,5 t' ? cat === 'C' : (cat === 'B' || cat === 'C'); }
+
+// ---------- Rendering ----------
+function view() { const h = location.hash.slice(1); return ['tableau-de-bord','vehicules','conducteurs','alertes'].includes(h) ? h : 'tableau-de-bord'; }
+function render() {
+  const v = view();
+  document.querySelectorAll('.side a').forEach((a) => a.classList.toggle('on', a.dataset.v === v));
+  const al = computeAlerts(); const p1 = al.filter((a) => a.p === 'P1').length;
+  const b = $('#nb-p1'); b.hidden = !p1; b.textContent = p1;
+  const m = $('#main');
+  const loaded = S.ready.veh && S.ready.drv;
+  let banner = '';
+  if (S.error) banner = `<div class="banner err">${esc(S.error)}</div>`;
+  
+  else if (!loaded) banner = '<div class="banner">Chargement des données…</div>';
+  if (!S.writable) banner += '<div class="banner">Lecture seule : vous n\'avez pas le droit de modifier le parc.</div>';
+  m.innerHTML = banner + (v === 'vehicules' ? vVehicules() : v === 'conducteurs' ? vConducteurs() : v === 'alertes' ? vAlertes(al) : vDashboard(al));
+  bind();
+}
+function pillStatut(s) { return `<span class="pill ${s === 'Immobilisé' ? 'st-imm' : s === 'En service' || s === 'Actif' ? 'ok' : 'P3'}">${esc(s)}</span>`; }
+
+function vDashboard(al) {
+  const V = Object.values(S.veh), D = Object.values(S.drv);
+  const c = (p) => al.filter((a) => a.p === p).length;
+  const imm = V.filter((v) => v.statut === 'Immobilisé').length;
+  const nonAff = V.filter((v) => !v.conducteurId).length;
+  let exces = 0;
+  V.forEach((v) => { const r = REF[v.type], k = +v.kmMois, cc = +v.carbMois; if (v.statut === 'En service' && k > 0 && r && cc / k * 100 > r * 1.25) exces += cc - r * k / 100; });
+  const byAg = AGENCES.map((ag) => ({ag, n: V.filter((v) => v.agence === ag).length, p1: al.filter((a) => a.agence === ag && a.p === 'P1').length, p2: al.filter((a) => a.agence === ag && a.p === 'P2').length}));
+  const lastDec = S.dec.slice(0, 5);
+  return `<div class="top"><div><h1>Tableau de bord du parc</h1><p class="muted">Au ${today().toLocaleDateString('fr-FR')} · extraction de référence du lundi 16/11/2026</p></div>
+  <div class="toolbar"><a class="btn pri" href="#alertes">Traiter les alertes P1</a></div></div>
+  <div class="tiles">
+    <div class="card"><div class="muted small">Véhicules</div><div class="num">${V.length}</div><div class="small muted">${V.length - imm} en service · ${imm} immobilisé(s)</div></div>
+    <div class="card"><div class="muted small">Conducteurs</div><div class="num">${D.length}</div><div class="small muted">${nonAff} véhicule(s) sans conducteur</div></div>
+    <div class="card"><div class="muted small">Alertes P1 · le jour même</div><div class="num ${c('P1') ? 'red' : ''}">${c('P1')}</div><div class="small muted">P2 : ${c('P2')} · P3 : ${c('P3')}</div></div>
+    <div class="card"><div class="muted small">Surcoût carburant estimé (mois)</div><div class="num">${nf(Math.round(exces * PRIX_GASOIL))}</div><div class="small muted">MAD · ${nf(Math.round(exces))} L au-dessus des références · gasoil ${PRIX_GASOIL.toLocaleString('fr-FR')} MAD/L</div></div>
+  </div>
+  <div class="grid2">
+    <div class="card"><h2>Alertes P1</h2><div class="list" style="margin-top:10px">${al.filter((a) => a.p === 'P1').map(alertHtml).join('') || '<p class="muted">Aucune alerte P1.</p>'}</div></div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="tablewrap"><table><tr><th>Agence</th><th>Véhicules</th><th>P1</th><th>P2</th></tr>${byAg.map((r) => `<tr><td>${r.ag}</td><td>${r.n}</td><td>${r.p1 ? `<span class="pill P1">${r.p1}</span>` : '0'}</td><td>${r.p2 ? `<span class="pill P2">${r.p2}</span>` : '0'}</td></tr>`).join('')}</table></div>
+      <div class="card"><h3>Dernières décisions du chef de parc</h3>${lastDec.length ? '<ul class="small" style="padding-left:18px;margin:8px 0 0">' + lastDec.map((d) => `<li>${esc(d.date)} · ${esc(d.action)} ${esc(d.immat)} par ${esc(d.par)} — ${esc(d.motif)}</li>`).join('') + '</ul>' : '<p class="muted small" style="margin:8px 0 0">Aucune décision enregistrée.</p>'}</div>
+    </div>
+  </div>`;
+}
+function alertHtml(a) {
+  const v = a.vid && S.veh[a.vid];
+  const acts = [];
+  if (a.immob && v && v.statut === 'En service') acts.push(`<button class="btn sm dark" data-act="immob" data-id="${a.vid}" data-motif="${esc(a.titre)}">Proposer l'immobilisation</button>`);
+  if (a.draft) acts.push(`<button class="btn sm" data-act="draft" data-id="${a.did}" data-motif="${esc(a.titre)}">Préparer un brouillon</button>`);
+  if (a.vid) acts.push(`<button class="btn sm" data-act="edit-v" data-id="${a.vid}">Ouvrir le véhicule</button>`);
+  if (a.did) acts.push(`<button class="btn sm" data-act="edit-d" data-id="${a.did}">Ouvrir le conducteur</button>`);
+  return `<div class="alert"><span class="pill ${a.p}">${a.p}</span><div class="body"><b>${esc(a.titre)}</b><span class="small muted">${esc(a.detail)}</span><div class="acts">${acts.join('')}</div></div></div>`;
+}
+function filtersHtml(id, extra='') {
+  return `<div class="toolbar filters"><input type="search" id="${id}-q" placeholder="Rechercher…" value="${esc(S[id + 'Q'] || '')}"><select id="${id}-ag"><option value="">Toutes les agences</option>${AGENCES.map((a) => `<option ${S[id + 'Ag'] === a ? 'selected' : ''}>${a}</option>`).join('')}</select>${extra}</div>`;
+}
+function vVehicules() {
+  const q = (S.vehQ || '').toLowerCase(), ag = S.vehAg || '';
+  const rows = Object.entries(S.veh).filter(([, v]) => (!ag || v.agence === ag) && (!q || JSON.stringify(v).toLowerCase().includes(q) || (S.drv[v.conducteurId]?.nom || '').toLowerCase().includes(q))).sort((a, b) => a[0].localeCompare(b[0]));
+  const al = computeAlerts();
+  return `<div class="top"><div><h1>Véhicules</h1><p class="muted">${rows.length} véhicule(s)</p></div><div class="toolbar">${filtersHtml('veh')}<button class="btn pri" data-act="new-v" ${S.writable ? '' : 'disabled'}>Ajouter un véhicule</button></div></div>
+  <div class="tablewrap"><table><tr><th>Immatriculation</th><th>Type</th><th>Agence</th><th>Conducteur</th><th>Fin assurance</th><th>Visite technique</th><th>Vidange</th><th>Kilométrage</th><th>Statut</th><th>Alertes</th></tr>
+  ${rows.map(([id, v]) => { const d = S.drv[v.conducteurId]; const km = +v.km, kv = +v.kmVidange; const rest = km >= kv ? interval(v.type) - (km - kv) : null; const a = al.filter((x) => x.vid === id); const worst = a[0]?.p;
+    return `<tr class="click" data-act="edit-v" data-id="${id}"><td><b>${esc(v.immat)}</b><div class="small muted">${id}</div></td><td>${esc(v.type)}</td><td>${esc(v.agence)}</td><td>${d ? esc(d.nom) : '<span class="pill P3">Non affecté</span>'}</td><td>${dateCell(v.finAssurance)}</td><td>${dateCell(v.finVT)}</td><td>${rest == null ? '<span class="pill P3">À vérifier</span>' : rest <= 0 ? `<span class="pill P2">Dépassée</span>` : `dans ${nf(rest)} km`}</td><td>${nf(v.km)} km</td><td>${pillStatut(v.statut)}</td><td>${worst ? `<span class="pill ${worst}">${a.length}</span>` : '—'}</td></tr>`; }).join('') || '<tr><td colspan="10" class="empty">Aucun véhicule. Ajoutez le premier avec « Ajouter un véhicule ».</td></tr>'}
+  </table></div>`;
+}
+function dateCell(s) { const d = days(s); if (d == null) return '<span class="pill P3">—</span>'; const cls = d < 0 ? 'P1' : d < 30 ? 'P2' : ''; return cls ? `<span class="pill ${cls}">${fd(s)}</span>` : fd(s); }
+function vConducteurs() {
+  const q = (S.drvQ || '').toLowerCase(), ag = S.drvAg || '';
+  const rows = Object.entries(S.drv).filter(([, d]) => (!ag || d.agence === ag) && (!q || JSON.stringify(d).toLowerCase().includes(q))).sort((a, b) => a[0].localeCompare(b[0]));
+  return `<div class="top"><div><h1>Conducteurs</h1><p class="muted">${rows.length} conducteur(s) · téléphones masqués : données personnelles réservées au service flotte et aux chefs d'agence</p></div><div class="toolbar">${filtersHtml('drv')}<button class="btn pri" data-act="new-d" ${S.writable ? '' : 'disabled'}>Ajouter un conducteur</button></div></div>
+  <div class="tablewrap"><table><tr><th>Nom</th><th>Agence</th><th>Téléphone</th><th>Permis</th><th>Fin de validité</th><th>Véhicule affecté</th><th>Statut</th></tr>
+  ${rows.map(([id, d]) => { const vv = vehOf(id); return `<tr class="click" data-act="edit-d" data-id="${id}"><td><b>${esc(d.nom)}</b><div class="small muted">${id}</div></td><td>${esc(d.agence)}</td><td class="tel">${S.showTel[id] ? esc(d.tel) : esc(maskTel(d.tel))} <button class="btn sm" data-act="tel" data-id="${id}">${S.showTel[id] ? 'Masquer' : 'Afficher'}</button></td><td>${esc(d.permis)}</td><td>${dateCell(d.finPermis)}</td><td>${vv ? `${esc(vv[1].immat)} <span class="small muted">${esc(vv[1].type)}</span>` : '—'}</td><td>${pillStatut(d.statut)}</td></tr>`; }).join('') || '<tr><td colspan="7" class="empty">Aucun conducteur.</td></tr>'}
+  </table></div>`;
+}
+function vAlertes(al) {
+  const f = S.alP || ''; const ag = S.alAg || '';
+  const list = al.filter((a) => (!f || a.p === f) && (!ag || a.agence === ag));
+  return `<div class="top"><div><h1>Alertes</h1><p class="muted">Calculées selon les règles de gestion de la flotte (v2). P1 : le jour même · P2 : sous 7 jours · P3 : sous 15 jours.</p></div>
+  <div class="toolbar filters"><select id="al-p"><option value="">Toutes priorités</option>${['P1','P2','P3'].map((p) => `<option ${f === p ? 'selected' : ''}>${p}</option>`).join('')}</select><select id="al-ag"><option value="">Toutes les agences</option>${AGENCES.map((a) => `<option ${ag === a ? 'selected' : ''}>${a}</option>`).join('')}</select></div></div>
+  <div class="banner small">L'outil propose, le chef de parc décide : aucune immobilisation et aucun message aux conducteurs ne partent automatiquement.</div>
+  <div class="list">${list.map(alertHtml).join('') || '<p class="muted">Aucune alerte.</p>'}</div>`;
+}
+
+// ---------- Interactions ----------
+function bind() {
+  document.querySelectorAll('[data-act]').forEach((el) => el.onclick = (e) => { e.stopPropagation(); act(el.dataset.act, el.dataset.id, el.dataset.motif); });
+  for (const k of ['veh','drv']) {
+    const q = $(`#${k}-q`), a = $(`#${k}-ag`);
+    if (q) q.oninput = () => { S[k + 'Q'] = q.value; render(); const n = $(`#${k}-q`); n.focus(); n.setSelectionRange(n.value.length, n.value.length); };
+    if (a) a.onchange = () => { S[k + 'Ag'] = a.value; render(); };
+  }
+  const p = $('#al-p'), ag = $('#al-ag');
+  if (p) p.onchange = () => { S.alP = p.value; render(); };
+  if (ag) ag.onchange = () => { S.alAg = ag.value; render(); };
+}
+function act(a, id, motif) {
+  if (a === 'edit-v') return vehForm(id);
+  if (a === 'new-v') return vehForm(null);
+  if (a === 'edit-d') return drvForm(id);
+  if (a === 'new-d') return drvForm(null);
+  if (a === 'immob') return immobDialog(id, motif);
+  if (a === 'draft') return draftDialog(id, motif);
+  if (a === 'tel') { S.showTel[id] = !S.showTel[id]; return render(); }
+}
+function modal(html) { $('#modal').innerHTML = `<div class="modal-bg"><div class="modal" role="dialog" aria-modal="true">${html}</div></div>`; $('#modal .modal-bg').onclick = (e) => { if (e.target.classList.contains('modal-bg')) closeModal(); }; }
+function closeModal() { $('#modal').innerHTML = ''; }
+function opt(list, cur) { return list.map((o) => `<option ${o === cur ? 'selected' : ''}>${esc(o)}</option>`).join(''); }
+
+function vehForm(id) {
+  const v = id ? S.veh[id] : {immat:'', type:'VP pré-vendeur', agence:'Casablanca', conducteurId:'', km:0, kmVidange:0, finVT:'', finAssurance:'', kmMois:0, carbMois:0, statut:'En service'};
+  const drvOpts = ['<option value="">— Non affecté —</option>'].concat(Object.entries(S.drv).sort((a, b) => a[1].nom.localeCompare(b[1].nom)).map(([did, d]) => { const o = vehOf(did); const busy = o && o[0] !== id; return `<option value="${did}" ${v.conducteurId === did ? 'selected' : ''}>${esc(d.nom)} · ${esc(d.agence)} · permis ${esc(d.permis)}${busy ? ' (déjà affecté à ' + esc(o[1].immat) + ')' : ''}</option>`; })).join('');
+  modal(`<h2>${id ? 'Véhicule ' + esc(v.immat) : 'Nouveau véhicule'}</h2>
+  <form class="form" id="f">
+    <label>Immatriculation<input name="immat" required value="${esc(v.immat)}"></label>
+    <label>Type<select name="type">${opt(TYPES, v.type)}</select></label>
+    <label>Agence<select name="agence">${opt(AGENCES, v.agence)}</select></label>
+    <label>Conducteur<select name="conducteurId">${drvOpts}</select></label>
+    <label>Fin d'assurance<input type="date" name="finAssurance" value="${esc(v.finAssurance)}"></label>
+    <label>Fin de visite technique<input type="date" name="finVT" value="${esc(v.finVT)}"></label>
+    <label>Kilométrage compteur<input type="number" min="0" name="km" value="${esc(v.km)}"></label>
+    <label>Km à la dernière vidange<input type="number" min="0" name="kmVidange" value="${esc(v.kmVidange)}"></label>
+    <label>Km du mois<input type="number" min="0" name="kmMois" value="${esc(v.kmMois)}"></label>
+    <label>Carburant du mois (L)<input type="number" min="0" name="carbMois" value="${esc(v.carbMois)}"></label>
+    <label>Statut<select name="statut">${opt(['En service','Immobilisé'], v.statut)}</select></label>
+    <div class="full warnbox small" id="imm-warn" hidden>Passer un véhicule en « Immobilisé » demande la validation du chef de parc : enregistrez, puis confirmez dans la fenêtre de validation.</div>
+    <div class="full toolbar" style="justify-content:space-between"><div>${id ? `<button type="button" class="btn danger" id="del" ${S.writable ? '' : 'disabled'}>Supprimer</button>` : ''}</div><div class="toolbar"><button type="button" class="btn" id="cancel">Annuler</button><button class="btn pri" ${S.writable ? '' : 'disabled'}>Enregistrer</button></div></div>
+    <p class="full small muted" id="msg"></p>
+  </form>`);
+  const f = $('#f');
+  f.statut.onchange = () => { $('#imm-warn').hidden = !(f.statut.value === 'Immobilisé' && v.statut !== 'Immobilisé'); };
+  $('#cancel').onclick = closeModal;
+  if (id) $('#del').onclick = () => confirmDialog(`Supprimer le véhicule ${v.immat} ?`, 'Cette action est définitive.', async () => { await write(() => S.db.doc('vehicules/' + id).delete()); closeModal(); });
+  f.onsubmit = async (e) => {
+    e.preventDefault();
+    const fd2 = Object.fromEntries(new FormData(f));
+    const data = {...fd2, km:+fd2.km, kmVidange:+fd2.kmVidange, kmMois:+fd2.kmMois, carbMois:+fd2.carbMois, immat:fd2.immat.trim().toUpperCase()};
+    const dupe = Object.entries(S.veh).find(([k, x]) => x.immat === data.immat && k !== id);
+    if (dupe) { $('#msg').textContent = `Cette immatriculation existe déjà (${dupe[0]}).`; return; }
+    const nid = id || nextId('V', S.veh);
+    const wantImm = data.statut === 'Immobilisé' && (!id || v.statut !== 'Immobilisé');
+    if (wantImm) data.statut = id ? v.statut : 'En service';
+    if (data.conducteurId) { const o = vehOf(data.conducteurId); if (o && o[0] !== nid) await write(() => S.db.doc('vehicules/' + o[0]).update({conducteurId:''})); }
+    const ok = await write(() => S.db.doc('vehicules/' + nid).set(data));
+    if (!ok) return;
+    if (wantImm) immobDialog(nid, 'Changement de statut demandé dans la fiche véhicule'); else closeModal();
+  };
+}
+function drvForm(id) {
+  const d = id ? S.drv[id] : {nom:'', tel:'', agence:'Casablanca', permis:'B', finPermis:'', embauche:'', statut:'Actif'};
+  const cur = id ? vehOf(id) : null;
+  const vOpts = ['<option value="">— Aucun —</option>'].concat(Object.entries(S.veh).sort((a, b) => a[1].immat.localeCompare(b[1].immat)).map(([vid, v]) => `<option value="${vid}" ${cur && cur[0] === vid ? 'selected' : ''}>${esc(v.immat)} · ${esc(v.type)} · ${esc(v.agence)}${v.conducteurId && v.conducteurId !== id ? ' (conduit par ' + esc(S.drv[v.conducteurId]?.nom || '?') + ')' : ''}</option>`)).join('');
+  modal(`<h2>${id ? esc(d.nom) : 'Nouveau conducteur'}</h2>
+  <form class="form" id="f">
+    <label>Nom<input name="nom" required value="${esc(d.nom)}"></label>
+    <label>Téléphone<input name="tel" value="${esc(d.tel)}"></label>
+    <label>Agence<select name="agence">${opt(AGENCES, d.agence)}</select></label>
+    <label>Catégorie de permis<select name="permis">${opt(['B','C'], d.permis)}</select></label>
+    <label>Fin de validité du permis<input type="date" name="finPermis" value="${esc(d.finPermis)}"></label>
+    <label>Date d'embauche<input type="date" name="embauche" value="${esc(d.embauche)}"></label>
+    <label>Statut<select name="statut">${opt(['Actif','Congé','Remplaçant'], d.statut)}</select></label>
+    <label>Véhicule affecté<select name="vehicule">${vOpts}</select></label>
+    <div class="full toolbar" style="justify-content:space-between"><div>${id ? `<button type="button" class="btn danger" id="del" ${S.writable ? '' : 'disabled'}>Supprimer</button>` : ''}</div><div class="toolbar"><button type="button" class="btn" id="cancel">Annuler</button><button class="btn pri" ${S.writable ? '' : 'disabled'}>Enregistrer</button></div></div>
+  </form>`);
+  const f = $('#f');
+  $('#cancel').onclick = closeModal;
+  if (id) $('#del').onclick = () => confirmDialog(`Supprimer ${d.nom} ?`, 'Son véhicule deviendra « non affecté ».', async () => { if (cur) await write(() => S.db.doc('vehicules/' + cur[0]).update({conducteurId:''})); await write(() => S.db.doc('conducteurs/' + id).delete()); closeModal(); });
+  f.onsubmit = async (e) => {
+    e.preventDefault();
+    const x = Object.fromEntries(new FormData(f)); const vsel = x.vehicule; delete x.vehicule;
+    const nid = id || nextId('C', S.drv);
+    if (!(await write(() => S.db.doc('conducteurs/' + nid).set(x)))) return;
+    if (cur && cur[0] !== vsel) await write(() => S.db.doc('vehicules/' + cur[0]).update({conducteurId:''}));
+    if (vsel && (!cur || cur[0] !== vsel)) await write(() => S.db.doc('vehicules/' + vsel).update({conducteurId:nid}));
+    closeModal();
+  };
+}
+function immobDialog(vid, motif) {
+  const v = S.veh[vid]; if (!v) return;
+  modal(`<h2>Immobiliser ${esc(v.immat)} ?</h2>
+  <div class="warnbox"><b>Décision humaine obligatoire.</b> L'outil propose ; seul le chef de parc décide l'immobilisation.</div>
+  <p><b>Motif proposé :</b> ${esc(motif)}<br><span class="muted small">${esc(v.type)} · ${esc(v.agence)} · conducteur : ${esc(S.drv[v.conducteurId]?.nom || 'non affecté')}</span></p>
+  <form class="form" id="f">
+    <label class="full">Nom du chef de parc qui décide<input name="par" required autocomplete="name"></label>
+    <label class="full">Commentaire (facultatif)<input name="note"></label>
+    <label class="full" style="flex-direction:row;align-items:center;gap:8px;color:var(--encre)"><input type="checkbox" name="ok" required> Je confirme l'immobilisation de ce véhicule.</label>
+    <div class="full toolbar" style="justify-content:flex-end"><button type="button" class="btn" id="cancel">Ne pas immobiliser</button><button class="btn dark" ${S.writable ? '' : 'disabled'}>Valider l'immobilisation</button></div>
+  </form>`);
+  $('#cancel').onclick = closeModal;
+  $('#f').onsubmit = async (e) => {
+    e.preventDefault();
+    const x = Object.fromEntries(new FormData($('#f')));
+    if (!x.par.trim() || !x.ok) return;
+    if (!(await write(() => S.db.doc('vehicules/' + vid).update({statut:'Immobilisé'})))) return;
+    const now = new Date();
+    await write(() => S.db.collection('decisions').add({ts: now.toISOString(), date: now.toLocaleString('fr-FR'), action:'Immobilisation de', immat: v.immat, vid, par: x.par.trim(), motif: motif + (x.note ? ' · ' + x.note : '')}));
+    closeModal();
+  };
+}
+function draftDialog(did, motif) {
+  const d = S.drv[did]; if (!d) return;
+  const txt = `Bonjour ${d.nom},\n\nLe service flotte a relevé le point suivant : ${motif.replace(/<[^>]+>/g, '')}.\nMerci de passer voir votre chef de parc pour régulariser la situation.\n\nService flotte — Kaïna Distribution`;
+  modal(`<h2>Brouillon pour ${esc(d.nom)}</h2>
+  <p class="muted small">Brouillon seulement : aucun message n'est envoyé par l'outil. Le chef de parc relit, valide et l'envoie lui-même.</p>
+  <textarea id="t" rows="8" style="width:100%">${esc(txt)}</textarea>
+  <div class="toolbar" style="justify-content:flex-end"><span class="small muted" id="cp"></span><button class="btn" id="cancel">Fermer</button><button class="btn pri" id="copy">Copier le texte</button></div>`);
+  $('#cancel').onclick = closeModal;
+  $('#copy').onclick = async () => { try { await navigator.clipboard.writeText($('#t').value); $('#cp').textContent = 'Texte copié.'; } catch { $('#t').select(); $('#cp').textContent = 'Sélectionnez le texte et copiez-le (Ctrl+C).'; } };
+}
+function confirmDialog(title, text, onYes) {
+  modal(`<h2>${esc(title)}</h2><p>${esc(text)}</p><div class="toolbar" style="justify-content:flex-end"><button class="btn" id="no">Annuler</button><button class="btn danger" id="yes">Confirmer</button></div>`);
+  $('#no').onclick = closeModal; $('#yes').onclick = onYes;
+}
+function nextId(p, obj) { let n = Object.keys(obj).filter((k) => k.startsWith(p)).map((k) => parseInt(k.slice(1), 10) || 0).reduce((a, b) => Math.max(a, b), 0) + 1; return p + String(n).padStart(2, '0'); }
+async function write(fn) {
+  if (!S.db) { S.error = 'Enregistrement indisponible : modification non sauvegardée.'; render(); return false; }
+  try { await fn(); return true; }
+  catch (e) {
+    if (e && e.code === 'invalid_argument') { S.writable = false; S.error = 'Modification refusée : vous n\'avez pas le droit de modifier le parc.'; }
+    else if (e && e.code === 'quota_exceeded') S.error = 'Capacité de stockage atteinte : supprimez des éléments avant d\'en ajouter.';
+    else S.error = 'Échec de l\'enregistrement, réessayez.';
+    render(); return false;
+  }
+}
+
+// ---------- Data (version locale : enregistrement dans ce navigateur) ----------
+const KEY = 'kaina-parc-v1';
+const SEED = {"vehicules": {"V01": {"immat": "96654-A-6", "type": "VP pré-vendeur", "agence": "Casablanca", "conducteurId": "C01", "km": 104251, "kmVidange": 97412, "finVT": "2027-10-18", "finAssurance": "2027-12-18", "kmMois": 2604, "carbMois": 180, "statut": "En service"}, "V02": {"immat": "53448-B-6", "type": "VUL 3,5 t", "agence": "Casablanca", "conducteurId": "C02", "km": 169234, "kmVidange": 167715, "finVT": "2027-09-07", "finAssurance": "2027-04-13", "kmMois": 3418, "carbMois": 406, "statut": "En service"}, "V03": {"immat": "83413-D-6", "type": "Camion 7,5 t", "agence": "Casablanca", "conducteurId": "C03", "km": 122274, "kmVidange": 119814, "finVT": "2026-11-02", "finAssurance": "2027-05-28", "kmMois": 3693, "carbMois": 678, "statut": "En service"}, "V04": {"immat": "70455-H-6", "type": "VP pré-vendeur", "agence": "Casablanca", "conducteurId": "C04", "km": 152724, "kmVidange": 141471, "finVT": "2027-06-24", "finAssurance": "2027-11-04", "kmMois": 3303, "carbMois": 248, "statut": "En service"}, "V05": {"immat": "62962-A-6", "type": "VUL 3,5 t", "agence": "Casablanca", "conducteurId": "C05", "km": 58796, "kmVidange": 52889, "finVT": "2027-02-18", "finAssurance": "2027-02-17", "kmMois": 2410, "carbMois": 465, "statut": "En service"}, "V06": {"immat": "74987-B-6", "type": "VP pré-vendeur", "agence": "Casablanca", "conducteurId": "C06", "km": 177190, "kmVidange": 171630, "finVT": "2027-07-25", "finAssurance": "2027-02-02", "kmMois": 2648, "carbMois": 198, "statut": "En service"}, "V07": {"immat": "71802-D-6", "type": "Camion 7,5 t", "agence": "Casablanca", "conducteurId": "C07", "km": 48343, "kmVidange": 40734, "finVT": "2027-10-17", "finAssurance": "2027-12-02", "kmMois": 2841, "carbMois": 500, "statut": "En service"}, "V08": {"immat": "29193-H-6", "type": "VP pré-vendeur", "agence": "Casablanca", "conducteurId": "C08", "km": 62953, "kmVidange": 59038, "finVT": "2027-07-12", "finAssurance": "2027-09-02", "kmMois": 2810, "carbMois": 214, "statut": "En service"}, "V09": {"immat": "41375-A-6", "type": "VUL 3,5 t", "agence": "Casablanca", "conducteurId": "C09", "km": 84200, "kmVidange": 91500, "finVT": "2027-07-04", "finAssurance": "2027-04-04", "kmMois": 2580, "carbMois": 289, "statut": "En service"}, "V10": {"immat": "85570-B-6", "type": "VP direction", "agence": "Casablanca", "conducteurId": "C10", "km": 106557, "kmVidange": 101618, "finVT": "2027-04-28", "finAssurance": "2027-08-25", "kmMois": 1365, "carbMois": 102, "statut": "En service"}, "V11": {"immat": "34787-D-1", "type": "VP pré-vendeur", "agence": "Rabat-Salé", "conducteurId": "C11", "km": 147397, "kmVidange": 137877, "finVT": "2027-05-14", "finAssurance": "2027-09-10", "kmMois": 3237, "carbMois": 231, "statut": "En service"}, "V12": {"immat": "36742-H-1", "type": "VP pré-vendeur", "agence": "Rabat-Salé", "conducteurId": "C12", "km": 42797, "kmVidange": 36449, "finVT": "2027-02-01", "finAssurance": "2026-10-31", "kmMois": 2473, "carbMois": 177, "statut": "En service"}, "V13": {"immat": "35427-A-1", "type": "Camion 7,5 t", "agence": "Rabat-Salé", "conducteurId": "C13", "km": 59780, "kmVidange": 54798, "finVT": "2027-09-16", "finAssurance": "2027-08-25", "kmMois": 3387, "carbMois": 600, "statut": "En service"}, "V14": {"immat": "72661-B-1", "type": "VP pré-vendeur", "agence": "Rabat-Salé", "conducteurId": "C14", "km": 150226, "kmVidange": 144614, "finVT": "2027-05-07", "finAssurance": "2027-12-25", "kmMois": 2780, "carbMois": 193, "statut": "En service"}, "V15": {"immat": "20340-D-1", "type": "VUL 3,5 t", "agence": "Rabat-Salé", "conducteurId": "", "km": 175472, "kmVidange": 170746, "finVT": "2027-09-24", "finAssurance": "2027-06-22", "kmMois": 3220, "carbMois": 355, "statut": "En service"}, "V16": {"immat": "91679-H-1", "type": "VP pré-vendeur", "agence": "Rabat-Salé", "conducteurId": "C16", "km": 109899, "kmVidange": 97338, "finVT": "2027-01-23", "finAssurance": "2027-11-27", "kmMois": 2411, "carbMois": 187, "statut": "En service"}, "V17": {"immat": "54962-A-40", "type": "Camion 7,5 t", "agence": "Tanger", "conducteurId": "C17", "km": 52932, "kmVidange": 47110, "finVT": "2027-03-27", "finAssurance": "2027-12-06", "kmMois": 2845, "carbMois": 538, "statut": "En service"}, "V18": {"immat": "94825-B-40", "type": "VP pré-vendeur", "agence": "Tanger", "conducteurId": "C18", "km": 53854, "kmVidange": 41247, "finVT": "2026-11-28", "finAssurance": "2027-09-12", "kmMois": 3256, "carbMois": 253, "statut": "En service"}, "V19": {"immat": "59266-D-40", "type": "VUL 3,5 t", "agence": "Tanger", "conducteurId": "C19", "km": 39332, "kmVidange": 37446, "finVT": "2027-02-18", "finAssurance": "2027-02-04", "kmMois": 2704, "carbMois": 299, "statut": "En service"}, "V20": {"immat": "15906-H-40", "type": "VP direction", "agence": "Tanger", "conducteurId": "C20", "km": 71193, "kmVidange": 69065, "finVT": "2027-09-06", "finAssurance": "2027-03-03", "kmMois": 1813, "carbMois": 160, "statut": "En service"}, "V21": {"immat": "52553-A-13", "type": "VP pré-vendeur", "agence": "Fès", "conducteurId": "C21", "km": 182348, "kmVidange": 174489, "finVT": "2027-09-07", "finAssurance": "2027-07-24", "kmMois": 3247, "carbMois": 243, "statut": "En service"}, "V22": {"immat": "62679-B-13", "type": "VUL 3,5 t", "agence": "Fès", "conducteurId": "C22", "km": 148900, "kmVidange": 136500, "finVT": "2027-12-13", "finAssurance": "2027-05-18", "kmMois": 3582, "carbMois": 402, "statut": "En service"}, "V23": {"immat": "94233-D-13", "type": "Camion 7,5 t", "agence": "Fès", "conducteurId": "C23", "km": 63276, "kmVidange": 60042, "finVT": "2027-07-21", "finAssurance": "2027-07-17", "kmMois": 3277, "carbMois": 587, "statut": "En service"}, "V24": {"immat": "49643-H-13", "type": "VP pré-vendeur", "agence": "Fès", "conducteurId": "C24", "km": 93886, "kmVidange": 88221, "finVT": "2027-05-27", "finAssurance": "2027-06-15", "kmMois": 2926, "carbMois": 217, "statut": "En service"}, "V25": {"immat": "64923-A-33", "type": "VUL 3,5 t", "agence": "Marrakech", "conducteurId": "C25", "km": 167135, "kmVidange": 163675, "finVT": "2027-03-10", "finAssurance": "2027-11-10", "kmMois": 3603, "carbMois": 374, "statut": "En service"}, "V26": {"immat": "56626-B-33", "type": "VP pré-vendeur", "agence": "Marrakech", "conducteurId": "C26", "km": 155604, "kmVidange": 141204, "finVT": "2027-02-27", "finAssurance": "2027-10-26", "kmMois": 3275, "carbMois": 231, "statut": "En service"}, "V27": {"immat": "49993-D-33", "type": "Camion 7,5 t", "agence": "Marrakech", "conducteurId": "C27", "km": 161925, "kmVidange": 156410, "finVT": "2027-10-14", "finAssurance": "2027-11-01", "kmMois": 3395, "carbMois": 669, "statut": "En service"}, "V28": {"immat": "44844-H-33", "type": "VP pré-vendeur", "agence": "Marrakech", "conducteurId": "C28", "km": 112497, "kmVidange": 103811, "finVT": "2027-07-03", "finAssurance": "2027-12-12", "kmMois": 3246, "carbMois": 212, "statut": "En service"}, "V29": {"immat": "55022-A-37", "type": "Camion 7,5 t", "agence": "Agadir", "conducteurId": "C29", "km": 66845, "kmVidange": 62477, "finVT": "2027-03-15", "finAssurance": "2027-06-19", "kmMois": 0, "carbMois": 120, "statut": "Immobilisé"}, "V30": {"immat": "92975-B-37", "type": "VP direction", "agence": "Agadir", "conducteurId": "C30", "km": 131656, "kmVidange": 128642, "finVT": "2027-01-23", "finAssurance": "2027-10-04", "kmMois": 1991, "carbMois": 158, "statut": "En service"}, "V31": {"immat": "21902-D-37", "type": "VP pré-vendeur", "agence": "Agadir", "conducteurId": "C31", "km": 151156, "kmVidange": 145861, "finVT": "2027-02-16", "finAssurance": "2027-02-14", "kmMois": 2610, "carbMois": 171, "statut": "En service"}}, "conducteurs": {"C01": {"nom": "Hamid Ouali", "tel": "06 00 60 34 52", "agence": "Casablanca", "permis": "B", "finPermis": "2028-11-06", "embauche": "2012-12-17", "statut": "Actif"}, "C02": {"nom": "Said Rami", "tel": "06 00 53 97 69", "agence": "Casablanca", "permis": "B", "finPermis": "2028-04-05", "embauche": "2021-03-23", "statut": "Actif"}, "C03": {"nom": "Khalid Naji", "tel": "06 00 32 66 62", "agence": "Casablanca", "permis": "C", "finPermis": "2031-11-11", "embauche": "2014-05-05", "statut": "Actif"}, "C04": {"nom": "Ayoub Fikri", "tel": "06 00 25 69 53", "agence": "Casablanca", "permis": "B", "finPermis": "2029-03-02", "embauche": "2015-04-15", "statut": "Actif"}, "C05": {"nom": "Mustapha Hilali", "tel": "06 00 32 11 40", "agence": "Casablanca", "permis": "B", "finPermis": "2031-09-21", "embauche": "2012-09-26", "statut": "Actif"}, "C06": {"nom": "Abdellah Sbai", "tel": "06 00 73 58 75", "agence": "Casablanca", "permis": "B", "finPermis": "2032-08-13", "embauche": "2014-08-03", "statut": "Actif"}, "C07": {"nom": "Yassine Boukhari", "tel": "06 00 58 11 27", "agence": "Casablanca", "permis": "C", "finPermis": "2026-11-04", "embauche": "2012-11-23", "statut": "Actif"}, "C08": {"nom": "Rachid Bouzid", "tel": "06 00 27 23 80", "agence": "Casablanca", "permis": "B", "finPermis": "2031-02-17", "embauche": "2023-06-10", "statut": "Actif"}, "C09": {"nom": "Hicham Alami", "tel": "06 00 37 65 56", "agence": "Casablanca", "permis": "B", "finPermis": "2034-01-17", "embauche": "2017-12-15", "statut": "Actif"}, "C10": {"nom": "Anas Belhaj", "tel": "06 00 83 51 87", "agence": "Casablanca", "permis": "B", "finPermis": "2031-10-20", "embauche": "2016-06-06", "statut": "Actif"}, "C11": {"nom": "Mohamed Ait Lahcen", "tel": "06 00 97 64 76", "agence": "Rabat-Salé", "permis": "B", "finPermis": "2026-12-03", "embauche": "2019-07-11", "statut": "Actif"}, "C12": {"nom": "Brahim Ait Ali", "tel": "06 00 15 90 48", "agence": "Rabat-Salé", "permis": "B", "finPermis": "2031-04-14", "embauche": "2012-06-27", "statut": "Actif"}, "C13": {"nom": "Jamal Bouhmadi", "tel": "06 00 16 51 40", "agence": "Rabat-Salé", "permis": "B", "finPermis": "2033-08-17", "embauche": "2016-12-25", "statut": "Actif"}, "C14": {"nom": "Noureddine Haddou", "tel": "06 00 20 81 16", "agence": "Rabat-Salé", "permis": "B", "finPermis": "2029-05-24", "embauche": "2020-06-02", "statut": "Actif"}, "C15": {"nom": "Younes Elkhadir", "tel": "06 00 35 94 38", "agence": "Rabat-Salé", "permis": "B", "finPermis": "2031-01-24", "embauche": "2022-03-16", "statut": "Actif"}, "C16": {"nom": "Soufiane Mrabet", "tel": "06 00 59 15 75", "agence": "Rabat-Salé", "permis": "B", "finPermis": "2029-12-22", "embauche": "2016-08-24", "statut": "Actif"}, "C17": {"nom": "Adil Chafik", "tel": "06 00 96 88 89", "agence": "Tanger", "permis": "C", "finPermis": "2033-02-10", "embauche": "2021-09-10", "statut": "Actif"}, "C18": {"nom": "Karim Ziani", "tel": "06 00 66 34 44", "agence": "Tanger", "permis": "B", "finPermis": "2028-01-24", "embauche": "2014-06-28", "statut": "Actif"}, "C19": {"nom": "Omar Fadili", "tel": "06 00 35 98 59", "agence": "Tanger", "permis": "B", "finPermis": "2031-03-20", "embauche": "2018-12-17", "statut": "Actif"}, "C20": {"nom": "Tarik Senhaji", "tel": "06 00 83 98 99", "agence": "Tanger", "permis": "B", "finPermis": "2033-04-13", "embauche": "2012-11-28", "statut": "Actif"}, "C21": {"nom": "Samir Ennaji", "tel": "06 00 48 56 50", "agence": "Fès", "permis": "B", "finPermis": "2030-06-13", "embauche": "2023-07-15", "statut": "Actif"}, "C22": {"nom": "Ilyas Akdim", "tel": "06 00 91 61 79", "agence": "Fès", "permis": "B", "finPermis": "2031-10-11", "embauche": "2015-05-06", "statut": "Actif"}, "C23": {"nom": "Hassan Ouchen", "tel": "06 00 57 33 98", "agence": "Fès", "permis": "C", "finPermis": "2030-08-10", "embauche": "2023-09-14", "statut": "Actif"}, "C24": {"nom": "Zakaria Lamrini", "tel": "06 00 97 84 63", "agence": "Fès", "permis": "B", "finPermis": "2034-01-07", "embauche": "2012-03-11", "statut": "Congé"}, "C25": {"nom": "Mehdi Saadi", "tel": "06 00 33 22 97", "agence": "Marrakech", "permis": "B", "finPermis": "2033-07-15", "embauche": "2017-04-10", "statut": "Actif"}, "C26": {"nom": "Reda Essaidi", "tel": "06 00 67 26 71", "agence": "Marrakech", "permis": "B", "finPermis": "2029-04-21", "embauche": "2022-03-25", "statut": "Actif"}, "C27": {"nom": "Driss Moussaoui", "tel": "06 00 48 30 52", "agence": "Marrakech", "permis": "C", "finPermis": "2032-12-22", "embauche": "2016-02-02", "statut": "Actif"}, "C28": {"nom": "Nabil Ghazi", "tel": "06 00 31 19 38", "agence": "Marrakech", "permis": "B", "finPermis": "2032-10-11", "embauche": "2018-12-20", "statut": "Actif"}, "C29": {"nom": "Fouad Kabbaj", "tel": "06 00 42 48 36", "agence": "Agadir", "permis": "C", "finPermis": "2031-07-28", "embauche": "2012-07-26", "statut": "Actif"}, "C30": {"nom": "Ali Benomar", "tel": "06 00 49 77 41", "agence": "Agadir", "permis": "B", "finPermis": "2028-03-25", "embauche": "2022-01-13", "statut": "Actif"}, "C31": {"nom": "Walid Raiss", "tel": "06 00 18 28 50", "agence": "Agadir", "permis": "B", "finPermis": "2032-04-02", "embauche": "2018-06-26", "statut": "Actif"}, "C32": {"nom": "Ismail Nouri", "tel": "06 00 67 96 66", "agence": "Casablanca", "permis": "B", "finPermis": "2028-07-25", "embauche": "2018-02-08", "statut": "Remplaçant"}}, "decisions": {}};
+let store;
+try { store = JSON.parse(localStorage.getItem(KEY)) || null; } catch { store = null; }
+let canSave = true;
+try { localStorage.setItem(KEY + '-test', '1'); localStorage.removeItem(KEY + '-test'); } catch { canSave = false; }
+if (!store) store = JSON.parse(JSON.stringify(SEED));
+const subs = [];
+function persist() { if (canSave) { try { localStorage.setItem(KEY, JSON.stringify(store)); } catch { S.error = 'Enregistrement impossible : espace du navigateur plein.'; } } subs.forEach((fn) => fn()); }
+function snap(col) { return {docs: Object.entries(store[col] || {}).map(([id, d]) => ({id, data: () => d})), metadata: {fromCache: false}}; }
+function docRef(path) { const [col, id] = path.split('/'); return {
+  set: async (d) => { (store[col] ||= {})[id] = JSON.parse(JSON.stringify(d)); persist(); },
+  update: async (d) => { if (!store[col] || !store[col][id]) throw {code:'invalid_argument'}; Object.assign(store[col][id], d); persist(); },
+  delete: async () => { if (store[col]) delete store[col][id]; persist(); } }; }
+const localDb = {
+  doc: docRef,
+  collection: (col) => { const q = { onSnapshot: (fn) => { const run = () => fn(snap(col)); subs.push(run); run(); return () => {}; }, orderBy: () => q, limit: () => q,
+    add: async (d) => { const id = 'd' + Date.now(); (store[col] ||= {})[id] = d; persist(); } }; return q; }
+};
+S.db = localDb;
+if (!canSave) S.error = 'Ce navigateur bloque l\'enregistrement local : les modifications seront perdues à la fermeture.';
+window.addEventListener('hashchange', () => { closeModal(); render(); });
+localDb.collection('vehicules').onSnapshot((s) => { const o = {}; s.docs.forEach((d) => o[d.id] = d.data()); S.veh = o; S.ready.veh = true; render(); });
+localDb.collection('conducteurs').onSnapshot((s) => { const o = {}; s.docs.forEach((d) => o[d.id] = d.data()); S.drv = o; S.ready.drv = true; render(); });
+localDb.collection('decisions').onSnapshot((s) => { S.dec = s.docs.map((d) => d.data()).sort((a, b) => (b.ts || '').localeCompare(a.ts || '')); render(); });
+// Sauvegarde / restauration
+window.kainaExport = () => { const blob = new Blob([JSON.stringify(store, null, 2)], {type: 'application/json'}); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'kaina-parc-sauvegarde-' + new Date().toISOString().slice(0, 10) + '.json'; a.click(); };
+window.kainaImport = (file) => { const r = new FileReader(); r.onload = () => { try { const d = JSON.parse(r.result); if (!d.vehicules || !d.conducteurs) throw 0; store = d; persist(); } catch { S.error = 'Fichier de sauvegarde invalide.'; render(); } }; r.readAsText(file); };
+})();
+</script>
+</body>
+</html>

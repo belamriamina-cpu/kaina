@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kaïna · Hanout Expo · Être rappelé par un pré-vendeur</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&family=DM+Sans:wght@400;500;700&family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--indigo:#1E2A78;--indigo-f:#141D57;--safran:#F2A900;--sc:#FCEBC0;--sable:#F5EFE6;--encre:#14172B;--douce:#4A4E66;--ligne:#DDD5C8;--alerte:#B3261E}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"DM Sans",Arial,sans-serif;color:var(--encre);background:var(--sable);font-size:17px;line-height:1.5;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:Inter,Arial,sans-serif;font-weight:800;letter-spacing:-0.02em;margin:0;line-height:1.12}
+.ar{font-family:"Noto Sans Arabic",Arial,sans-serif;direction:rtl;unicode-bidi:isolate}
+.wrap{max-width:640px;margin:0 auto;padding:0 20px}
+section{padding:40px 0}
+/* Attention */
+.hero{background:var(--indigo);color:var(--sable);padding:24px 0 44px}
+.hero .logo{width:132px;height:58px;display:block}
+.tag{display:inline-block;margin-top:22px;background:var(--safran);color:var(--encre);font-weight:700;font-size:14px;padding:5px 12px;border-radius:6px}
+.hero h1{font-size:clamp(32px,9vw,46px);margin-top:16px;color:#fff}
+.hero p{margin:14px 0 0;font-size:18px}
+.hero .ar{margin-top:10px;font-size:18px;opacity:.95}
+.down{display:inline-block;margin-top:26px;color:var(--sable);font-weight:700;text-decoration:none;border-bottom:2px solid var(--safran);padding-bottom:2px}
+/* Intérêt */
+h2{font-size:clamp(25px,6.6vw,32px);color:var(--indigo)}
+.lead{margin:12px 0 0;color:var(--douce)}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.fact{background:#fff;border:1px solid var(--ligne);border-radius:12px;padding:16px}
+.fact b{display:block;font-family:Inter,Arial,sans-serif;font-weight:800;font-size:28px;color:var(--indigo);letter-spacing:-0.02em;line-height:1.1}
+.fact span{font-size:15px;color:var(--douce)}
+.delivery{margin-top:12px;background:#fff;border:1px solid var(--ligne);border-radius:12px;padding:16px;display:flex;gap:12px;align-items:flex-start}
+.check{flex:none;width:28px;height:28px}
+.src{font-size:13px;color:var(--douce);margin-top:12px}
+/* Désir */
+.desir{background:#fff;border-top:1px solid var(--ligne);border-bottom:1px solid var(--ligne)}
+.new{margin-top:20px;border-radius:12px;background:var(--sable);padding:18px}
+.new h3{font-size:20px;color:var(--indigo)}
+.new p{margin:8px 0 0}
+.small{font-size:14px;color:var(--douce)}
+.offer{margin-top:16px;background:var(--sc);border-radius:12px;padding:20px}
+.offer h3{font-size:22px;color:var(--encre)}
+.offer ul{margin:12px 0 0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.offer li{display:flex;gap:10px;align-items:flex-start}
+.offer .big{font-family:Inter,Arial,sans-serif;font-weight:800;font-size:24px;color:var(--indigo);letter-spacing:-0.02em}
+.cond{font-size:13px;color:var(--douce);margin-top:12px}
+/* Action */
+.action h2 .ar{display:block;font-size:20px;color:var(--douce);margin-top:8px;font-family:"Noto Sans Arabic",Arial,sans-serif;letter-spacing:0}
+form{margin-top:20px;display:flex;flex-direction:column;gap:14px}
+label{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:15px}
+input,select{font:inherit;font-size:17px;padding:14px;border:1.5px solid var(--ligne);border-radius:8px;background:#fff;color:var(--encre);width:100%}
+input:focus,select:focus{outline:3px solid var(--safran);outline-offset:1px;border-color:var(--indigo)}
+.cta{margin-top:6px;font:inherit;font-weight:700;font-size:18px;background:var(--safran);color:var(--encre);border:0;border-radius:8px;padding:17px 18px;cursor:pointer;width:100%}
+.cta:active{transform:translateY(1px)}
+.cta:disabled{opacity:.6}
+.err{color:var(--alerte);font-size:14px;min-height:1em}
+.privacy{font-size:13px;color:var(--douce)}
+.done{display:none;background:#fff;border:2px solid var(--indigo);border-radius:12px;padding:20px;margin-top:20px}
+.done h3{color:var(--indigo);font-size:22px}
+.done p{margin:8px 0 0}
+.summary{margin-top:12px;background:var(--sable);border-radius:8px;padding:12px;font-size:15px}
+footer{background:var(--indigo-f);color:var(--sable);padding:26px 0;font-size:14px}
+footer b{font-family:Inter,Arial,sans-serif;font-weight:800}
+@media(min-width:700px){body{font-size:18px}.facts{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+
+<!-- A · ATTENTION -->
+<header class="hero">
+  <div class="wrap">
+    <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 343 152" role="img"><title>Kaïna</title><g transform="translate(16 16)"><path d="M48 8 C22 8 4 27 4 51 C4 80 48 114 48 114 C48 114 92 80 92 51 C92 27 74 8 48 8 Z" fill="#F5EFE6"/><circle cx="48" cy="50" r="27" fill="#1E2A78"/><path d="M34 51 l10 10 l19 -21" fill="none" stroke="#F2A900" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M115.75 90.0H129.1875V77.734375L132.0390625 74.4140625L142.546875 90.0H158.0546875L142.0390625 66.7578125L157.390625 48.75H141.8828125L129.34375 63.3984375H129.1875V31.796875H115.75ZM171.296875 90.703125C177.1171875 90.703125 180.828125 88.671875 183.2890625 84.21875H183.4453125V90.0H196.5703125V62.2265625C196.5703125 53.125 189.96875 47.8515625 177.9765625 47.8515625C166.0234375 47.8515625 159.265625 53.1640625 158.6796875 62.109375H171.1796875C171.453125 59.296875 173.7578125 57.5 177.5078125 57.5C181.0625 57.5 183.25 59.1796875 183.25 61.640625V61.8359375C183.25 64.296875 180.5546875 64.8828125 173.171875 65.5078125C164.3828125 66.2109375 157.15625 69.21875 157.15625 78.4765625C157.15625 86.6796875 163.0546875 90.703125 171.296875 90.703125ZM175.3984375 81.9140625C172.1171875 81.9140625 169.890625 80.390625 169.890625 77.8515625C169.890625 75.15625 172.46875 73.671875 176.0625 73.125C179.3828125 72.578125 181.921875 72.0703125 183.3671875 71.40625V75.15625C183.3671875 79.21875 179.890625 81.9140625 175.3984375 81.9140625ZM201.5703125 90.0H215.0078125V48.75H201.5703125ZM217.1953125 44.5703125C221.2578125 44.5703125 224.265625 41.7578125 224.265625 37.8515625C224.265625 33.984375 221.2578125 31.171875 217.1953125 31.171875C213.09375 31.171875 210.125 33.984375 210.125 37.8515625C210.125 41.7578125 213.09375 44.5703125 217.1953125 44.5703125ZM199.34375 44.5703125C203.4453125 44.5703125 206.453125 41.7578125 206.453125 37.8515625C206.453125 33.984375 203.4453125 31.171875 199.34375 31.171875C195.28125 31.171875 192.3125 33.984375 192.3125 37.8515625C192.3125 41.7578125 195.28125 44.5703125 199.34375 44.5703125ZM233.4453125 67.578125C233.4453125 61.953125 236.1796875 59.3359375 240.4375 59.3359375C244.6953125 59.3359375 247.15625 61.9921875 247.15625 66.875V90.0H260.59375V64.0625C260.59375 53.90625 255.359375 47.8515625 246.4140625 47.8515625C240.203125 47.8515625 236.0234375 50.703125 233.2890625 55.4296875V48.75H220.0078125V90.0H233.4453125ZM278.2109375 90.703125C284.03125 90.703125 287.7421875 88.671875 290.203125 84.21875H290.359375V90.0H303.484375V62.2265625C303.484375 53.125 296.8828125 47.8515625 284.890625 47.8515625C272.9375 47.8515625 266.1796875 53.1640625 265.59375 62.109375H278.09375C278.3671875 59.296875 280.671875 57.5 284.421875 57.5C287.9765625 57.5 290.1640625 59.1796875 290.1640625 61.640625V61.8359375C290.1640625 64.296875 287.46875 64.8828125 280.0859375 65.5078125C271.296875 66.2109375 264.0703125 69.21875 264.0703125 78.4765625C264.0703125 86.6796875 269.96875 90.703125 278.2109375 90.703125ZM282.3125 81.9140625C279.03125 81.9140625 276.8046875 80.390625 276.8046875 77.8515625C276.8046875 75.15625 279.3828125 73.671875 282.9765625 73.125C286.296875 72.578125 288.8359375 72.0703125 290.28125 71.40625V75.15625C290.28125 79.21875 286.8046875 81.9140625 282.3125 81.9140625Z" fill="#F5EFE6"/></g></svg>
+    <span class="tag">Hanout Expo · Stand B12</span>
+    <h1>Votre commande, livrée complète et à l'heure.</h1>
+    <p>Un pré-vendeur Kaïna vous rappelle et passe dans votre magasin sous 48 h. Et −5 % sur votre première commande.</p>
+    <p class="ar" lang="ar">مندوب كاينة يتصل بك ويزور محلك خلال 48 ساعة.</p>
+    <a class="down" href="#offre">Voir l'offre du salon</a>
+  </div>
+</header>
+
+<main>
+<!-- I · INTÉRÊT -->
+<section id="interet">
+  <div class="wrap">
+    <h2>Un distributeur qui connaît votre quartier</h2>
+    <p class="lead">Épicerie, hygiène, boissons : un seul interlocuteur pour remplir vos rayons.</p>
+    <div class="facts">
+      <div class="fact"><b>14 000</b><span>points de vente livrés au Maroc</span></div>
+      <div class="fact"><b>2 400</b><span>références : épicerie, hygiène, boissons</span></div>
+      <div class="fact"><b>160</b><span>pré-vendeurs qui passent en magasin</span></div>
+      <div class="fact"><b>6</b><span>agences : Casablanca, Rabat-Salé, Tanger, Fès, Marrakech, Agadir</span></div>
+    </div>
+    <div class="delivery">
+      <svg class="check" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="14" fill="#1E2A78"/><path d="M8 14.5l4 4 8-9" fill="none" stroke="#F2A900" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div><b>Livraison sous 24 h</b> à Casablanca et Rabat-Salé, <b>sous 48 h</b> dans les autres villes.</div>
+    </div>
+    <p class="src">Chiffres Kaïna, fiche entreprise 2025.</p>
+  </div>
+</section>
+
+<!-- D · DÉSIR -->
+<section id="offre" class="desir">
+  <div class="wrap">
+    <h2>Commandez quand vous voulez, même le dimanche</h2>
+    <div class="new">
+      <h3>Nouveau : commande par WhatsApp</h3>
+      <p>Envoyez votre commande à votre pré-vendeur sur WhatsApp, 7 jours sur 7. Il la prépare, vous êtes livré.</p>
+      <p class="small">En pilote à Casablanca et Rabat-Salé.</p>
+    </div>
+    <div class="offer">
+      <h3>L'offre Hanout Expo</h3>
+      <ul>
+        <li><span class="big">−5 %</span><span>sur votre première commande passée après votre demande de rappel.</span></li>
+        <li><svg class="check" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="14" fill="#1E2A78"/><path d="M8 14.5l4 4 8-9" fill="none" stroke="#F2A900" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Visite d'un pré-vendeur sous 48 h</b> après votre demande.</span></li>
+      </ul>
+      <p class="cond">Offre réservée aux demandes de rappel faites pendant le salon Hanout Expo. Remise valable sur la première commande passée jusqu'au 31 décembre 2026.</p>
+    </div>
+  </div>
+</section>
+
+<!-- A · ACTION -->
+<section id="rappel" class="action">
+  <div class="wrap">
+    <h2>Un pré-vendeur vous rappelle <span class="ar" lang="ar">اطلب أن يتصل بك مندوب كاينة</span></h2>
+    <form id="f" novalidate>
+      <label>Votre nom<input name="nom" autocomplete="name" required></label>
+      <label>Nom du commerce<input name="commerce" autocomplete="organization" required></label>
+      <label>Ville<select name="ville" required><option value="">Choisissez votre ville</option><option>Casablanca</option><option>Rabat-Salé</option><option>Tanger</option><option>Fès</option><option>Marrakech</option><option>Agadir</option><option>Autre ville</option></select></label>
+      <label>Téléphone<input name="telephone" type="tel" inputmode="tel" autocomplete="tel" placeholder="06 00 00 00 00" required></label>
+      <p class="err" id="err" role="alert"></p>
+      <button class="cta" type="submit" id="btn">Être rappelé par un pré-vendeur</button>
+      <p class="privacy">Votre demande est envoyée par WhatsApp à Kaïna (06 61 16 10 62). Vos coordonnées servent uniquement à vous rappeler ; elles sont traitées par l'administration des ventes.</p>
+    </form>
+    <div class="done" id="done" role="status">
+      <h3 id="done-t">Dernière étape : envoyez votre demande</h3>
+      <p id="done-p">WhatsApp s'ouvre avec votre demande déjà écrite : appuyez sur Envoyer. Un pré-vendeur Kaïna vous rappelle et passe vous voir sous 48 h.</p>
+      <div class="summary" id="sum"></div>
+      <p style="margin-top:12px">WhatsApp ne s'est pas ouvert ? <a id="wa" href="#" target="_blank" rel="noopener" style="color:#1E2A78;font-weight:700">Envoyer ma demande sur WhatsApp</a> ou montrez cet écran à l'équipe Kaïna au stand B12.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap"><b>Kaïna</b> — Livré complet, à l'heure.<br>Distributeur de produits de grande consommation · Siège : Aïn Sebaâ, Casablanca</div>
+</footer>
+
+<script>
+(() => {
+  const WA = '212661161062';
+  const f = document.getElementById('f'), err = document.getElementById('err'), btn = document.getElementById('btn');
+  const clean = (s) => String(s || '').trim().slice(0, 120);
+  f.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const x = Object.fromEntries(new FormData(f));
+    for (const k of Object.keys(x)) x[k] = clean(x[k]);
+    if (!x.nom || !x.commerce || !x.ville) { err.textContent = 'Merci de remplir tous les champs.'; return; }
+    if (x.telephone.replace(/[^\d]/g, '').length < 9) { err.textContent = 'Merci de vérifier votre numéro de téléphone.'; return; }
+    err.textContent = '';
+    const msg = `Bonjour Kaïna, je souhaite être rappelé par un pré-vendeur (Hanout Expo, stand B12).\nNom : ${x.nom}\nCommerce : ${x.commerce}\nVille : ${x.ville}\nTéléphone : ${x.telephone}`;
+    const url = `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+    document.getElementById('sum').textContent = `${x.nom} · ${x.commerce} · ${x.ville} · ${x.telephone}`;
+    const link = document.getElementById('wa'); link.href = url;
+    f.style.display = 'none';
+    const done = document.getElementById('done'); done.style.display = 'block'; done.scrollIntoView({behavior: 'smooth', block: 'center'});
+    let opened = null; try { opened = window.open(url, '_blank', 'noopener'); } catch { opened = null; }
+    if (!opened) { try { window.top.location.href = url; } catch {} }
+  });
+})();
+</script>
+</body>
+</html>
