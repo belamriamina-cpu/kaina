@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kaïna — Gestion du parc (version locale)</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--indigo:#1E2A78;--nuit:#141D57;--safran:#F2A900;--sc:#FCEBC0;--sable:#F5EFE6;--encre:#14172B;--douce:#4A4E66;--ligne:#E4DDD1;--alerte:#B3261E;--blanc:#fff}
+:root{--indigo:#1F232B;--nuit:#15171C;--safran:#B8975A;--sc:#EFE6D6;--sable:#F7F4EE;--encre:#1A1C21;--douce:#6B665E;--ligne:#E3DCCF;--alerte:#B3261E;--blanc:#fff}
 *{box-sizing:border-box}
 body{margin:0;font-family:"DM Sans",Arial,sans-serif;color:var(--encre);background:var(--sable);font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased}
-h1,h2,h3{font-family:Inter,Arial,sans-serif;font-weight:800;letter-spacing:-0.025em;color:var(--indigo);margin:0;line-height:1.15}
+h1,h2,h3{font-family:"Crimson Text",Georgia,serif;font-weight:700;letter-spacing:-0.005em;color:var(--indigo);margin:0;line-height:1.15}
 h1{font-size:28px}h2{font-size:17px}h3{font-size:14px}
 .app{display:flex;min-height:100vh}
 .side{width:240px;flex:none;background:var(--nuit);color:var(--sable);display:flex;flex-direction:column;padding:26px 16px;gap:2px}
@@ -30,34 +30,34 @@ h1{font-size:28px}h2{font-size:17px}h3{font-size:14px}
 .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0;background:#fff;border:1px solid var(--ligne);border-radius:4px}
 .tiles .card{border:0;border-right:1px solid var(--ligne);border-radius:0;box-shadow:none}
 .tiles .card:last-child{border-right:0}
-.card{background:#fff;border:1px solid var(--ligne);border-radius:4px;padding:20px 22px;box-shadow:0 1px 0 rgba(20,29,87,.03)}
+.card{background:#fff;border:1px solid var(--ligne);border-radius:4px;padding:20px 22px;box-shadow:0 1px 0 rgba(21,23,28,.03)}
 .card .muted.small:first-child{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
-.num{font-family:Inter,Arial,sans-serif;font-weight:800;font-size:34px;color:var(--indigo);letter-spacing:-0.03em;margin:6px 0 2px}
+.num{font-family:"Crimson Text",Georgia,serif;font-weight:700;font-size:34px;color:var(--indigo);letter-spacing:-0.01em;margin:6px 0 2px}
 .num.red{color:var(--alerte)}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px}
 .tablewrap{overflow-x:auto;background:#fff;border:1px solid var(--ligne);border-radius:4px}
 table{border-collapse:collapse;width:100%}
 th{background:#fff;color:var(--douce);text-align:left;padding:12px 14px;font-weight:700;white-space:nowrap;font-size:11px;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid var(--encre)}
 td{padding:12px 14px;border-top:1px solid var(--ligne);vertical-align:top;white-space:nowrap}
-tr.click{cursor:pointer}tr.click:hover td{background:#FBF8F3}
+tr.click{cursor:pointer}tr.click:hover td{background:#FAF8F4}
 .pill{display:inline-block;border-radius:3px;padding:2px 8px;font-size:11px;font-weight:700;letter-spacing:.04em;white-space:nowrap}
-.P1{background:var(--alerte);color:#fff}.P2{background:var(--safran);color:var(--encre)}.P3{background:transparent;color:var(--indigo);box-shadow:inset 0 0 0 1px #C9CDE6}
+.P1{background:var(--alerte);color:#fff}.P2{background:var(--safran);color:var(--encre)}.P3{background:transparent;color:var(--indigo);box-shadow:inset 0 0 0 1px #D8CFBF}
 .ok{background:transparent;color:#1F5A33;box-shadow:inset 0 0 0 1px #B9D4C1}
 .st-imm{background:transparent;color:var(--alerte);box-shadow:inset 0 0 0 1px #E7B9B5}
 .btn{font:inherit;font-size:13px;border:1px solid var(--ligne);background:#fff;color:var(--encre);border-radius:4px;padding:8px 14px;cursor:pointer;font-weight:500;letter-spacing:.01em}
 .btn:hover{border-color:var(--indigo)}
-.btn.pri{background:var(--safran);border-color:var(--safran);color:var(--encre);font-weight:700;box-shadow:0 8px 18px -12px rgba(20,29,87,.5)}
+.btn.pri{background:var(--safran);border-color:var(--safran);color:var(--encre);font-weight:700;box-shadow:0 8px 18px -12px rgba(21,23,28,.5)}
 .btn.dark{background:var(--nuit);border-color:var(--nuit);color:#fff}
 .btn.danger{color:var(--alerte);border-color:#E7B9B5}
 .btn.sm{padding:5px 10px;font-size:12px}
 .btn:disabled{opacity:.5;cursor:not-allowed}
 .toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-input,select,textarea{font:inherit;border:0;border-bottom:1px solid #BFB6A8;border-radius:0;padding:8px 2px;background:transparent;color:var(--encre)}
+input,select,textarea{font:inherit;border:0;border-bottom:1px solid #C9C1B3;border-radius:0;padding:8px 2px;background:transparent;color:var(--encre)}
 input:focus,select:focus,textarea:focus{outline:0;border-bottom:2px solid var(--indigo)}
 textarea{border:1px solid var(--ligne);border-radius:4px;padding:10px}
 .filters select,.filters input{min-width:160px}
-.modal-bg{position:fixed;inset:0;background:rgba(20,29,87,.4);backdrop-filter:blur(2px);display:flex;align-items:flex-start;justify-content:center;padding:48px 16px;overflow:auto;z-index:10}
-.modal{background:#fff;border-radius:4px;max-width:640px;width:100%;padding:30px;display:flex;flex-direction:column;gap:18px;border-top:3px solid var(--safran);box-shadow:0 30px 60px -30px rgba(20,29,87,.5)}
+.modal-bg{position:fixed;inset:0;background:rgba(21,23,28,.4);backdrop-filter:blur(2px);display:flex;align-items:flex-start;justify-content:center;padding:48px 16px;overflow:auto;z-index:10}
+.modal{background:#fff;border-radius:4px;max-width:640px;width:100%;padding:30px;display:flex;flex-direction:column;gap:18px;border-top:3px solid var(--safran);box-shadow:0 30px 60px -30px rgba(21,23,28,.5)}
 .form{display:grid;grid-template-columns:1fr 1fr;gap:16px 22px}
 .form label{display:flex;flex-direction:column;gap:2px;font-size:10px;color:var(--douce);font-weight:700;letter-spacing:.14em;text-transform:uppercase}
 .form label input,.form label select{font-size:15px;letter-spacing:0;text-transform:none;font-weight:400}
@@ -79,7 +79,7 @@ textarea{border:1px solid var(--ligne);border-radius:4px;padding:10px}
 <body>
 <div class="app">
   <nav class="side" aria-label="Menu">
-    <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 343 152" role="img"><title>Kaïna</title><g transform="translate(16 16)"><path d="M48 8 C22 8 4 27 4 51 C4 80 48 114 48 114 C48 114 92 80 92 51 C92 27 74 8 48 8 Z" fill="#F5EFE6"/><circle cx="48" cy="50" r="27" fill="#1E2A78"/><path d="M34 51 l10 10 l19 -21" fill="none" stroke="#F2A900" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M115.75 90.0H129.1875V77.734375L132.0390625 74.4140625L142.546875 90.0H158.0546875L142.0390625 66.7578125L157.390625 48.75H141.8828125L129.34375 63.3984375H129.1875V31.796875H115.75ZM171.296875 90.703125C177.1171875 90.703125 180.828125 88.671875 183.2890625 84.21875H183.4453125V90.0H196.5703125V62.2265625C196.5703125 53.125 189.96875 47.8515625 177.9765625 47.8515625C166.0234375 47.8515625 159.265625 53.1640625 158.6796875 62.109375H171.1796875C171.453125 59.296875 173.7578125 57.5 177.5078125 57.5C181.0625 57.5 183.25 59.1796875 183.25 61.640625V61.8359375C183.25 64.296875 180.5546875 64.8828125 173.171875 65.5078125C164.3828125 66.2109375 157.15625 69.21875 157.15625 78.4765625C157.15625 86.6796875 163.0546875 90.703125 171.296875 90.703125ZM175.3984375 81.9140625C172.1171875 81.9140625 169.890625 80.390625 169.890625 77.8515625C169.890625 75.15625 172.46875 73.671875 176.0625 73.125C179.3828125 72.578125 181.921875 72.0703125 183.3671875 71.40625V75.15625C183.3671875 79.21875 179.890625 81.9140625 175.3984375 81.9140625ZM201.5703125 90.0H215.0078125V48.75H201.5703125ZM217.1953125 44.5703125C221.2578125 44.5703125 224.265625 41.7578125 224.265625 37.8515625C224.265625 33.984375 221.2578125 31.171875 217.1953125 31.171875C213.09375 31.171875 210.125 33.984375 210.125 37.8515625C210.125 41.7578125 213.09375 44.5703125 217.1953125 44.5703125ZM199.34375 44.5703125C203.4453125 44.5703125 206.453125 41.7578125 206.453125 37.8515625C206.453125 33.984375 203.4453125 31.171875 199.34375 31.171875C195.28125 31.171875 192.3125 33.984375 192.3125 37.8515625C192.3125 41.7578125 195.28125 44.5703125 199.34375 44.5703125ZM233.4453125 67.578125C233.4453125 61.953125 236.1796875 59.3359375 240.4375 59.3359375C244.6953125 59.3359375 247.15625 61.9921875 247.15625 66.875V90.0H260.59375V64.0625C260.59375 53.90625 255.359375 47.8515625 246.4140625 47.8515625C240.203125 47.8515625 236.0234375 50.703125 233.2890625 55.4296875V48.75H220.0078125V90.0H233.4453125ZM278.2109375 90.703125C284.03125 90.703125 287.7421875 88.671875 290.203125 84.21875H290.359375V90.0H303.484375V62.2265625C303.484375 53.125 296.8828125 47.8515625 284.890625 47.8515625C272.9375 47.8515625 266.1796875 53.1640625 265.59375 62.109375H278.09375C278.3671875 59.296875 280.671875 57.5 284.421875 57.5C287.9765625 57.5 290.1640625 59.1796875 290.1640625 61.640625V61.8359375C290.1640625 64.296875 287.46875 64.8828125 280.0859375 65.5078125C271.296875 66.2109375 264.0703125 69.21875 264.0703125 78.4765625C264.0703125 86.6796875 269.96875 90.703125 278.2109375 90.703125ZM282.3125 81.9140625C279.03125 81.9140625 276.8046875 80.390625 276.8046875 77.8515625C276.8046875 75.15625 279.3828125 73.671875 282.9765625 73.125C286.296875 72.578125 288.8359375 72.0703125 290.28125 71.40625V75.15625C290.28125 79.21875 286.8046875 81.9140625 282.3125 81.9140625Z" fill="#F5EFE6"/></g></svg>
+    <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 343 152" role="img"><title>Kaïna</title><g transform="translate(16 16)"><path d="M48 8 C22 8 4 27 4 51 C4 80 48 114 48 114 C48 114 92 80 92 51 C92 27 74 8 48 8 Z" fill="#F7F4EE"/><circle cx="48" cy="50" r="27" fill="#1F232B"/><path d="M34 51 l10 10 l19 -21" fill="none" stroke="#B8975A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M115.75 90.0H129.1875V77.734375L132.0390625 74.4140625L142.546875 90.0H158.0546875L142.0390625 66.7578125L157.390625 48.75H141.8828125L129.34375 63.3984375H129.1875V31.796875H115.75ZM171.296875 90.703125C177.1171875 90.703125 180.828125 88.671875 183.2890625 84.21875H183.4453125V90.0H196.5703125V62.2265625C196.5703125 53.125 189.96875 47.8515625 177.9765625 47.8515625C166.0234375 47.8515625 159.265625 53.1640625 158.6796875 62.109375H171.1796875C171.453125 59.296875 173.7578125 57.5 177.5078125 57.5C181.0625 57.5 183.25 59.1796875 183.25 61.640625V61.8359375C183.25 64.296875 180.5546875 64.8828125 173.171875 65.5078125C164.3828125 66.2109375 157.15625 69.21875 157.15625 78.4765625C157.15625 86.6796875 163.0546875 90.703125 171.296875 90.703125ZM175.3984375 81.9140625C172.1171875 81.9140625 169.890625 80.390625 169.890625 77.8515625C169.890625 75.15625 172.46875 73.671875 176.0625 73.125C179.3828125 72.578125 181.921875 72.0703125 183.3671875 71.40625V75.15625C183.3671875 79.21875 179.890625 81.9140625 175.3984375 81.9140625ZM201.5703125 90.0H215.0078125V48.75H201.5703125ZM217.1953125 44.5703125C221.2578125 44.5703125 224.265625 41.7578125 224.265625 37.8515625C224.265625 33.984375 221.2578125 31.171875 217.1953125 31.171875C213.09375 31.171875 210.125 33.984375 210.125 37.8515625C210.125 41.7578125 213.09375 44.5703125 217.1953125 44.5703125ZM199.34375 44.5703125C203.4453125 44.5703125 206.453125 41.7578125 206.453125 37.8515625C206.453125 33.984375 203.4453125 31.171875 199.34375 31.171875C195.28125 31.171875 192.3125 33.984375 192.3125 37.8515625C192.3125 41.7578125 195.28125 44.5703125 199.34375 44.5703125ZM233.4453125 67.578125C233.4453125 61.953125 236.1796875 59.3359375 240.4375 59.3359375C244.6953125 59.3359375 247.15625 61.9921875 247.15625 66.875V90.0H260.59375V64.0625C260.59375 53.90625 255.359375 47.8515625 246.4140625 47.8515625C240.203125 47.8515625 236.0234375 50.703125 233.2890625 55.4296875V48.75H220.0078125V90.0H233.4453125ZM278.2109375 90.703125C284.03125 90.703125 287.7421875 88.671875 290.203125 84.21875H290.359375V90.0H303.484375V62.2265625C303.484375 53.125 296.8828125 47.8515625 284.890625 47.8515625C272.9375 47.8515625 266.1796875 53.1640625 265.59375 62.109375H278.09375C278.3671875 59.296875 280.671875 57.5 284.421875 57.5C287.9765625 57.5 290.1640625 59.1796875 290.1640625 61.640625V61.8359375C290.1640625 64.296875 287.46875 64.8828125 280.0859375 65.5078125C271.296875 66.2109375 264.0703125 69.21875 264.0703125 78.4765625C264.0703125 86.6796875 269.96875 90.703125 278.2109375 90.703125ZM282.3125 81.9140625C279.03125 81.9140625 276.8046875 80.390625 276.8046875 77.8515625C276.8046875 75.15625 279.3828125 73.671875 282.9765625 73.125C286.296875 72.578125 288.8359375 72.0703125 290.28125 71.40625V75.15625C290.28125 79.21875 286.8046875 81.9140625 282.3125 81.9140625Z" fill="#F7F4EE"/></g></svg>
     <a href="#tableau-de-bord" data-v="tableau-de-bord">Tableau de bord</a>
     <a href="#vehicules" data-v="vehicules">Véhicules</a>
     <a href="#conducteurs" data-v="conducteurs">Conducteurs</a>

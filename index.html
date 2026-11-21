@@ -1,5 +1,252 @@
 <!DOCTYPE html>
-<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Kaïna</title>
-<style>body{margin:0;font-family:Arial,sans-serif;background:#F5EFE6;color:#14172B}header{background:#1E2A78;color:#F5EFE6;padding:32px 20px}h1{margin:0;font-size:30px}main{max-width:640px;margin:0 auto;padding:24px 20px;display:flex;flex-direction:column;gap:14px}a{display:block;background:#fff;border:1px solid #DDD5C8;border-radius:12px;padding:18px;color:#1E2A78;font-weight:700;text-decoration:none;font-size:18px}a span{display:block;color:#4A4E66;font-weight:400;font-size:14px;margin-top:4px}</style></head>
-<body><header><h1>Kaïna</h1><p>Livré complet, à l'heure.</p></header>
-<main><a href="landing/">Hanout Expo · Être rappelé par un pré-vendeur<span>Landing page du stand B12</span></a><a href="video/presentation-voix.mp4">Vidéo de présentation<span>45 secondes, avec voix off</span></a><a href="parc/">Gestion du parc<span>Application de suivi des véhicules et conducteurs (données enregistrées dans votre navigateur)</span></a><div style="background:#fff;border:1px solid #DDD5C8;border-radius:12px;padding:18px;text-align:center"><img src="qr/qr-landing.png" alt="QR code vers la landing page Hanout Expo" style="width:220px;height:220px"><p style="margin:8px 0 0;color:#1E2A78;font-weight:700">Scannez pour être rappelé par un pré-vendeur</p><p style="margin:4px 0 0"><a href="qr/affiche-stand-B12.png" style="display:inline;border:0;padding:0;font-size:14px">Télécharger l'affiche du stand B12</a></p></div></main></body></html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kaïna Distribution · Livré complet, à l'heure.</title>
+<meta name="description" content="Kaïna Distribution, distributeur marocain de produits de grande consommation depuis 2004 : 14 000 points de vente, 2 400 références, 6 agences. Livraison sous 24 h à Casablanca et Rabat-Salé.">
+<meta property="og:title" content="Kaïna Distribution · Livré complet, à l'heure.">
+<meta property="og:description" content="Épicerie, hygiène, boissons : un seul partenaire pour tout votre magasin.">
+<meta property="og:image" content="qr/affiche-stand-B12.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--nuit:#15171C;--ardoise:#1F232B;--or:#B8975A;--or-clair:#EFE6D6;--ivoire:#F7F4EE;--encre:#1A1C21;--doux:#6B665E;--ligne:#E3DCCF}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;font-family:"DM Sans",Arial,sans-serif;font-size:17px;line-height:1.65;color:var(--encre);background:var(--ivoire)}
+h1,h2,h3,.serif{font-family:"Crimson Text",Georgia,serif;font-weight:600;letter-spacing:-.005em;line-height:1.15;margin:0}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--or);font-weight:500;margin:0 0 14px}
+.rule{width:56px;height:1px;background:var(--or);border:0;margin:22px 0}
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:rgba(21,23,28,.96);backdrop-filter:blur(8px);border-bottom:1px solid rgba(184,151,90,.25)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.nav svg{height:44px;width:auto;display:block}
+.nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
+.nav ul a{color:#D8CFBF;text-decoration:none;font-size:14px;letter-spacing:.04em}
+.nav ul a:hover{color:var(--or)}
+.btn{display:inline-block;background:var(--or);color:var(--nuit);text-decoration:none;font-weight:500;padding:13px 24px;border-radius:2px;font-size:15px;letter-spacing:.02em;transition:background .2s}
+.btn:hover{background:#C9AA70}
+.btn-ghost{background:transparent;color:var(--ivoire);border:1px solid rgba(247,244,238,.4)}
+.btn-ghost:hover{background:rgba(247,244,238,.08)}
+.nav .btn{padding:9px 18px;font-size:13px}
+.burger{display:none;background:none;border:0;color:var(--ivoire);font-size:26px;cursor:pointer}
+/* hero */
+.hero{background:var(--nuit);color:var(--ivoire);padding:110px 0 120px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;right:-180px;top:-120px;width:620px;height:620px;border:1px solid rgba(184,151,90,.18);border-radius:50%}
+.hero h1{font-size:clamp(42px,6vw,76px);max-width:820px}
+.hero h1 em{font-style:italic;color:var(--or);font-weight:400}
+.hero p.lead{font-size:20px;color:#C9C1B3;max-width:620px;margin:26px 0 38px}
+.hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
+/* figures */
+.figures{background:var(--ardoise);color:var(--ivoire)}
+.figures .wrap{display:grid;grid-template-columns:repeat(5,1fr)}
+.fig{padding:38px 18px;border-left:1px solid rgba(184,151,90,.2)}
+.fig:first-child{border-left:0}
+.fig b{display:block;font-family:"Crimson Text",Georgia,serif;font-weight:600;font-size:40px;color:var(--or);line-height:1}
+.fig span{display:block;font-size:13px;color:#C9C1B3;margin-top:10px;letter-spacing:.02em}
+/* sections */
+section{padding:100px 0}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+h2{font-size:clamp(32px,4vw,46px)}
+.muted{color:var(--doux)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--ligne);border:1px solid var(--ligne);margin-top:48px}
+.card{background:#fff;padding:36px 30px}
+.card h3{font-size:26px;margin-bottom:10px}
+.card .num{font-family:"Crimson Text",Georgia,serif;color:var(--or);font-size:15px;letter-spacing:.15em;margin-bottom:18px;display:block}
+.alt{background:#fff;border-top:1px solid var(--ligne);border-bottom:1px solid var(--ligne)}
+.list{list-style:none;padding:0;margin:0}
+.list li{padding:18px 0;border-bottom:1px solid var(--ligne);display:flex;gap:18px}
+.list li:first-child{border-top:1px solid var(--ligne)}
+.list b{font-family:"Crimson Text",Georgia,serif;font-size:21px;font-weight:600;min-width:170px}
+.quote{border-left:1px solid var(--or);padding:6px 0 6px 28px;font-family:"Crimson Text",Georgia,serif;font-size:26px;line-height:1.35;font-style:italic;margin:34px 0}
+.agences{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--ligne);border:1px solid var(--ligne);margin-top:44px}
+.agence{background:var(--ivoire);padding:28px 26px}
+.agence h3{font-size:24px}
+.agence p{margin:6px 0 0;font-size:14px;color:var(--doux)}
+.agence .tag{display:inline-block;margin-top:12px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--or)}
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px}
+.team div{border-top:1px solid var(--or);padding-top:18px}
+.team h3{font-size:22px}.team p{margin:4px 0 0;font-size:14px;color:var(--doux)}
+/* salon */
+.salon{background:var(--nuit);color:var(--ivoire)}
+.salon .muted{color:#C9C1B3}
+.offer{border:1px solid rgba(184,151,90,.45);padding:40px;text-align:center}
+.offer .big{font-family:"Crimson Text",Georgia,serif;font-size:84px;color:var(--or);line-height:1}
+.offer img{width:200px;height:200px;background:#fff;padding:10px;margin:26px auto 10px;display:block}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:30px}
+.facts div{border-top:1px solid rgba(184,151,90,.35);padding-top:14px}
+.facts small{display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--or)}
+.facts span{font-family:"Crimson Text",Georgia,serif;font-size:22px}
+/* media */
+.media{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center}
+video{width:100%;display:block;background:#000;border:1px solid var(--ligne)}
+.res{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.res a{display:block;text-decoration:none;background:#fff;border:1px solid var(--ligne);padding:28px;transition:border-color .2s}
+.res a:hover{border-color:var(--or)}
+.res h3{font-size:22px;margin-bottom:6px}.res p{margin:0;font-size:14px;color:var(--doux)}
+.res .go{display:block;margin-top:16px;font-size:13px;color:var(--or);letter-spacing:.06em}
+/* contact */
+.contact{background:var(--ardoise);color:var(--ivoire);text-align:center}
+.contact p{color:#C9C1B3;max-width:560px;margin:18px auto 34px}
+footer{background:var(--nuit);color:#8F897F;font-size:13px;padding:40px 0}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer b{color:var(--or);font-weight:500}
+@media (max-width:900px){
+ .nav ul{display:none;position:absolute;top:68px;left:0;right:0;background:var(--nuit);flex-direction:column;gap:0;padding:8px 24px 18px}
+ .nav ul.open{display:flex}.nav ul li a{display:block;padding:12px 0;border-bottom:1px solid rgba(184,151,90,.15)}
+ .burger{display:block}.nav .btn{display:none}
+ .figures .wrap{grid-template-columns:repeat(2,1fr)}.fig{border-left:0;border-top:1px solid rgba(184,151,90,.2)}
+ .split,.media{grid-template-columns:1fr;gap:40px}
+ .cards,.agences,.team,.res{grid-template-columns:1fr}
+ section{padding:72px 0}.hero{padding:80px 0 90px}
+ .list li{flex-direction:column;gap:4px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Navigation principale"><div class="wrap">
+ <a href="#top" aria-label="Kaïna, accueil"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 343 152" role="img"><title>Kaïna</title><g transform="translate(16 16)"><path d="M48 8 C22 8 4 27 4 51 C4 80 48 114 48 114 C48 114 92 80 92 51 C92 27 74 8 48 8 Z" fill="#F7F4EE"/><circle cx="48" cy="50" r="27" fill="#1F232B"/><path d="M34 51 l10 10 l19 -21" fill="none" stroke="#B8975A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M115.75 90.0H129.1875V77.734375L132.0390625 74.4140625L142.546875 90.0H158.0546875L142.0390625 66.7578125L157.390625 48.75H141.8828125L129.34375 63.3984375H129.1875V31.796875H115.75ZM171.296875 90.703125C177.1171875 90.703125 180.828125 88.671875 183.2890625 84.21875H183.4453125V90.0H196.5703125V62.2265625C196.5703125 53.125 189.96875 47.8515625 177.9765625 47.8515625C166.0234375 47.8515625 159.265625 53.1640625 158.6796875 62.109375H171.1796875C171.453125 59.296875 173.7578125 57.5 177.5078125 57.5C181.0625 57.5 183.25 59.1796875 183.25 61.640625V61.8359375C183.25 64.296875 180.5546875 64.8828125 173.171875 65.5078125C164.3828125 66.2109375 157.15625 69.21875 157.15625 78.4765625C157.15625 86.6796875 163.0546875 90.703125 171.296875 90.703125ZM175.3984375 81.9140625C172.1171875 81.9140625 169.890625 80.390625 169.890625 77.8515625C169.890625 75.15625 172.46875 73.671875 176.0625 73.125C179.3828125 72.578125 181.921875 72.0703125 183.3671875 71.40625V75.15625C183.3671875 79.21875 179.890625 81.9140625 175.3984375 81.9140625ZM201.5703125 90.0H215.0078125V48.75H201.5703125ZM217.1953125 44.5703125C221.2578125 44.5703125 224.265625 41.7578125 224.265625 37.8515625C224.265625 33.984375 221.2578125 31.171875 217.1953125 31.171875C213.09375 31.171875 210.125 33.984375 210.125 37.8515625C210.125 41.7578125 213.09375 44.5703125 217.1953125 44.5703125ZM199.34375 44.5703125C203.4453125 44.5703125 206.453125 41.7578125 206.453125 37.8515625C206.453125 33.984375 203.4453125 31.171875 199.34375 31.171875C195.28125 31.171875 192.3125 33.984375 192.3125 37.8515625C192.3125 41.7578125 195.28125 44.5703125 199.34375 44.5703125ZM233.4453125 67.578125C233.4453125 61.953125 236.1796875 59.3359375 240.4375 59.3359375C244.6953125 59.3359375 247.15625 61.9921875 247.15625 66.875V90.0H260.59375V64.0625C260.59375 53.90625 255.359375 47.8515625 246.4140625 47.8515625C240.203125 47.8515625 236.0234375 50.703125 233.2890625 55.4296875V48.75H220.0078125V90.0H233.4453125ZM278.2109375 90.703125C284.03125 90.703125 287.7421875 88.671875 290.203125 84.21875H290.359375V90.0H303.484375V62.2265625C303.484375 53.125 296.8828125 47.8515625 284.890625 47.8515625C272.9375 47.8515625 266.1796875 53.1640625 265.59375 62.109375H278.09375C278.3671875 59.296875 280.671875 57.5 284.421875 57.5C287.9765625 57.5 290.1640625 59.1796875 290.1640625 61.640625V61.8359375C290.1640625 64.296875 287.46875 64.8828125 280.0859375 65.5078125C271.296875 66.2109375 264.0703125 69.21875 264.0703125 78.4765625C264.0703125 86.6796875 269.96875 90.703125 278.2109375 90.703125ZM282.3125 81.9140625C279.03125 81.9140625 276.8046875 80.390625 276.8046875 77.8515625C276.8046875 75.15625 279.3828125 73.671875 282.9765625 73.125C286.296875 72.578125 288.8359375 72.0703125 290.28125 71.40625V75.15625C290.28125 79.21875 286.8046875 81.9140625 282.3125 81.9140625Z" fill="#F7F4EE"/></g></svg></a>
+ <ul id="menu">
+  <li><a href="#maison">La maison</a></li>
+  <li><a href="#offre">Notre offre</a></li>
+  <li><a href="#engagement">Engagement</a></li>
+  <li><a href="#agences">Agences</a></li>
+  <li><a href="#salon">Hanout Expo</a></li>
+  <li><a href="#ressources">Ressources</a></li>
+ </ul>
+ <a class="btn" href="landing/">Être rappelé</a>
+ <button class="burger" aria-label="Ouvrir le menu" aria-controls="menu" onclick="document.getElementById('menu').classList.toggle('open')">&#9776;</button>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap">
+ <p class="eyebrow">Kaïna Distribution · Depuis 2004</p>
+ <h1>Des rayons pleins, <em>une parole tenue.</em></h1>
+ <p class="lead">Épicerie, hygiène, boissons : depuis Casablanca, nous approvisionnons le commerce de proximité marocain avec une seule exigence. Livré complet, à l'heure.</p>
+ <div class="ctas"><a class="btn" href="landing/">Être rappelé par un pré-vendeur</a><a class="btn btn-ghost" href="#maison">Découvrir Kaïna</a></div>
+</div></header>
+
+<div class="figures" aria-label="Kaïna en chiffres"><div class="wrap">
+ <div class="fig"><b>14 000</b><span>points de vente livrés au Maroc</span></div>
+ <div class="fig"><b>2 400</b><span>références en épicerie, hygiène, boissons</span></div>
+ <div class="fig"><b>160</b><span>pré-vendeurs qui passent en magasin</span></div>
+ <div class="fig"><b>6</b><span>agences, du nord au sud</span></div>
+ <div class="fig"><b>24 h</b><span>de délai à Casablanca et Rabat-Salé</span></div>
+</div></div>
+
+<section id="maison"><div class="wrap split">
+ <div>
+  <p class="eyebrow">La maison</p>
+  <h2>Un distributeur marocain, au service du commerce de quartier.</h2>
+  <hr class="rule">
+  <p>Fondée en 2004 à Casablanca, Kaïna Distribution s'est construite au plus près de ceux qui font vivre nos quartiers. Les épiceries représentent aujourd'hui 85 % de nos clients ; nous servons aussi les cafés-hôtels-restaurants, les moyennes et les grandes surfaces.</p>
+  <p class="muted">Notre siège est à Aïn Sebaâ. Nos 520 collaborateurs, dont 160 pré-vendeurs et 90 livreurs, portent chaque jour la même promesse.</p>
+ </div>
+ <div>
+  <ul class="list">
+   <li><b>Fondation</b><span>2004, Casablanca</span></li>
+   <li><b>Siège</b><span>Aïn Sebaâ, Casablanca</span></li>
+   <li><b>Clients</b><span>14 000 points de vente, dont 85 % d'épiceries de quartier</span></li>
+   <li><b>Équipes</b><span>520 collaborateurs, dont 160 pré-vendeurs et 90 livreurs</span></li>
+   <li><b>Chiffre d'affaires</b><span>1,1 milliard de dirhams en 2025</span></li>
+  </ul>
+ </div>
+</div></section>
+
+<section id="offre" class="alt"><div class="wrap">
+ <p class="eyebrow">Notre offre</p>
+ <h2>Un seul partenaire pour tout votre magasin.</h2>
+ <p class="muted" style="max-width:640px;margin-top:18px">Vous commandez quand vous voulez. Nous livrons quand c'est prévu. Votre pré-vendeur connaît votre commerce et vous conseille sur place.</p>
+ <div class="cards">
+  <div class="card"><span class="num">I · ASSORTIMENT</span><h3>2 400 références</h3><p class="muted">Épicerie, hygiène, boissons : l'essentiel de vos rayons auprès d'un seul fournisseur, une seule livraison, une seule facture.</p></div>
+  <div class="card"><span class="num">II · DÉLAIS</span><h3>24 h ou 48 h</h3><p class="muted">Livraison sous 24 h à Casablanca et Rabat-Salé, sous 48 h dans les autres villes. Vous savez quand votre commande arrive.</p></div>
+  <div class="card"><span class="num">III · NOUVEAUTÉ</span><h3>Commande WhatsApp</h3><p class="muted">Passez commande auprès de votre pré-vendeur sur WhatsApp, 7 jours sur 7. Pilote en cours à Casablanca et Rabat-Salé.</p></div>
+ </div>
+</div></section>
+
+<section id="engagement"><div class="wrap split">
+ <div>
+  <p class="eyebrow">Notre engagement</p>
+  <h2>Cap Service 2027</h2>
+  <hr class="rule">
+  <p>Lancé par notre Directeur général, Karim Fadel, le programme Cap Service 2027 engage toute l'entreprise sur un objectif simple à vérifier : 94 % de commandes livrées complètes et à l'heure.</p>
+  <p class="muted">Chaque agence, chaque manager, chaque pré-vendeur y contribue par des actions concrètes, mesurées et suivies.</p>
+ </div>
+ <div>
+  <p class="quote">Votre commande arrive à l'heure annoncée, complète. C'est la seule promesse que nous faisons, et nous la mesurons.</p>
+ </div>
+</div></section>
+
+<section id="agences" class="alt"><div class="wrap">
+ <p class="eyebrow">Implantation</p>
+ <h2>Six agences, une même exigence.</h2>
+ <div class="agences">
+  <div class="agence"><h3>Casablanca</h3><p>Siège à Aïn Sebaâ</p><span class="tag">Livraison 24 h · WhatsApp</span></div>
+  <div class="agence"><h3>Rabat-Salé</h3><p>Agence régionale</p><span class="tag">Livraison 24 h · WhatsApp</span></div>
+  <div class="agence"><h3>Tanger</h3><p>Agence régionale</p><span class="tag">Livraison 48 h</span></div>
+  <div class="agence"><h3>Fès</h3><p>Agence régionale</p><span class="tag">Livraison 48 h</span></div>
+  <div class="agence"><h3>Marrakech</h3><p>Agence régionale</p><span class="tag">Livraison 48 h</span></div>
+  <div class="agence"><h3>Agadir</h3><p>Agence régionale</p><span class="tag">Livraison 48 h</span></div>
+ </div>
+ <h2 style="margin-top:90px;font-size:34px">La direction</h2>
+ <div class="team">
+  <div><h3>Karim Fadel</h3><p>Directeur général</p></div>
+  <div><h3>Leïla Raji</h3><p>Directrice marketing &amp; communication</p></div>
+  <div><h3>Driss Amghar</h3><p>Directeur logistique &amp; flotte</p></div>
+  <div><h3>Salma Ait El Haj</h3><p>Directrice des ressources humaines</p></div>
+  <div><h3>Youssef Bouzidi</h3><p>Directeur administratif et financier</p></div>
+  <div><h3>Omar Hajji · Hind Oubella</h3><p>Chef des ventes Casablanca · Cheffe d'agence Rabat-Salé</p></div>
+ </div>
+</div></section>
+
+<section id="salon" class="salon"><div class="wrap split">
+ <div>
+  <p class="eyebrow">Hanout Expo 2026</p>
+  <h2>Retrouvez-nous au stand B12.</h2>
+  <hr class="rule">
+  <p class="muted">Le salon professionnel du commerce de proximité, à Casablanca. Environ 6 000 professionnels attendus : épiciers, gérants de supérettes, cafés-hôtels-restaurants.</p>
+  <div class="facts">
+   <div><small>Dates</small><span>Mardi 17 et mercredi 18 novembre 2026</span></div>
+   <div><small>Horaires</small><span>De 9 h à 18 h</span></div>
+   <div><small>Lieu</small><span>Casablanca</span></div>
+   <div><small>Stand</small><span>B12</span></div>
+  </div>
+ </div>
+ <div class="offer">
+  <p class="eyebrow" style="margin:0">Offre salon</p>
+  <div class="big">−5 %</div>
+  <p class="serif" style="font-size:22px;margin:8px 0 0">sur votre première commande</p>
+  <img src="qr/qr-landing.png" alt="QR code : être rappelé par un pré-vendeur">
+  <p class="muted" style="font-size:14px;margin:0 0 22px">Demande de rappel faite pendant le salon. Visite d'un pré-vendeur sous 48 h. Offre valable jusqu'au 31 décembre 2026.</p>
+  <a class="btn" href="landing/">Être rappelé par un pré-vendeur</a>
+ </div>
+</div></section>
+
+<section id="ressources"><div class="wrap">
+ <p class="eyebrow">Ressources</p>
+ <div class="media">
+  <video controls preload="metadata" poster="video/poster.jpg"><source src="video/presentation-voix.mp4" type="video/mp4"></video>
+  <div><h2>Kaïna en 45 secondes.</h2><hr class="rule"><p class="muted">Le film présenté sur l'écran du stand B12. Une version sans le son, conçue pour tourner en boucle, est également disponible.</p><p><a href="video/stand-sans-son.mp4" style="color:var(--or)">Télécharger la version stand (sans son)</a></p></div>
+ </div>
+ <div class="res">
+  <a href="landing/"><h3>Être rappelé</h3><p>Laissez vos coordonnées : un pré-vendeur vient à vous sous 48 h.</p><span class="go">Ouvrir la page →</span></a>
+  <a href="parc/"><h3>Pilotage du parc</h3><p>Outil interne de suivi des véhicules et des conducteurs. Aucune immobilisation sans validation humaine.</p><span class="go">Ouvrir l'application →</span></a>
+  <a href="qr/affiche-stand-B12.png" download><h3>Affiche du stand</h3><p>Le visuel B12 avec son QR code, prêt à imprimer.</p><span class="go">Télécharger →</span></a>
+ </div>
+</div></section>
+
+<section class="contact"><div class="wrap">
+ <p class="eyebrow">Contact</p>
+ <h2>Parlons de votre magasin.</h2>
+ <p>Un pré-vendeur de votre ville vous appelle, prend le temps de comprendre votre commerce et vous propose l'assortiment adapté.</p>
+ <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap"><a class="btn" href="landing/">Être rappelé par un pré-vendeur</a><a class="btn btn-ghost" href="https://wa.me/212661161062" rel="noopener">WhatsApp · 06 61 16 10 62</a></div>
+</div></section>
+
+<footer><div class="wrap">
+ <span><b>Kaïna Distribution</b> · Aïn Sebaâ, Casablanca · Livré complet, à l'heure.</span>
+ <span>Kaïna · Cap Service 2027 — Entreprise fictive créée pour l'atelier Challenge IA.</span>
+</div></footer>
+<script>document.querySelectorAll('#menu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('menu').classList.remove('open')))</script>
+</body></html>
