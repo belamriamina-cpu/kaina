@@ -1,0 +1,176 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Présentation · Dispositif digital Kaïna</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;height:100%;background:#0E0F12;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center}
+#stage>section{position:absolute;inset:0;box-sizing:border-box;width:1920px;height:1080px;overflow:hidden;opacity:0;visibility:hidden;transition:opacity .8s ease}
+#stage>section.on{opacity:1;visibility:visible}
+#stage>section:not(.on) *{animation:none!important}
+:root{--nuit:#15171C;--ardoise:#1F232B;--or:#B8975A;--ivoire:#F7F4EE;--encre:#1A1C21;--doux:#6B665E;--ligne:#E3DCCF;--pale:#C9C1B3}
+section{padding:128px;font-family:"DM Sans",Arial,sans-serif;color:var(--encre);background:var(--ivoire)}
+section.dark{background:var(--nuit);color:var(--ivoire)}
+h1,h2,h3{font-family:"Crimson Text",Georgia,serif;font-weight:600;margin:0;line-height:1.08}
+h1{font-size:120px}
+h2{font-size:72px}
+h3{font-size:40px}
+p{font-size:28px;line-height:1.5;margin:0}
+.eyebrow{font-size:24px;letter-spacing:6px;text-transform:uppercase;color:var(--or);margin:0 0 28px}
+.gold{color:var(--or)}
+.it{font-style:italic;font-weight:400}
+.muted{color:var(--doux)}
+.dark .muted{color:var(--pale)}
+.rule{width:96px;height:2px;background:var(--or);margin:40px 0}
+.bg{position:absolute;left:0;top:0;width:1920px;height:1080px;object-fit:cover;animation:kenburns 9s ease-out both}
+@keyframes kenburns{from{transform:scale(1.12)}to{transform:scale(1)}}
+.rise{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.d1{animation-delay:.15s}.d2{animation-delay:.35s}.d3{animation-delay:.55s}.d4{animation-delay:.75s}
+@keyframes rise{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:none}}
+.glow{animation:glow 1.4s ease-out both;animation-delay:.3s}
+@keyframes glow{from{opacity:0;transform:scale(.96);box-shadow:0 0 0 rgba(184,151,90,0)}to{opacity:1;transform:none;box-shadow:0 40px 90px -30px rgba(184,151,90,.55)}}
+.row{display:flex;gap:96px;align-items:center}
+.col{flex:1}
+.frame{border:2px solid var(--or);padding:16px;background:var(--ardoise);box-shadow:0 40px 90px -30px rgba(184,151,90,.55)}
+.frame img{display:block}
+.phone{border-radius:44px;padding:14px;background:#0E0F12;border:2px solid var(--or);box-shadow:0 40px 90px -30px rgba(184,151,90,.55)}
+.phone img{border-radius:32px;display:block}
+.points{display:flex;flex-direction:column;gap:22px;margin-top:40px}
+.points p{font-size:28px;border-top:1px solid rgba(184,151,90,.4);padding-top:18px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:72px;border-top:2px solid var(--or)}
+.cell{padding:36px 32px 0 0}
+.cell .n{font-family:"Crimson Text",Georgia,serif;font-size:32px;color:var(--or);margin-bottom:16px}
+.cell h3{margin-bottom:14px}
+.cell p{font-size:24px}
+.foot{position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:var(--doux);letter-spacing:2px}
+.dark .foot{color:#8F897F}
+.swatches{display:flex;gap:20px;margin-top:40px}
+.sw{width:120px}
+.sw x-shape{width:120px;height:120px;display:block}
+.sw p{font-size:24px;margin-top:12px}
+.big{font-family:"Crimson Text",Georgia,serif;font-size:200px;line-height:1;color:var(--or)}
+
+.ui{position:fixed;bottom:18px;left:0;right:0;display:flex;justify-content:center;align-items:center;gap:14px;font-family:"DM Sans",Arial,sans-serif;z-index:10}
+.ui button{background:rgba(21,23,28,.8);color:#F7F4EE;border:1px solid rgba(184,151,90,.6);width:44px;height:44px;border-radius:50%;font-size:18px;cursor:pointer}
+.ui span{color:#F7F4EE;background:rgba(21,23,28,.8);padding:6px 12px;border-radius:14px;font-size:14px;min-width:60px;text-align:center}
+.back{position:fixed;top:16px;left:18px;z-index:10;color:#B8975A;font:500 14px "DM Sans",Arial,sans-serif;text-decoration:none;background:rgba(21,23,28,.8);padding:8px 14px;border:1px solid rgba(184,151,90,.5)}
+</style></head><body>
+<a class="back" href="../">← Retour au site</a>
+<div id="stage"><section data-i="0" id="cover" class="dark" data-transition="magic">
+<img class="bg" src="../img/hero.jpg" alt="Lumières dorées sur fond anthracite">
+<div style="position:absolute;left:128px;top:128px;width:1300px">
+<img class="rise" src="../img/logo-negatif.png" alt="Logo Kaïna" style="width:300px;height:133px;object-fit:contain">
+<p class="eyebrow rise d1" style="margin-top:150px">Hanout Expo 2026 · Stand B12</p>
+<h1 class="rise d2">Le dispositif digital <span class="gold it">Kaïna</span></h1>
+<p class="rise d3 muted" style="margin-top:36px;width:1000px">Un site, une page de rappel, un outil de pilotage et une identité, au service d'une seule promesse.</p>
+</div>
+<p class="foot">Livré complet, à l'heure.</p>
+
+</section>
+<section data-i="1" id="dispositif" data-transition="fade">
+<p class="eyebrow rise">Vue d'ensemble</p>
+<h2 class="rise d1">Quatre éléments, une seule action attendue.</h2>
+<div class="grid4">
+<div class="cell rise d1"><p class="n">01</p><h3>Site vitrine</h3><p class="muted">La maison Kaïna, son offre, ses agences, en une page.</p></div>
+<div class="cell rise d2"><p class="n">02</p><h3>Page de rappel</h3><p class="muted">Un bouton : être rappelé par un pré-vendeur.</p></div>
+<div class="cell rise d3"><p class="n">03</p><h3>Application parc</h3><p class="muted">Ce qui demande une décision aujourd'hui.</p></div>
+<div class="cell rise d4"><p class="n">04</p><h3>Identité et QR</h3><p class="muted">Le repère, la coche, l'accès en un geste.</p></div>
+</div>
+<p class="foot">kaina-z3ld.vercel.app</p>
+
+</section>
+<section data-i="2" id="site" class="dark" data-transition="magic">
+<div class="row">
+<div class="frame glow" style="width:1040px"><img src="../img/site-desktop.jpg" alt="Page d'accueil du site Kaïna" style="width:1004px;height:628px;object-fit:cover;object-position:top"></div>
+<div class="col">
+<p class="eyebrow rise">01 · Site vitrine</p>
+<h2 class="rise d1">La maison Kaïna, en une page.</h2>
+<div class="points">
+<p class="rise d2">Offre, agences, direction, Hanout Expo</p>
+<p class="rise d3">Uniquement des chiffres vérifiés</p>
+<p class="rise d4">Parfait sur ordinateur et téléphone</p>
+</div>
+</div>
+</div>
+<p class="foot">kaina-z3ld.vercel.app</p>
+
+</section>
+<section data-i="3" id="landing" data-transition="magic">
+<div class="row">
+<div class="col">
+<p class="eyebrow rise">02 · Page de rappel</p>
+<h2 class="rise d1">Un seul bouton : <span class="it gold">être rappelé.</span></h2>
+<div class="points">
+<p class="rise d2">Méthode AIDA : attention, intérêt, désir, action</p>
+<p class="rise d3">Quatre champs : nom, commerce, ville, téléphone</p>
+<p class="rise d4">−5 % sur la première commande, visite sous 48 h</p>
+</div>
+</div>
+<div class="phone glow"><img src="../img/landing-mobile.jpg" alt="Page de rappel sur téléphone" style="width:360px;height:780px;object-fit:cover;object-position:top"></div>
+</div>
+<p class="foot">kaina-z3ld.vercel.app/landing</p>
+
+</section>
+<section data-i="4" id="parc" class="dark" data-transition="magic">
+<p class="eyebrow rise">03 · Application de pilotage du parc</p>
+<h2 class="rise d1" style="margin-bottom:56px">Ce qui demande une décision aujourd'hui.</h2>
+<div class="row" style="gap:72px;align-items:flex-start">
+<div class="frame glow" style="width:1100px"><img src="../img/parc-desktop.jpg" alt="Tableau de bord de l'application parc" style="width:1064px;height:500px;object-fit:cover;object-position:top left"></div>
+<div class="col points" style="margin-top:0">
+<p class="rise d2">Véhicules, conducteurs, alertes par agence</p>
+<p class="rise d3">L'outil prépare, le chef de parc décide</p>
+<p class="rise d4 gold">Aucune immobilisation sans validation humaine</p>
+</div>
+</div>
+
+</section>
+<section data-i="5" id="identite" data-transition="fade">
+<p class="eyebrow rise">04 · Identité</p>
+<h2 class="rise d1">Le repère, la coche, la promesse.</h2>
+<div class="row" style="margin-top:64px;gap:0">
+<div class="glow" style="width:832px;height:360px;background:#fff;display:flex;align-items:center;justify-content:center;border:1px solid #E3DCCF"><img src="../img/logo.png" alt="Logo Kaïna sur fond clair" style="width:480px;height:213px;object-fit:contain"></div>
+<div class="glow" style="width:832px;height:360px;background:#15171C;display:flex;align-items:center;justify-content:center"><img src="../img/logo-negatif.png" alt="Logo Kaïna sur fond sombre" style="width:480px;height:213px;object-fit:contain"></div>
+</div>
+<div class="swatches rise d3">
+<div class="sw"><div class="xs" style="width:120px;height:120px;background:#15171C"></div><p>Nuit</p></div>
+<div class="sw"><div class="xs" style="width:120px;height:120px;background:#1F232B"></div><p>Ardoise</p></div>
+<div class="sw"><div class="xs" style="width:120px;height:120px;background:#B8975A"></div><p>Or champagne</p></div>
+<div class="sw"><div class="xs" style="width:120px;height:120px;background:#F7F4EE;border:1px solid #E3DCCF"></div><p>Ivoire</p></div>
+</div>
+
+</section>
+<section data-i="6" id="qr" class="dark" data-transition="magic">
+<img class="bg" src="../img/bokeh2.jpg" alt="Lumières dorées sur fond anthracite">
+<div class="row" style="position:relative">
+<div class="col">
+<p class="eyebrow rise">Le QR code du stand</p>
+<h2 class="rise d1">Un geste, et le pré-vendeur vient à vous.</h2>
+<p class="rise d2 muted" style="margin-top:36px;width:760px">Il ouvre directement la page de rappel. Le logo reste au centre, lisible grâce à une correction d'erreur élevée.</p>
+<p class="big rise d3" style="margin-top:40px">−5 %</p>
+<p class="rise d4">sur la première commande</p>
+</div>
+<div class="glow" style="background:#fff;padding:28px;border:2px solid #B8975A"><img src="../qr/qr-landing.png" alt="QR code vers la page de rappel" style="width:560px;height:560px;object-fit:contain"></div>
+</div>
+
+</section>
+<section data-i="7" id="close" class="dark">
+<img class="bg" src="../img/hero.jpg" alt="Lumières dorées sur fond anthracite">
+<div style="position:absolute;left:128px;top:300px;width:1400px">
+<p class="eyebrow rise">Kaïna · Cap Service 2027</p>
+<h1 class="rise d1">Livré complet, <span class="gold it">à l'heure.</span></h1>
+<p class="rise d2 muted" style="margin-top:40px">kaina-z3ld.vercel.app · github.com/belamriamina-cpu/kaina</p>
+</div>
+
+</section>
+</div>
+<div class="ui"><button id="prev" aria-label="Slide précédente">‹</button><span id="cnt"></span><button id="next" aria-label="Slide suivante">›</button><button id="fs" aria-label="Plein écran">⤢</button></div>
+<script>
+var S=[].slice.call(document.querySelectorAll('#stage>section')),i=0,st=document.getElementById('stage');
+function fit(){var k=Math.min(innerWidth/1920,innerHeight/1080);st.style.transform='translate(-50%,-50%) scale('+k+')'}
+function go(n){i=(n+S.length)%S.length;S.forEach(function(s,j){s.classList.toggle('on',j===i)});document.getElementById('cnt').textContent=(i+1)+' / '+S.length;history.replaceState(null,'','#'+(i+1))}
+addEventListener('resize',fit);fit();
+document.getElementById('prev').onclick=function(){go(i-1)};document.getElementById('next').onclick=function(){go(i+1)};
+document.getElementById('fs').onclick=function(){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()};
+addEventListener('keydown',function(e){if(['ArrowRight',' ','PageDown'].indexOf(e.key)>-1)go(i+1);if(['ArrowLeft','PageUp'].indexOf(e.key)>-1)go(i-1)});
+var x0=null;addEventListener('touchstart',function(e){x0=e.touches[0].clientX});addEventListener('touchend',function(e){if(x0===null)return;var d=e.changedTouches[0].clientX-x0;if(Math.abs(d)>40)go(d<0?i+1:i-1);x0=null});
+go((parseInt(location.hash.slice(1))||1)-1);
+</script></body></html>
