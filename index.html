@@ -540,5 +540,11 @@ footer b{color:var(--or);font-weight:500}
 <p class="credits">Photographies : Tetiana Bykovets, Happy Jars, Jonathan Pielmayer, Handy Wicaksono, Fahad Al Rabbani Jillani, Mohammed Kabysa, Gabriel Santos, Mahmoud Gad, Jeslyn Xie, Jose Fabula, Clément Bergey, Zhen Yao, Aran Mtnez, Daniil Korbut — via <a href="https://unsplash.com" rel="noopener">Unsplash</a>.</p>
 </div></footer>
 <script>document.querySelectorAll('#menu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('menu').classList.remove('open')))</script>
-<script>(function(){var els=document.querySelectorAll('.porte .tx,.step,.show,.card,.agence,.res a,.offer,.mosaic figure,.band blockquote,.osm,.facts div,.team div,.list li,.ecoute,.humans div,.casa .wrap');els.forEach(function(e){e.classList.add('reveal')});if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});els.forEach(function(e){io.observe(e)})})()</script>
+<script>(function(){var els=[].slice.call(document.querySelectorAll('.porte .tx,.step,.show,.card,.agence,.res a,.offer,.mosaic figure,.band blockquote,.osm,.facts div,.team div,.list li,.ecoute,.humans div,.casa .wrap'));
+function check(){var h=window.innerHeight||document.documentElement.clientHeight;els=els.filter(function(e){var r=e.getBoundingClientRect();if(r.top<h*0.95&&r.bottom>0){e.classList.add('in');return false}return true})}
+els.forEach(function(e){e.classList.add('reveal')});
+check();window.addEventListener('scroll',check,{passive:true});window.addEventListener('resize',check);
+setInterval(check,700);
+setTimeout(function(){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in')})},6000);
+})()</script>
 </body></html>
