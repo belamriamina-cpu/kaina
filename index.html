@@ -139,6 +139,27 @@ footer b{color:var(--or);font-weight:500}
 .credits{font-size:11px;color:#6F6A62;margin-top:10px;width:100%}
 .credits a{color:#8F897F}
 @media (max-width:900px){.mosaic{grid-template-columns:1fr 1fr;grid-template-rows:240px 180px 180px}.mosaic figure:first-child{grid-column:span 2;grid-row:auto}.band{background-attachment:scroll;min-height:420px}}
+
+.mapwrap{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;margin-top:44px;align-items:stretch}
+.mapcard{background:var(--nuit);border:1px solid rgba(184,151,90,.35);position:relative;overflow:hidden}
+.mapsvg{width:100%;height:100%;display:block}
+.route{fill:none;stroke:#B8975A;stroke-width:2;stroke-dasharray:6 7;opacity:.85;animation:draw 2.2s ease-out both}
+@keyframes draw{from{stroke-dashoffset:400;opacity:0}to{stroke-dashoffset:0;opacity:.85}}
+.truck{fill:#F7F4EE}
+.pin{animation:pop .8s cubic-bezier(.2,.9,.3,1.4) both}
+@keyframes pop{from{opacity:0;transform:scale(.3);transform-box:fill-box;transform-origin:center}to{opacity:1}}
+.pulse{fill:rgba(184,151,90,.25);transform-box:fill-box;transform-origin:center;animation:pulse 2.4s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.6);opacity:.9}100%{transform:scale(2.2);opacity:0}}
+.lbl{fill:#F7F4EE;font:500 17px "DM Sans",Arial,sans-serif}
+.lbl.big{fill:#B8975A;font:600 24px "Crimson Text",Georgia,serif}
+.sea{fill:rgba(201,193,179,.4);font:italic 16px "Crimson Text",Georgia,serif;letter-spacing:.1em}
+.osm{display:flex;flex-direction:column;background:#fff;border:1px solid var(--ligne)}
+.osm iframe{width:100%;flex:1;min-height:380px;border:0;filter:grayscale(.6) sepia(.25) contrast(1.05)}
+.osm div{padding:22px 24px}
+.osm h3{font-size:24px;margin:0 0 6px}
+.livraison{display:flex;gap:28px;flex-wrap:wrap;margin-top:16px}
+.livraison span{font-size:14px;color:var(--doux)}.livraison b{font-family:"Crimson Text",Georgia,serif;color:var(--or);font-size:28px;display:block}
+@media (max-width:900px){.mapwrap{grid-template-columns:1fr}}
 @media (max-width:900px){
  .nav ul{display:none;position:absolute;top:68px;left:0;right:0;background:var(--nuit);flex-direction:column;gap:0;padding:8px 24px 18px}
  .nav ul.open{display:flex}.nav ul li a{display:block;padding:12px 0;border-bottom:1px solid rgba(184,151,90,.15)}
@@ -159,7 +180,7 @@ footer b{color:var(--or);font-weight:500}
   <li><a href="#maison">La maison</a></li>
   <li><a href="#offre">Notre offre</a></li>
   <li><a href="#engagement">Engagement</a></li>
-  <li><a href="#agences">Agences</a></li>
+  <li><a href="#agences">Carte</a></li>
   <li><a href="#salon">Hanout Expo</a></li>
   <li><a href="#dispositif">Dispositif</a></li>
   <li><a href="#ressources">Ressources</a></li>
@@ -244,7 +265,22 @@ footer b{color:var(--or);font-weight:500}
 
 <section id="agences" class="alt"><div class="wrap">
  <p class="eyebrow">Implantation</p>
- <h2>Six agences, une même exigence.</h2>
+ <h2>Basés à Casablanca, nous livrons tout le Maroc.</h2>
+ <p class="muted" style="max-width:680px;margin-top:18px">Notre magasin et siège sont à Casablanca, à Aïn Sebaâ. De là et de nos six agences, nous livrons 14 000 points de vente partout au Maroc.</p>
+ <div class="mapwrap">
+  <div class="mapcard"><svg viewBox="20 0 680 700" preserveAspectRatio="xMidYMid meet" class="mapsvg" role="img" aria-label="Carte des six agences Kaïna et des livraisons depuis Casablanca">
+<defs><pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="rgba(184,151,90,.18)"/></pattern></defs>
+<rect x="-40" y="-40" width="760" height="760" fill="url(#dots)"/>
+<text x="20" y="690" class="sea">Océan Atlantique</text><text x="480" y="20" class="sea">Méditerranée</text>
+<path class="route" style="animation-delay:0.3s" d="M309,300 Q350,191 392,251"/><circle r="5" class="truck"><animateMotion dur="3.0s" repeatCount="indefinite" begin="0.3s" path="M309,300 Q350,191 392,251"/></circle><path class="route" style="animation-delay:0.6499999999999999s" d="M309,300 Q408,-2 506,58"/><circle r="5" class="truck"><animateMotion dur="3.4s" repeatCount="indefinite" begin="0.6499999999999999s" path="M309,300 Q408,-2 506,58"/></circle><path class="route" style="animation-delay:1.0s" d="M309,300 Q452,190 594,250"/><circle r="5" class="truck"><animateMotion dur="3.8s" repeatCount="indefinite" begin="1.0s" path="M309,300 Q452,190 594,250"/></circle><path class="route" style="animation-delay:1.3499999999999999s" d="M309,300 Q286,240 263,514"/><circle r="5" class="truck"><animateMotion dur="4.2s" repeatCount="indefinite" begin="1.3499999999999999s" path="M309,300 Q286,240 263,514"/></circle><path class="route" style="animation-delay:1.7s" d="M309,300 Q199,240 88,647"/><circle r="5" class="truck"><animateMotion dur="4.6s" repeatCount="indefinite" begin="1.7s" path="M309,300 Q199,240 88,647"/></circle><g class="pin" style="animation-delay:0.2s"><circle cx="309" cy="300" r="22" class="pulse"/><circle cx="309" cy="300" r="9" fill="#B8975A"/><text x="293" y="306" text-anchor="end" class="lbl big">Casablanca</text></g><g class="pin" style="animation-delay:0.5s"><circle cx="392" cy="251" r="14" class="pulse"/><circle cx="392" cy="251" r="6" fill="#B8975A"/><text x="408" y="257" text-anchor="start" class="lbl">Rabat-Salé</text></g><g class="pin" style="animation-delay:0.8s"><circle cx="506" cy="58" r="14" class="pulse"/><circle cx="506" cy="58" r="6" fill="#B8975A"/><text x="522" y="64" text-anchor="start" class="lbl">Tanger</text></g><g class="pin" style="animation-delay:1.0999999999999999s"><circle cx="594" cy="250" r="14" class="pulse"/><circle cx="594" cy="250" r="6" fill="#B8975A"/><text x="610" y="256" text-anchor="start" class="lbl">Fès</text></g><g class="pin" style="animation-delay:1.4s"><circle cx="263" cy="514" r="14" class="pulse"/><circle cx="263" cy="514" r="6" fill="#B8975A"/><text x="247" y="520" text-anchor="end" class="lbl">Marrakech</text></g><g class="pin" style="animation-delay:1.7s"><circle cx="88" cy="647" r="14" class="pulse"/><circle cx="88" cy="647" r="6" fill="#B8975A"/><text x="72" y="653" text-anchor="end" class="lbl">Agadir</text></g></svg></div>
+  <div class="osm">
+   <iframe title="Carte : siège Kaïna à Aïn Sebaâ, Casablanca" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-7.62%2C33.57%2C-7.50%2C33.63&amp;layer=mapnik&amp;marker=33.598%2C-7.545"></iframe>
+   <div><h3>Siège et magasin · Casablanca</h3><p class="muted" style="margin:0">Aïn Sebaâ, Casablanca</p>
+    <div class="livraison"><span><b>24 h</b>Casablanca et Rabat-Salé</span><span><b>48 h</b>Tanger, Fès, Marrakech, Agadir</span><span><b>6</b>agences</span></div>
+    <p style="margin:14px 0 0"><a href="https://www.openstreetmap.org/?mlat=33.598&amp;mlon=-7.545#map=14/33.598/-7.545" target="_blank" rel="noopener" style="color:var(--or)">Ouvrir le plan →</a></p></div>
+  </div>
+ </div>
+
  <div class="agences">
   <div class="agence"><h3>Casablanca</h3><p>Siège à Aïn Sebaâ</p><span class="tag">Livraison 24 h · WhatsApp</span></div>
   <div class="agence"><h3>Rabat-Salé</h3><p>Agence régionale</p><span class="tag">Livraison 24 h · WhatsApp</span></div>
@@ -352,5 +388,5 @@ footer b{color:var(--or);font-weight:500}
 <p class="credits">Photographies : Jeslyn Xie, Jose Fabula, Clément Bergey, Zhen Yao, Aran Mtnez, Daniil Korbut — via <a href="https://unsplash.com" rel="noopener">Unsplash</a>.</p>
 </div></footer>
 <script>document.querySelectorAll('#menu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('menu').classList.remove('open')))</script>
-<script>(function(){var els=document.querySelectorAll('.show,.card,.agence,.res a,.offer,.mosaic figure,.band blockquote');els.forEach(function(e){e.classList.add('reveal')});if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});els.forEach(function(e){io.observe(e)})})()</script>
+<script>(function(){var els=document.querySelectorAll('.show,.card,.agence,.res a,.offer,.mosaic figure,.band blockquote,.osm,.facts div,.team div,.list li');els.forEach(function(e){e.classList.add('reveal')});if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});els.forEach(function(e){io.observe(e)})})()</script>
 </body></html>
