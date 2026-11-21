@@ -182,6 +182,22 @@ footer b{color:var(--or);font-weight:500}
 .humans span{font-size:14px;color:var(--doux)}
 .contact{background:linear-gradient(rgba(31,35,43,.88),rgba(21,23,28,.92)),url(https://images.unsplash.com/photo-1687139165160-0c639a5ed7ff?auto=format&fit=crop&w=2400&q=75) center/cover fixed}
 @media (max-width:900px){.ecoute{grid-template-columns:1fr}.ecoute .photo{min-height:340px}.ecoute .txt{padding:40px 24px}.casa{height:420px}.contact{background-attachment:scroll}}
+
+.porte{display:grid;grid-template-columns:1fr 1fr;min-height:620px;background:var(--nuit);color:var(--ivoire)}
+.porte .ph{position:relative;overflow:hidden}
+.porte .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:kb 16s ease-out both}
+.porte .ph:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,rgba(21,23,28,.9))}
+.porte .tx{padding:90px 64px;display:flex;flex-direction:column;justify-content:center}
+.porte h2 em{color:var(--or);font-weight:400}
+.steps{position:relative;margin-top:40px;padding-left:44px}
+.steps:before{content:"";position:absolute;left:13px;top:8px;bottom:8px;width:2px;background:rgba(184,151,90,.3)}
+.steps:after{content:"";position:absolute;left:13px;top:8px;width:2px;height:0;background:var(--or);animation:fill 3s ease-out .5s forwards}
+@keyframes fill{to{height:calc(100% - 16px)}}
+.step{position:relative;padding:0 0 30px}
+.step:before{content:attr(data-n);position:absolute;left:-44px;top:0;width:28px;height:28px;border-radius:50%;background:var(--nuit);border:2px solid var(--or);color:var(--or);font:600 14px "DM Sans",Arial,sans-serif;display:flex;align-items:center;justify-content:center}
+.step b{font-family:"Crimson Text",Georgia,serif;font-size:24px;font-weight:600;display:block}
+.step span{color:#C9C1B3;font-size:15px}
+@media (max-width:900px){.porte{grid-template-columns:1fr}.porte .ph{min-height:360px}.porte .ph:after{background:linear-gradient(180deg,transparent 60%,rgba(21,23,28,.9))}.porte .tx{padding:48px 24px}}
 @media (max-width:900px){
  .nav ul{display:none;position:absolute;top:68px;left:0;right:0;background:var(--nuit);flex-direction:column;gap:0;padding:8px 24px 18px}
  .nav ul.open{display:flex}.nav ul li a{display:block;padding:12px 0;border-bottom:1px solid rgba(184,151,90,.15)}
@@ -267,6 +283,21 @@ footer b{color:var(--or);font-weight:500}
   <div class="card"><div class="ph"><img src="https://images.unsplash.com/photo-1554589855-c54e5c81caef?auto=format&fit=crop&w=800&q=75" alt="Épices sur un marché" loading="lazy"></div><span class="num">III · NOUVEAUTÉ</span><h3>Commande WhatsApp</h3><p class="muted">Passez commande auprès de votre pré-vendeur sur WhatsApp, 7 jours sur 7. Pilote en cours à Casablanca et Rabat-Salé.</p></div>
  </div>
 </div></section>
+
+<div class="porte" id="livraison">
+ <div class="ph"><img src="https://images.unsplash.com/photo-1543499459-d1460946bdc6?auto=format&fit=crop&w=1600&q=75" alt="Livreur portant des cartons jusqu'au client" loading="lazy"></div>
+ <div class="tx">
+  <p class="eyebrow">Livraison</p>
+  <h2>Une personne vous apporte votre commande <em>jusqu'à votre porte.</em></h2>
+  <p style="color:#C9C1B3;margin-top:18px">Pas de dépôt à aller chercher, pas de carton laissé sur le trottoir : un livreur Kaïna dépose votre commande dans votre magasin, la vérifie avec vous et repart.</p>
+  <div class="steps">
+   <div class="step" data-n="1"><b>Vous commandez</b><span>Auprès de votre pré-vendeur, en magasin ou sur WhatsApp.</span></div>
+   <div class="step" data-n="2"><b>Nous préparons</b><span>Votre commande est préparée complète dans l'agence la plus proche.</span></div>
+   <div class="step" data-n="3"><b>On vous livre en main propre</b><span>Sous 24 h à Casablanca et Rabat-Salé, sous 48 h dans les autres villes.</span></div>
+  </div>
+  <p style="margin-top:10px"><a class="btn" href="landing/">Être rappelé par un pré-vendeur</a></p>
+ </div>
+</div>
 
 <div class="band"><div class="wrap">
  <blockquote>Votre commande arrive <em>complète</em>, à l'heure annoncée. C'est notre seule promesse.</blockquote>
@@ -431,8 +462,8 @@ footer b{color:var(--or);font-weight:500}
 <footer><div class="wrap">
  <span><b>Kaïna Distribution</b> · Aïn Sebaâ, Casablanca · Livré complet, à l'heure.</span>
  <span>Kaïna · Cap Service 2027 — Entreprise fictive créée pour l'atelier Challenge IA.</span>
-<p class="credits">Photographies : Fahad Al Rabbani Jillani, Mohammed Kabysa, Gabriel Santos, Mahmoud Gad, Jeslyn Xie, Jose Fabula, Clément Bergey, Zhen Yao, Aran Mtnez, Daniil Korbut — via <a href="https://unsplash.com" rel="noopener">Unsplash</a>.</p>
+<p class="credits">Photographies : Handy Wicaksono, Fahad Al Rabbani Jillani, Mohammed Kabysa, Gabriel Santos, Mahmoud Gad, Jeslyn Xie, Jose Fabula, Clément Bergey, Zhen Yao, Aran Mtnez, Daniil Korbut — via <a href="https://unsplash.com" rel="noopener">Unsplash</a>.</p>
 </div></footer>
 <script>document.querySelectorAll('#menu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('menu').classList.remove('open')))</script>
-<script>(function(){var els=document.querySelectorAll('.show,.card,.agence,.res a,.offer,.mosaic figure,.band blockquote,.osm,.facts div,.team div,.list li,.ecoute,.humans div,.casa .wrap');els.forEach(function(e){e.classList.add('reveal')});if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});els.forEach(function(e){io.observe(e)})})()</script>
+<script>(function(){var els=document.querySelectorAll('.porte .tx,.step,.show,.card,.agence,.res a,.offer,.mosaic figure,.band blockquote,.osm,.facts div,.team div,.list li,.ecoute,.humans div,.casa .wrap');els.forEach(function(e){e.classList.add('reveal')});if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});els.forEach(function(e){io.observe(e)})})()</script>
 </body></html>
