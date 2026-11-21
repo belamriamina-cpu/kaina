@@ -160,6 +160,28 @@ footer b{color:var(--or);font-weight:500}
 .livraison{display:flex;gap:28px;flex-wrap:wrap;margin-top:16px}
 .livraison span{font-size:14px;color:var(--doux)}.livraison b{font-family:"Crimson Text",Georgia,serif;color:var(--or);font-size:28px;display:block}
 @media (max-width:900px){.mapwrap{grid-template-columns:1fr}}
+
+.casa{position:relative;height:560px;overflow:hidden;color:var(--ivoire);display:flex;align-items:flex-end}
+.casa img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:kb 18s ease-out both}
+.casa:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,23,28,.15) 30%,rgba(21,23,28,.88))}
+.casa .wrap{position:relative;z-index:1;padding-bottom:64px;width:100%}
+.casa h2{font-size:clamp(40px,6vw,78px)}
+.casa h2 em{color:var(--or);font-weight:400}
+.ecoute{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#fff;border:1px solid var(--ligne)}
+.ecoute .photo{position:relative;min-height:560px;overflow:hidden}
+.ecoute .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 2s cubic-bezier(.2,.7,.2,1)}
+.ecoute:hover .photo img{transform:scale(1.06)}
+.ecoute .photo .badge{position:absolute;left:24px;bottom:24px;background:rgba(21,23,28,.85);color:var(--ivoire);padding:14px 18px;font-size:14px;border-left:2px solid var(--or)}
+.ecoute .photo .badge i{display:inline-block;width:9px;height:9px;border-radius:50%;background:#5FBF7A;margin-right:8px;animation:blink 1.6s ease-in-out infinite}
+@keyframes blink{50%{opacity:.25}}
+.ecoute .txt{padding:64px 56px}
+.humans{display:flex;flex-direction:column;gap:0;margin-top:28px}
+.humans div{display:flex;gap:18px;align-items:center;padding:18px 0;border-top:1px solid var(--ligne)}
+.humans img{width:72px;height:72px;border-radius:50%;object-fit:cover;flex:none;border:2px solid var(--or)}
+.humans b{font-family:"Crimson Text",Georgia,serif;font-size:21px;display:block}
+.humans span{font-size:14px;color:var(--doux)}
+.contact{background:linear-gradient(rgba(31,35,43,.88),rgba(21,23,28,.92)),url(https://images.unsplash.com/photo-1687139165160-0c639a5ed7ff?auto=format&fit=crop&w=2400&q=75) center/cover fixed}
+@media (max-width:900px){.ecoute{grid-template-columns:1fr}.ecoute .photo{min-height:340px}.ecoute .txt{padding:40px 24px}.casa{height:420px}.contact{background-attachment:scroll}}
 @media (max-width:900px){
  .nav ul{display:none;position:absolute;top:68px;left:0;right:0;background:var(--nuit);flex-direction:column;gap:0;padding:8px 24px 18px}
  .nav ul.open{display:flex}.nav ul li a{display:block;padding:12px 0;border-bottom:1px solid rgba(184,151,90,.15)}
@@ -181,6 +203,7 @@ footer b{color:var(--or);font-weight:500}
   <li><a href="#offre">Notre offre</a></li>
   <li><a href="#engagement">Engagement</a></li>
   <li><a href="#agences">Carte</a></li>
+  <li><a href="#ecoute">À votre écoute</a></li>
   <li><a href="#salon">Hanout Expo</a></li>
   <li><a href="#dispositif">Dispositif</a></li>
   <li><a href="#ressources">Ressources</a></li>
@@ -263,6 +286,12 @@ footer b{color:var(--or);font-weight:500}
  </div>
 </div></section>
 
+<div class="casa"><img src="https://images.unsplash.com/photo-1706203644187-a719449587bb?auto=format&fit=crop&w=2400&q=75" alt="Mosquée Hassan II au bord de l'océan, Casablanca" loading="lazy"><div class="wrap">
+ <p class="eyebrow">Notre maison</p>
+ <h2>Casablanca, <em>là où tout commence.</em></h2>
+ <p style="color:#D8CFBF;max-width:620px;margin-top:16px">Notre siège et notre magasin sont à Aïn Sebaâ. Chaque jour, nos camions en partent pour servir le Maroc.</p>
+</div></div>
+
 <section id="agences" class="alt"><div class="wrap">
  <p class="eyebrow">Implantation</p>
  <h2>Basés à Casablanca, nous livrons tout le Maroc.</h2>
@@ -297,6 +326,23 @@ footer b{color:var(--or);font-weight:500}
   <div><h3>Salma Ait El Haj</h3><p>Directrice des ressources humaines</p></div>
   <div><h3>Youssef Bouzidi</h3><p>Directeur administratif et financier</p></div>
   <div><h3>Omar Hajji · Hind Oubella</h3><p>Chef des ventes Casablanca · Cheffe d'agence Rabat-Salé</p></div>
+ </div>
+</div></section>
+
+<section id="ecoute"><div class="wrap">
+ <p class="eyebrow">À votre écoute</p>
+ <h2 style="margin-bottom:44px">Des femmes et des hommes disponibles pour répondre à vos besoins.</h2>
+ <div class="ecoute">
+  <div class="photo"><img src="https://images.unsplash.com/photo-1766066014237-00645c74e9c6?auto=format&fit=crop&w=1400&q=75" alt="Conseillère souriante avec un casque, prête à répondre" loading="lazy"><p class="badge"><i></i>Nos équipes vous répondent</p></div>
+  <div class="txt">
+   <p class="serif" style="font-size:28px;line-height:1.3;margin:0">Une question, un besoin, une commande urgente ? Derrière Kaïna, il y a toujours quelqu'un pour vous répondre.</p>
+   <div class="humans">
+    <div><img src="https://images.unsplash.com/photo-1764981221640-67b6dce40c9d?auto=format&fit=crop&w=300&q=75" alt="Commerçant dans son magasin" loading="lazy"><p style="margin:0"><b>Votre pré-vendeur</b><span>Il passe en magasin, connaît votre commerce et vous conseille.</span></p></div>
+    <div><img src="https://images.unsplash.com/photo-1766066014237-00645c74e9c6?auto=format&fit=crop&w=300&q=75" alt="Conseillère" loading="lazy"><p style="margin:0"><b>Commande WhatsApp, 7 jours sur 7</b><span>Écrivez à votre pré-vendeur quand vous voulez (pilote à Casablanca et Rabat-Salé).</span></p></div>
+    <div><img src="https://images.unsplash.com/photo-1761574319274-8a3a9cd80a6e?auto=format&fit=crop&w=300&q=75" alt="Livreur déchargeant des caisses" loading="lazy"><p style="margin:0"><b>Nos 90 livreurs</b><span>Votre commande arrive complète, à l'heure annoncée.</span></p></div>
+   </div>
+   <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:30px"><a class="btn" href="landing/">Être rappelé par un pré-vendeur</a><a class="btn" style="background:var(--nuit);color:var(--ivoire)" href="https://wa.me/212661161062" rel="noopener">WhatsApp</a></div>
+  </div>
  </div>
 </div></section>
 
@@ -385,8 +431,8 @@ footer b{color:var(--or);font-weight:500}
 <footer><div class="wrap">
  <span><b>Kaïna Distribution</b> · Aïn Sebaâ, Casablanca · Livré complet, à l'heure.</span>
  <span>Kaïna · Cap Service 2027 — Entreprise fictive créée pour l'atelier Challenge IA.</span>
-<p class="credits">Photographies : Jeslyn Xie, Jose Fabula, Clément Bergey, Zhen Yao, Aran Mtnez, Daniil Korbut — via <a href="https://unsplash.com" rel="noopener">Unsplash</a>.</p>
+<p class="credits">Photographies : Fahad Al Rabbani Jillani, Mohammed Kabysa, Baljinnyam Munkhgerel, Jeslyn Xie, Jose Fabula, Clément Bergey, Zhen Yao, Aran Mtnez, Daniil Korbut — via <a href="https://unsplash.com" rel="noopener">Unsplash</a>.</p>
 </div></footer>
 <script>document.querySelectorAll('#menu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('menu').classList.remove('open')))</script>
-<script>(function(){var els=document.querySelectorAll('.show,.card,.agence,.res a,.offer,.mosaic figure,.band blockquote,.osm,.facts div,.team div,.list li');els.forEach(function(e){e.classList.add('reveal')});if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});els.forEach(function(e){io.observe(e)})})()</script>
+<script>(function(){var els=document.querySelectorAll('.show,.card,.agence,.res a,.offer,.mosaic figure,.band blockquote,.osm,.facts div,.team div,.list li,.ecoute,.humans div,.casa .wrap');els.forEach(function(e){e.classList.add('reveal')});if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});els.forEach(function(e){io.observe(e)})})()</script>
 </body></html>
